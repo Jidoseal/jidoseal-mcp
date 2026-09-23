@@ -16,15 +16,16 @@ import graph on every other path, held by a static import check.
 PRICING IS QUOTED, NOT INVENTED
 -------------------------------
 Every number and every qualifying clause below is the site's own published copy
-(jidoseal.com, "What certification costs"), reproduced verbatim so a host
-tool can never quote a price the customer would not actually be charged:
-    Bronze  $149 — if you already meet Bronze — certificate only
-            $199 — if you don't yet — corrections + certificate
-    Silver  $349 — corrections + certificate
-    Gold    $599 — corrections + certificate
-    Self-Check — free
-Each tier is a single flat price however many files need correcting; there is no file-count
-tiering. Which Bronze price applies is decided by the website's own rule,
+(jidoseal.com's pricing section: the per-grade table and the two price cards), reproduced
+verbatim so a host tool can never quote a price the customer would not actually be charged:
+    Bronze  $149 — if the folder met Bronze on its first scan
+            $199 — if JidoSeal's fixes got it there
+    Silver  $349
+    Gold    $599
+    Self-Check — free (the scan and the fixes)
+One flat price per grade, however many files; there is no file-count tiering. The scan and the
+fixes are free; the certificate is the only thing that costs money. Which Bronze price applies
+is decided by the website's own rule,
 reproduced in `first_scan_was_below_bronze()` below from the corpus's OWN scan history rather
 than from anything the caller asserts.
 """
@@ -57,45 +58,44 @@ PRICING = {
         "rubric": "OKF v0.2, as written",
         "price_usd": 149,
         "price": "$149",
-        "price_note": "if you already meet Bronze — certificate only",
+        "price_note": "if the folder met Bronze on its first scan",
         "alt_price_usd": 199,
         "alt_price": "$199",
-        "alt_price_note": "if you don't yet — corrections + certificate",
+        "alt_price_note": "if JidoSeal's fixes got it there",
     },
     "silver": {
         "tier": "Silver",
-        "rubric": "+ ISO 9001 §7.5.2 fields",
+        "rubric": "+ fields that evidence ISO 9001 §7.5.2",
         "price_usd": 349,
         "price": "$349",
-        "price_note": "corrections + certificate",
+        "price_note": "one flat price per grade, however many files",
     },
     "gold": {
         "tier": "Gold",
-        "rubric": "+ ISO 30401 governance",
+        "rubric": "+ fields that evidence ISO 30401",
         "price_usd": 599,
         "price": "$599",
-        "price_note": "corrections + certificate",
+        "price_note": "one flat price per grade, however many files",
     },
 }
 
 SELF_CHECK_PRICE = "Free"
 
 PRICING_NOTE = (
-    "Each tier is a single flat price, however many files need correcting — no file-count "
-    "tiering. The free Self-Check tells you which tier you already meet before you pay "
-    "anything. Certification is point-in-time — the certificate attests your corpus as of its "
-    "timestamp, and editing files afterwards does not void it."
+    "One flat price per grade, however many files. You only pay once your folder has reached "
+    "the grade, so the free scan tells you exactly where you stand first. Scanning and fixing "
+    "stay free whether or not you buy a certificate. The certificate is the only thing that "
+    "costs money."
 )
 
 # What the paid product is, verbatim from the site's JidoSeal Certified card.
 CERTIFICATION_INCLUDES = [
-    "Guided corrections to reach your target tier",
-    "A person approves your certification before it is signed — from the score and hash "
-    "alone, never your files",
-    "Signed certificate bound to a Merkle root of your corpus",
-    "Verifiable, tamper-evident badge with a badge ID",
-    "Public verification page anyone can check",
-    "Listing in the public JidoSeal registry",
+    "A dated certificate for the grade your folder reached",
+    "A public verification page anyone can check",
+    "A badge that links to it, and a listing in the public registry",
+    "A printable certificate",
+    "Signed off by a person at JidoSeal, from the grade, score and fingerprint only",
+    "Valid for one year",
 ]
 
 # The complete list of what a purchase sends to jidoseal.com — aggregate facts and the contact
@@ -175,7 +175,7 @@ def price_for(tier: str, below_tier: Optional[bool]) -> Dict[str, Any]:
             "amount_usd": entry["price_usd"],
             "display": entry["price"],
             "why": "This corpus was already at Bronze on its first scan, before any fix was "
-                   "applied, so certifying it is the certificate-only price.",
+                   "applied, so certifying it is $149.",
             "below_tier": False,
         }
     unknown = below_tier is None
@@ -183,11 +183,10 @@ def price_for(tier: str, below_tier: Optional[bool]) -> Dict[str, Any]:
         "amount_usd": entry["alt_price_usd"],
         "display": entry["alt_price"],
         "why": (
-            "No earlier scan of this corpus is on record, so the corrections-included price is "
-            "quoted; if it was already at Bronze on its first scan the price is $149."
+            "No earlier scan of this corpus is on record, so the $199 price is quoted; if it "
+            "was already at Bronze on its first scan the price is $149."
             if unknown else
-            "This corpus needed corrections before it reached Bronze, so certifying it "
-            "includes the corrections."
+            "This corpus needed corrections before it reached Bronze, so certifying it is $199."
         ),
         "below_tier": True,
         "price_unconfirmed": unknown,

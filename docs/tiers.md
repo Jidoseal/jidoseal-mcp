@@ -1,12 +1,18 @@
-# JidoSeal tier requirements — OKF v0.2 → ISO 9001 §7.5.2 → ISO 30401
+# JidoSeal tier requirements — OKF v0.2, plus fields that evidence ISO 9001 §7.5.2 and ISO 30401
 
 This is the complete, exact rubric `jidoseal` and `jidoseal-mcp` apply. It describes what the
 free local scan checks; it does not describe any private service. Everything here is
 reproducible: pick a folder, scan it, and compare against the table.
 
-Independent of Google and of ISO. OKF is an open specification from Google Cloud; the ISO
-mapping is JidoSeal's own reading of those standards, and a JidoSeal tier is not an ISO
-certification.
+Independent of Google and of ISO. OKF is an open specification from Google Cloud. JidoSeal is
+not affiliated with, sponsored by, or endorsed by Google or ISO.
+
+ISO names no fields. ISO 9001 §7.5.2 asks for appropriate identification and description of
+documented information and gives examples ("a title, date, author, or reference number"), not a
+fixed list; Silver's four fields are one reasonable way to evidence it. ISO 30401 asks that
+knowledge be kept current under defined governance and sets no review interval; Gold's status
+and stated review policy, with real review dates, are how you evidence it. The mapping is
+JidoSeal's own, and a JidoSeal tier is not an ISO certification.
 
 ## The rule, in one line
 
@@ -15,17 +21,17 @@ certification.
 
 ## Fields
 
-| Field | Tier | Standard it comes from | Accepted spellings |
+| Field | Tier | What it evidences | Accepted spellings |
 |---|---|---|---|
 | `type` | Bronze | OKF v0.2 (the one required field) | `type` |
-| `title` | Silver | ISO 9001 §7.5.2 — identification | `title` |
+| `title` | Silver | ISO 9001 §7.5.2 — identification (e.g. a title) | `title` |
 | `description` | Silver | ISO 9001 §7.5.2 — description | `description`, `desc` |
-| `timestamp` | Silver | ISO 9001 §7.5.2 — date | `timestamp`, `updated`, `created`, `date`, or `generated.at` |
-| `owner` | Silver | ISO 9001 §7.5.2 — author / responsibility | `owner`, `author`, or `generated.by` |
-| `status` | Gold | ISO 30401 — lifecycle status | `status` |
-| `review_policy` | Gold | ISO 30401 — review cadence | `review_policy` |
-| `reviewed_at` | Gold | ISO 30401 — last review | `reviewed_at` |
-| `next_review_at` | Gold | ISO 30401 — next review due | `next_review_at` |
+| `timestamp` | Silver | ISO 9001 §7.5.2 — identification (e.g. a date) | `timestamp`, `updated`, `created`, `date`, or `generated.at` |
+| `owner` | Silver | ISO 9001 §7.5.2 — identification (e.g. an author) | `owner`, `author`, or `generated.by` |
+| `status` | Gold | ISO 30401 kept-current governance — lifecycle status | `status` |
+| `review_policy` | Gold | ISO 30401 kept-current governance — the review cadence you choose (ISO 30401 sets no interval) | `review_policy` |
+| `reviewed_at` | Gold | ISO 30401 kept-current governance — last review | `reviewed_at` |
+| `next_review_at` | Gold | ISO 30401 kept-current governance — next review due | `next_review_at` |
 
 `stale_after` is recognised and reported in the manifest but is not required by any tier.
 

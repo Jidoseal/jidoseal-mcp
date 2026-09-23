@@ -95,13 +95,15 @@ TOOLS: List[Dict[str, Any]] = [
         "title": "JidoSeal Self-Check (free, local)",
         "description": (
             "Run JidoSeal's free Self-Check over a folder of Markdown documents on THIS "
-            "machine and return its OKF/ISO certification tier — Bronze, Silver or Gold — "
+            "machine and return its JidoSeal certification tier — Bronze, Silver or Gold — "
             "plus, for every file, which fields are missing for the next tier, and the "
             "corpus's coverage against each tier. Same rubric, and the same tier, coverage and "
             "per-file gap list as the Self-Check at jidoseal.com/app/run for the same folder. "
-            "Bronze = OKF v0.2 as written (a populated `type`); Silver = Bronze + ISO 9001 "
-            "§7.5.2 fields (title, description, timestamp, owner); Gold = Silver + ISO 30401 "
-            "(status, review_policy, reviewed_at, next_review_at). Each gap is marked AUTO "
+            "Bronze = OKF v0.2 as written (a populated `type`); Silver = Bronze + fields that "
+            "evidence ISO 9001 §7.5.2 (title, description, timestamp, owner); Gold = Silver + "
+            "fields that evidence ISO 30401 (status, review_policy, reviewed_at, next_review_at). "
+            "ISO names no fields; these are JidoSeal's way of meeting the clauses. "
+            "Each gap is marked AUTO "
             "(JidoSeal can propose the value) or NEEDS-CLIENT (only the owner can answer it), "
             "so the caller can close them for free before paying for anything. "
             "Free and unlimited. " + EGRESS_LINE + " "
@@ -135,7 +137,7 @@ TOOLS: List[Dict[str, Any]] = [
         "description": (
             "Scan a folder locally and return the paid-certification offer for it: the tier it "
             "qualifies for, the real price for that tier and why that price applies, what the "
-            "certificate includes (a signed certificate bound to a Merkle root of the corpus, "
+            "certificate includes (a dated certificate bound to a Merkle root of the corpus, "
             "a verifiable badge, a public verification page, a registry listing), and the "
             "exact list of facts a purchase would send to jidoseal.com. Charges nothing, "
             "starts nothing, and sends nothing — it is a local computation about a purchase "
@@ -268,7 +270,7 @@ def tool_jidoseal_start_checkout(args: Dict[str, Any]) -> Dict[str, Any]:
             "merkle_root": result["merkleRoot"],
             "audit_id": result["audit_id"],
             # The corpus definition this purchase would certify under — the same digest the
-            # certificate records Returned so the caller can
+            # certificate records. Returned so the caller can
             # record it alongside the checkout it just started; it is NOT part of what the
             # checkout body sends, because the certificate's copy is computed server-side from
             # the corpus itself at issuance, never taken from a caller's word.
@@ -337,8 +339,10 @@ def handle_message(msg: Dict[str, Any]) -> Optional[Dict[str, Any]]:
             "capabilities": {"tools": {"listChanged": False}},
             "serverInfo": {"name": SERVER_NAME, "title": "JidoSeal", "version": SERVER_VERSION},
             "instructions": (
-                "JidoSeal certifies a Markdown knowledge base against OKF v0.2 + ISO 9001 "
-                "§7.5.2 + ISO 30401. Start with jidoseal_scan on the folder: it runs entirely "
+                "JidoSeal certifies a Markdown knowledge base against OKF v0.2; its Silver and "
+                "Gold tiers add fields that evidence ISO 9001 §7.5.2 and ISO 30401 (ISO names no "
+                "fields, and a JidoSeal certificate is not an ISO certification). Start with "
+                "jidoseal_scan on the folder: it runs entirely "
                 "on this machine, costs nothing, and returns the tier plus the missing fields "
                 "per file so they can be fixed for free. jidoseal_certification_offer then "
                 "prices the optional certificate, and jidoseal_start_checkout returns a Stripe "

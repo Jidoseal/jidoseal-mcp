@@ -1,18 +1,18 @@
 <!-- mcp-name: com.jidoseal/jidoseal-mcp -->
 # jidoseal-mcp
 
-**Check a folder of markdown notes against Open Knowledge Format (OKF) v0.2 — from inside Claude Code, Cursor, GitHub Copilot, or a local model, on your own machine.**
+**Check a folder of markdown notes against Open Knowledge Format (OKF) v0.2 — from inside Claude Code, Claude Desktop, Cursor, GitHub Copilot, OpenAI Codex, Gemini CLI, Zed, Cline, Continue, JetBrains AI Assistant or a local model, on your own machine.**
 
 Pick a folder, scan it. `jidoseal-mcp` is a local [Model Context Protocol](https://modelcontextprotocol.io) server that reads the YAML frontmatter of every `*.md` file under a folder, reports which **tier** the knowledge base reaches (Bronze / Silver / Gold), and lists — per file — the exact frontmatter fields missing for the next tier. Nothing leaves your machine: no file, no file name, no file content.
 
 ```bash
 pip install jidoseal-mcp
-claude mcp add jidoseal -- jidoseal-mcp     # Claude Code; other hosts below
+claude mcp add jidoseal -- jidoseal-mcp     # Claude Code; every other tool is below
 ```
 
 Then ask your assistant: *"Scan ~/notes with JidoSeal and tell me what's missing for Silver."*
 
-> **Independent.** OKF is an open specification from Google Cloud. JidoSeal is independent and is not affiliated with or endorsed by Google. Nor is it affiliated with ISO; the ISO mapping below is JidoSeal's own reading of those standards.
+> **Independent.** OKF is an open specification from Google Cloud. JidoSeal is not affiliated with, sponsored by, or endorsed by Google or ISO. ISO names no fields: the Silver and Gold fields below are JidoSeal's way of evidencing the ISO clauses, and a JidoSeal certificate is not an ISO certification.
 
 ---
 
@@ -20,11 +20,11 @@ Then ask your assistant: *"Scan ~/notes with JidoSeal and tell me what's missing
 
 The scan is deterministic — presence of populated frontmatter fields, no model calls, no scoring by opinion. A field counts only if it has real content (`title:` with nothing after it earns nothing).
 
-| Tier | A file must have (populated) | Basis |
+| Tier | A file must have (populated) | What it evidences |
 |---|---|---|
-| **Bronze** | `type` | OKF v0.2 — `type` is the one required field |
-| **Silver** | Bronze + `title`, `description`, `timestamp`, `owner` | ISO 9001 §7.5.2 (documented information: identification and description) |
-| **Gold** | Silver + `status`, `review_policy`, `reviewed_at`, `next_review_at` | ISO 30401 (knowledge-management lifecycle: status and review) |
+| **Bronze** | `type` | OKF v0.2 as written — `type` is its one required field |
+| **Silver** | Bronze + `title`, `description`, `timestamp`, `owner` | ISO 9001 §7.5.2, which asks for appropriate identification and description of a document and gives examples ("a title, date, author, or reference number"). These four fields are one reasonable way to evidence it. |
+| **Gold** | Silver + `status`, `review_policy`, `reviewed_at`, `next_review_at` | ISO 30401's kept-current knowledge governance. The standard sets no review interval; a stated review policy with real review dates is how you evidence it, and the cadence is yours to choose. |
 
 A corpus's tier is the tier of its **weakest file**. Coverage is the share of files that reach each tier. The full field reference — accepted aliases, what counts as "populated", what is excluded — is in [docs/tiers.md](docs/tiers.md).
 
@@ -78,6 +78,8 @@ Example `jidoseal_scan` result for [`examples/tiers/mixed`](examples/tiers/mixed
 
 Requires Python 3.9+. `pip install jidoseal-mcp` also installs [`jidoseal`](https://pypi.org/project/jidoseal/) (the scan engine and CLI) and puts a `jidoseal-mcp` command on your PATH. No account and no API key. The scan itself needs no network — it runs the same offline.
 
+Every tool below launches the same local command, `jidoseal-mcp`, over stdio. Only the place you write it down differs.
+
 <details open><summary><b>Claude Code</b></summary>
 
 ```bash
@@ -89,19 +91,90 @@ or commit a project-scoped `.mcp.json`:
 ```
 </details>
 
+<details><summary><b>Claude Desktop</b></summary>
+
+Settings → Developer → Edit Config opens `claude_desktop_config.json`. Add:
+```json
+{ "mcpServers": { "jidoseal": { "command": "jidoseal-mcp", "args": [] } } }
+```
+Restart Claude Desktop afterwards.
+</details>
+
 <details><summary><b>Cursor</b></summary>
 
 `~/.cursor/mcp.json` (or `.cursor/mcp.json` in a project):
+```json
+{ "mcpServers": { "jidoseal": { "type": "stdio", "command": "jidoseal-mcp", "args": [] } } }
+```
+</details>
+
+<details><summary><b>GitHub Copilot (VS Code agent mode, and Visual Studio, JetBrains, Eclipse, Xcode)</b></summary>
+
+Copilot Chat uses MCP tools in **Agent** mode. In VS Code, add `.vscode/mcp.json` to the project (or run **MCP: Open User Configuration** for every project):
+```json
+{ "servers": { "jidoseal": { "type": "stdio", "command": "jidoseal-mcp" } } }
+```
+Copilot in Visual Studio, JetBrains IDEs, Eclipse and Xcode takes the same `servers` entry in its own MCP settings. On a Copilot Business or Enterprise seat, your organization must have the "MCP servers in Copilot" policy turned on; it is off by default.
+</details>
+
+<details><summary><b>OpenAI Codex (CLI, IDE extension and app)</b></summary>
+
+```bash
+codex mcp add jidoseal -- jidoseal-mcp
+```
+or in `~/.codex/config.toml`:
+```toml
+[mcp_servers.jidoseal]
+command = "jidoseal-mcp"
+```
+</details>
+
+<details><summary><b>Gemini CLI</b></summary>
+
+```bash
+gemini mcp add -s user jidoseal jidoseal-mcp
+```
+or in `~/.gemini/settings.json` (or `.gemini/settings.json` in a project):
 ```json
 { "mcpServers": { "jidoseal": { "command": "jidoseal-mcp" } } }
 ```
 </details>
 
-<details><summary><b>GitHub Copilot (VS Code)</b></summary>
+<details><summary><b>Zed</b></summary>
 
-`.vscode/mcp.json`:
+In Zed's `settings.json` (or Settings → AI → MCP Servers → Add Local Server):
 ```json
-{ "servers": { "jidoseal": { "type": "stdio", "command": "jidoseal-mcp" } } }
+{ "context_servers": { "jidoseal": { "command": "jidoseal-mcp", "args": [], "env": {} } } }
+```
+</details>
+
+<details><summary><b>Cline</b></summary>
+
+MCP Servers → Configure → Configure MCP Servers, then add:
+```json
+{ "mcpServers": { "jidoseal": { "type": "stdio", "command": "jidoseal-mcp", "args": [], "disabled": false } } }
+```
+</details>
+
+<details><summary><b>Continue</b></summary>
+
+`.continue/mcpServers/jidoseal.yaml` in your workspace (MCP tools run in Continue's agent mode):
+```yaml
+name: JidoSeal
+version: 0.0.1
+schema: v1
+mcpServers:
+  - name: jidoseal
+    type: stdio
+    command: jidoseal-mcp
+```
+</details>
+
+<details><summary><b>JetBrains AI Assistant</b></summary>
+
+Settings → Tools → AI Assistant → Model Context Protocol (MCP) → Add → STDIO, and paste:
+```json
+{ "mcpServers": { "jidoseal": { "command": "jidoseal-mcp", "args": [] } } }
 ```
 </details>
 
@@ -154,7 +227,7 @@ The scan writes its own records — `manifest.json` and an appended `progress.nd
 
 ## Optional certification
 
-Scanning is free and unlimited. If you want a signed certificate bound to the Merkle root of your corpus, with a public verification page and a listing in the public registry, that is a paid step on [jidoseal.com](https://jidoseal.com) — current prices are published there. Certification is point-in-time and based on a score and a corpus hash, never on your file contents.
+Scanning is free and unlimited, and so are the fixes. If you want a dated certificate for the grade your folder reached, bound to the Merkle root of your corpus, with a public verification page and a listing in the public registry, that is a paid step on [jidoseal.com](https://jidoseal.com); current prices are published there, one flat price per grade however many files. A person at JidoSeal signs it off from the grade, the score and that fingerprint only, never from your file contents.
 
 ## Links
 

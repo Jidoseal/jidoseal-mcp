@@ -79,8 +79,8 @@ ENGINE_VERSION = "jidoseal-mcp/okf-iso-rubric-2026-08-26"
 # The rubric text /app/run shows the visitor, verbatim from both existing implementations.
 RUBRIC = {
     "bronze": "OKF v0.2 as written (populated `type`)",
-    "silver": "Bronze + ISO 9001 §7.5.2 fields (title, description, timestamp, owner)",
-    "gold": "Silver + ISO 30401 (status + review_policy + reviewed_at + next_review_at on every file)",
+    "silver": "Bronze + fields that evidence ISO 9001 §7.5.2 (title, description, timestamp, owner)",
+    "gold": "Silver + fields that evidence ISO 30401 (status + review_policy + reviewed_at + next_review_at on every file)",
 }
 
 
