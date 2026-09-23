@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "jidoseal": {
+      "command": "uvx",
+      "args": ["jidoseal-mcp"]
+    }
+  }
+}

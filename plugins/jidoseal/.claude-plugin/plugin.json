@@ -1,0 +1,11 @@
+{
+  "name": "jidoseal",
+  "displayName": "JidoSeal OKF check",
+  "version": "1.0.0",
+  "description": "Check a folder of Markdown docs against OKF v0.2 (Bronze, Silver, Gold) with the local jidoseal-mcp scanner, fill the missing frontmatter fields, and rescan. Nothing leaves your machine.",
+  "author": { "name": "JidoSeal", "email": "support@jidoseal.com" },
+  "homepage": "https://jidoseal.com",
+  "repository": "https://github.com/Jidoseal/jidoseal-mcp",
+  "license": "Apache-2.0",
+  "keywords": ["okf", "open-knowledge-format", "markdown", "frontmatter", "documentation", "mcp"]
+}
