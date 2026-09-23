@@ -1,0 +1,57 @@
+# JidoSeal MCP server — packaging for the standalone, installable MCP surface.
+#
+# Two distributions, on purpose:
+#   jidoseal      — the scan engine + CLI. Zero network-capable modules in the artifact.
+#   jidoseal-mcp  — this package. Exactly one network-capable module (`checkout_client.py`),
+#                   reachable only from the purchase tool. It depends on `jidoseal`.
+# Folding checkout_client.py into the CLI wheel would put a network-capable module inside the
+# artifact whose whole claim is that it has none.
+#
+# Flat py-modules (mapped from src/) rather than a package: the engine's modules import one
+# another by top-level name, and these modules do the same.
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jidoseal-mcp"
+# 0.1.1 is the first release cut from this repository (adds the registry ownership marker
+# and project URLs). The distribution version is independent of the engine version.
+version = "0.1.1"
+description = "Local Self-Check for markdown knowledge bases against OKF v0.2 — MCP server for Claude Code, Cursor, GitHub Copilot and local models. Zero content egress."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+authors = [{ name = "JidoSeal", email = "support@jidoseal.com" }]
+keywords = ["mcp", "model-context-protocol", "okf", "open-knowledge-format", "knowledge-base",
+            "frontmatter", "markdown", "obsidian", "iso-9001", "iso-30401", "governance", "local-first"]
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Documentation",
+]
+dependencies = ["jidoseal>=0.1.3"]
+
+[project.urls]
+Homepage = "https://jidoseal.com"
+Source = "https://github.com/Jidoseal/jidoseal-mcp"
+Issues = "https://github.com/Jidoseal/jidoseal-mcp/issues"
+Registry = "https://jidoseal.com/registry"
+
+[project.scripts]
+jidoseal-mcp = "jidoseal_mcp:main"
+
+[tool.setuptools]
+py-modules = [
+    "jidoseal_mcp",
+    "scan_result",
+    "offer",
+    "checkout_client",
+    "engine_path",
+    "attestation",
+]
+
+[tool.setuptools.package-dir]
+"" = "src"
