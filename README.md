@@ -161,7 +161,7 @@ Scanning is free and unlimited. If you want a signed certificate bound to the Me
 - Website: <https://jidoseal.com>
 - Public registry of certified knowledge bases: <https://jidoseal.com/registry>
 - PyPI: [`jidoseal-mcp`](https://pypi.org/project/jidoseal-mcp/) · [`jidoseal`](https://pypi.org/project/jidoseal/)
-- MCP Registry: `com.jidoseal/jidoseal-mcp` (listing pending)
+- MCP Registry: `com.jidoseal/jidoseal-mcp`
 - OKF specification (Google Cloud, Apache-2.0): <https://github.com/GoogleCloudPlatform/open-knowledge-format>
 - Contact: support@jidoseal.com
 
