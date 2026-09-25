@@ -1,6 +1,8 @@
 <!-- mcp-name: com.jidoseal/jidoseal-mcp -->
 # jidoseal-mcp
 
+[![Listed on mcpservers.org](https://mcpservers.org/badge.svg)](https://mcpservers.org/servers/jidoseal/jidoseal-mcp)
+
 **Check a folder of markdown notes against Open Knowledge Format (OKF) v0.2 — from inside Claude Code, Claude Desktop, Cursor, GitHub Copilot, OpenAI Codex, Gemini CLI, Zed, Cline, Continue, JetBrains AI Assistant or a local model, on your own machine.**
 
 Pick a folder, scan it. `jidoseal-mcp` is a local [Model Context Protocol](https://modelcontextprotocol.io) server that reads the YAML frontmatter of every `*.md` file under a folder, reports which **tier** the knowledge base reaches (Bronze / Silver / Gold), and lists — per file — the exact frontmatter fields missing for the next tier. Nothing leaves your machine: no file, no file name, no file content.
