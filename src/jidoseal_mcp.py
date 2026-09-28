@@ -147,7 +147,14 @@ TOOLS: List[Dict[str, Any]] = [
             "type": "object",
             "properties": {
                 "root": {"type": "string", "description": "Absolute path of the folder."},
-                "include_machine": {"type": "boolean", "default": False},
+                "include_machine": {
+                    "type": "boolean",
+                    "default": False,
+                    "description": "Base the offer's local scan on every Markdown file, ignoring "
+                                   "this corpus's own machine/transient excludes from "
+                                   ".jidoseal/config.yaml. Leave false: the certified path "
+                                   "scans without it.",
+                },
             },
             "required": ["root"],
             "additionalProperties": False,
@@ -176,7 +183,14 @@ TOOLS: List[Dict[str, Any]] = [
                 "company": {"type": "string", "description": "The customer's company name, as it should appear on the certificate."},
                 "submitter_name": {"type": "string", "description": "The person submitting, as typed by them."},
                 "submitter_email": {"type": "string", "description": "Where the certificate and receipt go."},
-                "include_machine": {"type": "boolean", "default": False},
+                "include_machine": {
+                    "type": "boolean",
+                    "default": False,
+                    "description": "Run the fresh local scan over every Markdown file, ignoring "
+                                   "this corpus's own machine/transient excludes from "
+                                   ".jidoseal/config.yaml. Leave false: the certified path "
+                                   "scans without it.",
+                },
             },
             "required": ["root", "company", "submitter_name", "submitter_email"],
             "additionalProperties": False,
