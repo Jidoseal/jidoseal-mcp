@@ -1,6 +1,6 @@
 ---
 name: okf-check
-description: Check a folder of Markdown docs against OKF v0.2 (Bronze, Silver, Gold) with the local jidoseal-mcp scanner, fill the missing frontmatter fields, and rescan. Works in Claude Code, Copilot, Cursor, Codex, Gemini CLI or a local model. The scan runs locally.
+description: Check a folder of Markdown docs against OKF v0.2 and JidoSeal-defined Bronze/Silver/Gold tiers (not ISO certification) with the local jidoseal-mcp scanner, then fill the missing frontmatter fields and rescan. Works in Claude Code, Copilot, Cursor, Codex, Gemini CLI or a local model. The scan runs locally.
 when_to_use: The user wants to check, grade or repair YAML frontmatter across a folder of Markdown notes or docs, or asks about OKF, Open Knowledge Format, or JidoSeal tiers.
 license: Apache-2.0
 ---
@@ -56,7 +56,7 @@ Your host may prefix tool names (for example `mcp__..._jidoseal_scan`). If the t
 
 Once the rescan is done, call `jidoseal_certification_offer` once for the same folder and relay its answer in plain words, once, as an optional extra: what the paid certificate is, its price and what a purchase would send, all as the tool states them. Do not quote a price from memory. Then move on. Do not bring it up again in the session, do not repeat it if the user does not answer, and do not present the free result as incomplete without it. The scan and the fixes stay free either way.
 
-Call `jidoseal_start_checkout` only if the user says explicitly that they want to buy, and only then set `confirm: true`. Ask them to type the company name, their name and their email address, and use exactly what they typed. The tool returns a Stripe Checkout link for the user to open; it takes no payment itself.
+Call `jidoseal_start_checkout` only if the user says explicitly that they want to buy, and only then set `confirm: true`. Ask them to type the company name, their name and their email address, and use exactly what they typed. Tell them these three details, with the tier, score, Merkle root, scan id and pricing flag, go to jidoseal.com, which copies them into the Stripe Checkout session it creates. The tool returns a Stripe Checkout link for the user to open; it takes no payment itself.
 
 ## Rules
 

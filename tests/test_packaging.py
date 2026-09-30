@@ -88,8 +88,48 @@ def test_server_json_version_matches_pyproject():
     assert len(server["description"]) <= 100  # MCP Registry limit
 
 
-def test_tool_descriptions_qualify_the_egress_claim():
+# The engine's own absolute sentence, and its parts. This server must not show any of them to a
+# user: the engine is proprietary, so the no-egress statement is shown only as JidoSeal's claim.
+ABSOLUTE_PHRASES = ("zero content egress", "100% local", "never leave your device",
+                    "Exactly what leaves your machine: nothing")
+
+
+def _no_absolute_claim(text: str) -> None:
+    for phrase in ABSOLUTE_PHRASES:
+        assert phrase not in text, phrase
+
+
+def test_tool_text_states_the_egress_claim_as_a_claim():
     import jidoseal_mcp
+    import scan_result
+    claim = scan_result.SCAN_EGRESS_CLAIM
+    assert "JidoSeal's own claim" in claim and "not an independent audit" in claim
+    for tool in jidoseal_mcp.TOOLS:
+        _no_absolute_claim(json.dumps(tool, ensure_ascii=False))
     for tool in jidoseal_mcp.TOOLS[:2]:
-        assert jidoseal_mcp.EGRESS_LINE in tool["description"]
-        assert jidoseal_mcp.EGRESS_QUALIFIER in tool["description"]
+        assert claim in tool["description"]
+    init = jidoseal_mcp.handle_message({"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {}})
+    _no_absolute_claim(json.dumps(init, ensure_ascii=False))
+    assert claim in init["result"]["instructions"]
+
+
+def test_tool_results_state_the_egress_claim_as_a_claim(gold_root):
+    import scan_result
+    from conftest import call_tool
+    for name in ("jidoseal_scan", "jidoseal_certification_offer"):
+        is_error, payload = call_tool(name, {"root": str(gold_root)})
+        assert not is_error
+        _no_absolute_claim(json.dumps(payload, ensure_ascii=False))
+    assert payload["self_check"]["egress"] == scan_result.SCAN_EGRESS_CLAIM
+
+
+def test_checkout_text_names_the_stripe_hop():
+    import jidoseal_mcp
+    import offer
+    tool = next(t for t in jidoseal_mcp.TOOLS if t["name"] == "jidoseal_start_checkout")
+    assert offer.PURCHASE_STRIPE_HOP in tool["description"]
+    for words in ("Stripe Checkout session", "customer email", "session metadata",
+                  "before any payment"):
+        assert words in offer.PURCHASE_STRIPE_HOP
+    readme = _read("README.md")
+    assert readme.count("session metadata") >= 2  # the brief and "What leaves your machine"

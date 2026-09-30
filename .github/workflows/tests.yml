@@ -30,6 +30,8 @@ jobs:
           version="$(sed -n 's/^dependencies = \["jidoseal==\([0-9.]*\)"\]$/\1/p' pyproject.toml)"
           test -n "${version}" || { echo "pyproject.toml must pin jidoseal==X.Y.Z"; exit 1; }
           python -m pip download "jidoseal==${version}" --no-deps --only-binary=:all: -d engine-dist
+          python -m pip download "jidoseal==${version}" --no-deps --no-binary=:all: -d engine-dist
+          test "$(ls engine-dist | wc -l)" -eq 2 || { ls engine-dist; echo "expected one wheel and one sdist"; exit 1; }
           (cd engine-dist && sha256sum -c --strict --ignore-missing ../ENGINE-SHA256SUMS)
       - name: Install the verified engine, this package, and pytest
         run: |

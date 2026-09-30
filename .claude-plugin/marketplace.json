@@ -13,7 +13,7 @@
       "name": "jidoseal",
       "displayName": "JidoSeal OKF check",
       "source": "./plugins/jidoseal",
-      "description": "Check a folder of Markdown docs against OKF v0.2 (Bronze, Silver, Gold) with the local jidoseal-mcp scanner, fill the missing frontmatter fields, and rescan. The scan runs on your machine; the README lists what it writes and what it sends.",
+      "description": "Check a folder of Markdown docs against OKF v0.2 and JidoSeal-defined Bronze/Silver/Gold frontmatter tiers (not ISO certification) with the local jidoseal-mcp scanner; the skill then helps you fill the missing fields and rescan. The scan runs on your machine; the README lists what it writes and what it sends.",
       "version": "1.0.1",
       "category": "documentation",
       "tags": [

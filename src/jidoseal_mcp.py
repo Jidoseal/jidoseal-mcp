@@ -4,17 +4,19 @@ jidoseal_mcp.py — JidoSeal's inbound MCP server (JSON-RPC 2.0 over stdio).
 ==========================================================================
 Lets a host tool (Claude Code, Cursor, an OpenKnowledge workflow, any MCP client) run
 JidoSeal's free local scan and reach the paid certification from inside its own environment,
-without the customer leaving the host and without their files leaving the machine.
+without the customer leaving the host. The scan runs on this machine; that it sends nothing is
+JidoSeal's own claim about a proprietary engine, checked by the tests (see the README).
 
 It exposes the website's model, unchanged:
   1. `jidoseal_scan`                  — the free Self-Check. Returns the corpus's tier
                                         (Bronze/Silver/Gold), the per-file list of missing
                                         fields, and coverage — the same answer /app/run gives
                                         for the same corpus (scan_result.py explains how that
-                                        identity is held). 100% local, zero content egress.
+                                        identity is held). Runs locally; opens no socket
+                                        (tests/test_network_boundary.py).
   2. `jidoseal_certification_offer`   — what certification would cost for this corpus and why,
                                         what it includes, and exactly which facts a purchase
-                                        would send. Still 100% local: it computes an offer, it
+                                        would send. Also local: it computes an offer, it
                                         does not start one.
   3. `jidoseal_start_checkout`        — creates a real Stripe Checkout session on jidoseal.com
                                         and returns its URL for the customer to open. THE ONLY
@@ -72,7 +74,7 @@ from engine_path import ensure_engine_on_path  # noqa: E402
 
 ensure_engine_on_path()
 
-import local_runner  # noqa: E402  — EGRESS_DISCLOSURE: the ONE sentence, never paraphrased
+import local_runner  # noqa: E402  — VERSION
 
 SERVER_NAME = "jidoseal"
 # Tracks the engine/CLI version (local_runner.VERSION) it scans with, with this surface's own
@@ -85,15 +87,12 @@ SERVER_VERSION = f"{local_runner.VERSION}+mcp.1"
 SUPPORTED_PROTOCOL_VERSIONS = ("2025-06-18", "2025-03-26", "2024-11-05")
 LATEST_PROTOCOL_VERSION = SUPPORTED_PROTOCOL_VERSIONS[0]
 
-# Copy-truth, stated once and reused in every tool description. It says what this code path
-# actually does — the scan engine imports nothing network-capable — and claims nothing else:
-# not that the client is open source, and nothing about the paid path, which is a different
-# code path with its own, separately stated, egress list.
-EGRESS_LINE = local_runner.EGRESS_DISCLOSURE.replace("\n", " ")
-# The engine's sentence is JidoSeal's own statement about a proprietary engine, so every place it
-# is shown says so, and says where to check it.
-EGRESS_QUALIFIER = ("(JidoSeal's own statement about its proprietary engine, not an independent "
-                    "audit; the jidoseal-mcp README and tests show how to check it.)")
+# Copy-truth, stated once (scan_result.SCAN_EGRESS_CLAIM) and reused in the scan and offer tool
+# descriptions, their results and the stderr banner. It is worded as JidoSeal's own claim,
+# because the engine is proprietary. The engine's absolute sentence (local_runner.
+# EGRESS_DISCLOSURE, "nothing — 100% local, zero content egress") is not shown anywhere by this
+# server; tests/test_packaging.py holds that. The paid path has its own, separately stated list.
+EGRESS_LINE = scan_result.SCAN_EGRESS_CLAIM
 
 TOOLS: List[Dict[str, Any]] = [
     {
@@ -114,7 +113,7 @@ TOOLS: List[Dict[str, Any]] = [
             "Each gap is marked AUTO "
             "(JidoSeal can propose the value) or NEEDS-CLIENT (only the owner can answer it), "
             "so the caller can close them. "
-            "Free and unlimited. " + EGRESS_LINE + " " + EGRESS_QUALIFIER + " "
+            "Free and unlimited. " + EGRESS_LINE + " "
             "Writes the scan's own records to <root>/.jidoseal/ (manifest.json and an "
             "appended progress.ndjson) and nowhere else. Refuses a folder that contains a "
             "symlink to a directory or to a file outside the folder, so nothing outside it is "
@@ -150,8 +149,9 @@ TOOLS: List[Dict[str, Any]] = [
             "certificate includes (a dated certificate bound to a Merkle root of the corpus, "
             "a verifiable badge, a public verification page, a registry listing), and the "
             "exact list of facts a purchase would send to jidoseal.com. Charges nothing, "
-            "starts nothing, and sends nothing — it is a local computation about a purchase "
-            "the customer has not made. " + EGRESS_LINE + " " + EGRESS_QUALIFIER
+            "starts nothing, and makes no request to jidoseal.com or Stripe — it is a local "
+            "computation about a purchase "
+            "the customer has not made. " + EGRESS_LINE
         ),
         "inputSchema": {
             "type": "object",
@@ -185,7 +185,8 @@ TOOLS: List[Dict[str, Any]] = [
             "company, name and email as typed by the customer, the tier, a 0-100 score, the "
             "corpus's Merkle root, the local scan's id, and which Bronze price applies. No "
             "file contents, no file names, no per-file hashes, no paths. The tier, score and "
-            "Merkle root are taken from a fresh local scan run here — never from the caller."
+            "Merkle root are taken from a fresh local scan run here — never from the caller. "
+            + offer_mod.PURCHASE_STRIPE_HOP
         ),
         "inputSchema": {
             "type": "object",
@@ -285,7 +286,7 @@ def _scan(args: Dict[str, Any]) -> Dict[str, Any]:
 
 def tool_jidoseal_scan(args: Dict[str, Any]) -> Dict[str, Any]:
     result = _scan(args)
-    result["egress"] = local_runner.EGRESS_DISCLOSURE
+    result["egress"] = EGRESS_LINE
     return result
 
 
@@ -359,6 +360,7 @@ def tool_jidoseal_start_checkout(args: Dict[str, Any]) -> Dict[str, Any]:
             "config_hash": result["scan"]["config_hash"],
         },
         "sent_to_site": out["sent"],
+        "passed_on_to_stripe": offer_mod.PURCHASE_STRIPE_HOP,
         "not_sent": offer_mod.PURCHASE_EGRESS_NOT_SENT,
         "endpoint": out["endpoint"],
     }
@@ -421,12 +423,13 @@ def handle_message(msg: Dict[str, Any]) -> Optional[Dict[str, Any]]:
             "capabilities": {"tools": {"listChanged": False}},
             "serverInfo": {"name": SERVER_NAME, "title": "JidoSeal", "version": SERVER_VERSION},
             "instructions": (
-                "JidoSeal certifies a Markdown knowledge base against OKF v0.2; its Silver and "
-                "Gold tiers add fields that evidence ISO 9001 §7.5.2 and ISO 30401 (ISO names no "
-                "fields, and a JidoSeal certificate is not an ISO certification). Start with "
-                "jidoseal_scan on the folder: it runs entirely "
-                "on this machine, costs nothing, and returns the tier plus the missing fields "
-                "per file so they can be fixed for free. jidoseal_certification_offer then "
+                "JidoSeal checks a Markdown knowledge base against OKF v0.2 and three "
+                "JidoSeal-defined tiers; Silver and Gold add fields meant to evidence ISO 9001 "
+                "§7.5.2 and ISO 30401 (ISO names no fields, and a JidoSeal tier or certificate is "
+                "not an ISO certification). Start with jidoseal_scan on the folder: it runs on "
+                "this machine, costs nothing, and returns the tier plus the missing fields "
+                "per file so they can be fixed for free. " + EGRESS_LINE + " "
+                "jidoseal_certification_offer then "
                 "prices the optional certificate, and jidoseal_start_checkout returns a Stripe "
                 "link for the customer to pay — only ever with their explicit go-ahead, passed as "
                 "confirm: true."

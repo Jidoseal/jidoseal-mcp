@@ -10,7 +10,7 @@ which facts would leave the machine if they went ahead.
 NOTHING HERE TOUCHES THE NETWORK. This module computes an offer; it does not start a purchase.
 That separation is deliberate and is a tool boundary, not a comment: `checkout_client.py` is
 the one module in this package that can open a socket, and it is imported ONLY inside
-`jidoseal_start_checkout`'s handler. So "the free path is 100% local" is a property of the
+`jidoseal_start_checkout`'s handler. So "the free path opens no socket" is a property of the
 import graph on every other path, held by a static import check.
 
 PRICING IS QUOTED, NOT INVENTED
@@ -40,6 +40,7 @@ from engine_path import ensure_engine_on_path
 ensure_engine_on_path()
 
 import local_runner  # noqa: E402  — progress_path(): the corpus's own append-only scan history
+import scan_result  # noqa: E402  — SCAN_EGRESS_CLAIM: the one qualified sentence about a scan
 
 # The public site. Overridable so a test (or a self-hosted instance) can point the checkout
 # tool at a loopback address instead; it is NEVER read on the scan path.
@@ -99,9 +100,10 @@ CERTIFICATION_INCLUDES = [
 ]
 
 # The complete list of what a purchase sends to jidoseal.com — aggregate facts and the contact
-# details the customer types, and nothing else. Stated field by field because "zero content
-# egress" is a claim about the FREE path, and the paid path deserves the same precision rather
-# than a reassuring summary.
+# details the customer types, and nothing else. Stated field by field because "no network use"
+# is a claim about the FREE path, and the paid path deserves the same precision rather than a
+# reassuring summary. (test_checkout_confirmation derives the eight keys from these strings'
+# first words, so keep each key first.)
 PURCHASE_EGRESS_FIELDS = [
     "company (typed by the customer)",
     "submitterName (typed by the customer)",
@@ -112,6 +114,16 @@ PURCHASE_EGRESS_FIELDS = [
     "auditId — the local scan's own random id",
     "belowTier — one boolean, which Bronze price applies",
 ]
+
+# Where those fields go next. jidoseal.com's /api/checkout copies them into the Stripe Checkout
+# session it creates (web/app/api/checkout/route.ts): the email as the session's customer_email,
+# all eight as session metadata. That happens when the session is created, before any payment.
+PURCHASE_STRIPE_HOP = (
+    "jidoseal.com copies these fields into the Stripe Checkout session it creates for the "
+    "purchase: the email as the session's customer email, and all eight as session metadata. "
+    "That happens when the session is created, before any payment. No card data passes "
+    "through this server; Stripe hosts the payment page."
+)
 
 PURCHASE_EGRESS_NOT_SENT = (
     "No file contents, no file names, no per-file hashes, no directory paths, and no part of "
@@ -241,9 +253,9 @@ def build_offer(result: Dict[str, Any], root: str) -> Dict[str, Any]:
         "gaps_remaining": gap_summary(result),
         "self_check": {
             "price": SELF_CHECK_PRICE,
-            "what_it_is": "The scan you just ran. Free, unlimited, and it runs entirely on "
-                          "this machine.",
-            "egress": local_runner.EGRESS_DISCLOSURE,
+            "what_it_is": "The scan you just ran. Free, unlimited, and it runs on this "
+                          "machine.",
+            "egress": scan_result.SCAN_EGRESS_CLAIM,
         },
         "pricing": {
             "tiers": PRICING,
@@ -259,6 +271,7 @@ def build_offer(result: Dict[str, Any], root: str) -> Dict[str, Any]:
             "tool": "jidoseal_start_checkout",
             "requires_from_customer": ["company", "submitter_name", "submitter_email"],
             "what_leaves_this_machine": list(PURCHASE_EGRESS_FIELDS),
+            "passed_on_to_stripe": PURCHASE_STRIPE_HOP,
             "what_does_not": PURCHASE_EGRESS_NOT_SENT,
         },
     }

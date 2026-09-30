@@ -70,6 +70,15 @@ TIERS = ("bronze", "silver", "gold")
 TIER_ORDER = {"none": 0, "bronze": 1, "silver": 2, "gold": 3}
 
 OKF_SPEC_VERSION = "0.2"
+# What this server tells a user about a scan's network use: stated as JidoSeal's own claim,
+# because the engine that does the scan is proprietary. The engine's own absolute sentence
+# (local_runner.EGRESS_DISCLOSURE) is deliberately not shown by this server; the CLI still
+# prints it until the next engine release.
+SCAN_EGRESS_CLAIM = (
+    "JidoSeal states that a scan makes no network connection and sends no file, file name or "
+    "file content anywhere. The scan engine is proprietary, so this is JidoSeal's own claim, "
+    "not an independent audit; the jidoseal-mcp README and tests show how to check it."
+)
 # This surface's identity label, in the same form as the other two implementations' own
 # (`okf-manifest/okf-iso-rubric-2026-08-26` and
 # `tier1-scoring-ts/okf-iso-rubric-2026-08-26`). The rubric date is
