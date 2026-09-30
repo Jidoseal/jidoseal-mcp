@@ -1,6 +1,8 @@
-# The sdist carries the sources, the README, the licence — and nothing else.
+# The sdist carries the sources, the README, the licence, and the engine's published hashes
+# and SBOM — and nothing else.
+include ENGINE-SHA256SUMS sbom.cdx.json
 # setuptools sweeps a tests/ directory beside pyproject.toml into the sdist by default; the
-# prune below keeps a future tests/ directory out of the published tarball.
+# prune below keeps tests/ out of the published tarball (they run in CI, from the repo).
 prune tests
 global-exclude *.pyc
 global-exclude __pycache__/*

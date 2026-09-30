@@ -90,6 +90,10 @@ LATEST_PROTOCOL_VERSION = SUPPORTED_PROTOCOL_VERSIONS[0]
 # not that the client is open source, and nothing about the paid path, which is a different
 # code path with its own, separately stated, egress list.
 EGRESS_LINE = local_runner.EGRESS_DISCLOSURE.replace("\n", " ")
+# The engine's sentence is JidoSeal's own statement about a proprietary engine, so every place it
+# is shown says so, and says where to check it.
+EGRESS_QUALIFIER = ("(JidoSeal's own statement about its proprietary engine, not an independent "
+                    "audit; the jidoseal-mcp README and tests show how to check it.)")
 
 TOOLS: List[Dict[str, Any]] = [
     {
@@ -110,7 +114,7 @@ TOOLS: List[Dict[str, Any]] = [
             "Each gap is marked AUTO "
             "(JidoSeal can propose the value) or NEEDS-CLIENT (only the owner can answer it), "
             "so the caller can close them. "
-            "Free and unlimited. " + EGRESS_LINE + " "
+            "Free and unlimited. " + EGRESS_LINE + " " + EGRESS_QUALIFIER + " "
             "Writes the scan's own records to <root>/.jidoseal/ (manifest.json and an "
             "appended progress.ndjson) and nowhere else. Refuses a folder that contains a "
             "symlink to a directory or to a file outside the folder, so nothing outside it is "
@@ -147,7 +151,7 @@ TOOLS: List[Dict[str, Any]] = [
             "a verifiable badge, a public verification page, a registry listing), and the "
             "exact list of facts a purchase would send to jidoseal.com. Charges nothing, "
             "starts nothing, and sends nothing — it is a local computation about a purchase "
-            "the customer has not made. " + EGRESS_LINE
+            "the customer has not made. " + EGRESS_LINE + " " + EGRESS_QUALIFIER
         ),
         "inputSchema": {
             "type": "object",

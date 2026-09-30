@@ -86,3 +86,10 @@ def test_server_json_version_matches_pyproject():
     assert server["version"] == v
     assert all(p["version"] == v for p in server["packages"])
     assert len(server["description"]) <= 100  # MCP Registry limit
+
+
+def test_tool_descriptions_qualify_the_egress_claim():
+    import jidoseal_mcp
+    for tool in jidoseal_mcp.TOOLS[:2]:
+        assert jidoseal_mcp.EGRESS_LINE in tool["description"]
+        assert jidoseal_mcp.EGRESS_QUALIFIER in tool["description"]
