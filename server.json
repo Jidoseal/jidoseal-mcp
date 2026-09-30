@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.jidoseal/jidoseal-mcp",
   "title": "JidoSeal",
-  "description": "Local Self-Check of a Markdown folder: OKF tier and ISO-evidence gaps. Scans stay on your machine.",
-  "version": "0.1.2",
+  "description": "Checks a Markdown folder's OKF frontmatter tier, locally. No-egress is a vendor claim: see README.",
+  "version": "0.1.3",
   "websiteUrl": "https://jidoseal.com",
   "repository": {
     "url": "https://github.com/Jidoseal/jidoseal-mcp",
@@ -13,7 +13,7 @@
     {
       "registryType": "pypi",
       "identifier": "jidoseal-mcp",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"

@@ -5,7 +5,7 @@
 
 **Check a folder of markdown notes against Open Knowledge Format (OKF) v0.2 — from inside Claude Code, Claude Desktop, Cursor, GitHub Copilot, OpenAI Codex, Gemini CLI, Zed, Cline, Continue, JetBrains AI Assistant or a local model, on your own machine.**
 
-Pick a folder, scan it. `jidoseal-mcp` is a local [Model Context Protocol](https://modelcontextprotocol.io) server that reads the YAML frontmatter of every `*.md` file under a folder, reports which **tier** the knowledge base reaches (Bronze / Silver / Gold), and lists — per file — the exact frontmatter fields missing for the next tier. Nothing leaves your machine: no file, no file name, no file content.
+Pick a folder, scan it. `jidoseal-mcp` is a local [Model Context Protocol](https://modelcontextprotocol.io) server that reads the YAML frontmatter of every `*.md` file under a folder, reports which **tier** the knowledge base reaches (Bronze / Silver / Gold), and lists — per file — the exact frontmatter fields missing for the next tier. The scan sends nothing over the network: no file, no file name, no file content. That is JidoSeal's own claim about its engine; [below](#what-leaves-your-machine) is how to check it.
 
 ```bash
 pip install jidoseal-mcp
@@ -14,7 +14,15 @@ claude mcp add jidoseal -- jidoseal-mcp     # Claude Code; every other tool is b
 
 Then ask your assistant: *"Scan ~/notes with JidoSeal and tell me what's missing for Silver."*
 
-> **Independent.** OKF is an open specification from Google Cloud. JidoSeal is not affiliated with, sponsored by, or endorsed by Google or ISO. ISO names no fields: the Silver and Gold fields below are JidoSeal's way of evidencing the ISO clauses, and a JidoSeal certificate is not an ISO certification.
+> **Independent.** OKF is an open specification from Google Cloud. JidoSeal is not affiliated with, sponsored by, or endorsed by Google or ISO. ISO names no fields: the Bronze/Silver/Gold tiers and their fields are defined by JidoSeal, as one way of evidencing selected ISO clauses. A JidoSeal tier or certificate is not an ISO certification.
+
+### Side effects and data, in brief
+
+- **Reads:** the `*.md` files under the folder you give it (hidden files and folders are skipped), plus `<folder>/.jidoseal/config.yaml` if present. The server refuses a folder that contains a symlink to a directory or to a file outside the folder.
+- **Writes:** `<folder>/.jidoseal/manifest.json` (replaced on each scan) and `<folder>/.jidoseal/progress.ndjson` (appended to). Nothing else; your notes are not modified.
+- **Network, scan and offer:** none.
+- **Network, checkout (optional, paid):** `jidoseal_start_checkout` runs only with `confirm: true`. It sends to jidoseal.com, which creates a Stripe Checkout session: company, name and email as typed, the tier, a 0–100 score, the corpus's Merkle root, the local scan's id, and one flag saying which Bronze price applies. No file contents, file names, per-file hashes or paths.
+- **Engine:** the scan engine is the separate `jidoseal` package, under a proprietary licence. It ships as plain Python source and is pinned here to one version (0.1.3), with its sha256 in [`ENGINE-SHA256SUMS`](ENGINE-SHA256SUMS) and an SBOM in [`sbom.cdx.json`](sbom.cdx.json). So "nothing leaves your machine" is JidoSeal's own claim: you can check it with the commands under [What leaves your machine](#what-leaves-your-machine) and the tests in [`tests/`](tests/), but it has not been independently audited.
 
 ---
 
@@ -54,7 +62,7 @@ Worked examples for each tier, and a mixed folder, are in [`examples/tiers/`](ex
 |---|---|---|
 | `jidoseal_scan` | The free Self-Check over a folder on this machine: corpus tier, per-file missing fields for the next tier (each marked `AUTO` — a value JidoSeal can propose — or `NEEDS-CLIENT` — only the owner can answer), coverage per tier, a 0–100 score, and a Merkle root of the corpus. | none |
 | `jidoseal_certification_offer` | What optional certification would cost for this corpus, why, what it includes, and exactly which facts a purchase would send. Computes locally; starts nothing. | none |
-| `jidoseal_start_checkout` | Only on your explicit go-ahead: asks jidoseal.com to create a Stripe Checkout session and returns the link for you to open. Takes no payment. | jidoseal.com only |
+| `jidoseal_start_checkout` | Only on your explicit go-ahead, passed as `confirm: true` (without it, nothing is sent): asks jidoseal.com to create a Stripe Checkout session and returns the link for you to open. Takes no payment. | jidoseal.com only |
 
 Example `jidoseal_scan` result for [`examples/tiers/mixed`](examples/tiers/mixed) (three files, one Gold, one Bronze, one with no frontmatter):
 
@@ -78,7 +86,7 @@ Example `jidoseal_scan` result for [`examples/tiers/mixed`](examples/tiers/mixed
 
 ## Install and wire it into your tool
 
-Requires Python 3.9+. `pip install jidoseal-mcp` also installs [`jidoseal`](https://pypi.org/project/jidoseal/) (the scan engine and CLI) and puts a `jidoseal-mcp` command on your PATH. No account and no API key. The scan itself needs no network — it runs the same offline.
+Requires Python 3.9+. `pip install jidoseal-mcp` also installs [`jidoseal`](https://pypi.org/project/jidoseal/) (the scan engine and CLI, pinned to the tested version) and puts a `jidoseal-mcp` command on your PATH. No account and no API key. The scan itself needs no network — it runs the same offline.
 
 Every tool below launches the same local command, `jidoseal-mcp`, over stdio. Only the place you write it down differs.
 
@@ -214,9 +222,9 @@ The CLI writes `.jidoseal/manifest.json`; a few lines turn it into a gate. See [
 
 ## What leaves your machine
 
-**A scan: nothing.** Not the files, not their names, not their contents. That is a property of the import graph, not a promise about which branches run: `jidoseal_mcp.py`, `scan_result.py` and `offer.py` import no socket, no `urllib`, no HTTP client, and neither does anything they pull in. `checkout_client.py` is the one module that can reach the network, and it is imported only inside the checkout handler.
+**A scan: nothing.** Not the files, not their names, not their contents. The engine that does the scan is proprietary, so this is JidoSeal's own claim, not an independently audited one. It is built to be checkable: `jidoseal_mcp.py`, `scan_result.py` and `offer.py` import no socket, no `urllib`, no HTTP client, and neither does anything they pull in, including the ten engine modules the pinned `jidoseal` wheel contains. `checkout_client.py` is the one module that can reach the network, and it is imported only inside the checkout handler.
 
-**A purchase**, only if you choose one: the company, name and email you typed, the tier, a 0–100 score, the corpus's Merkle root, the local scan's id, and which Bronze price applies. No file contents, no file names, no per-file hashes, no paths. The Merkle root is a one-way digest.
+**A purchase**, only if you choose one and the call carries `confirm: true`: the company, name and email you typed, the tier, a 0–100 score, the corpus's Merkle root, the local scan's id, and which Bronze price applies. No file contents, no file names, no per-file hashes, no paths. The Merkle root is a one-way digest.
 
 Verify it yourself:
 
@@ -226,6 +234,19 @@ bwrap --unshare-net --dev-bind / / jidoseal-mcp < your-jsonrpc-input            
 ```
 
 The scan writes its own records — `manifest.json` and an appended `progress.ndjson` — under `<folder>/.jidoseal/` and nowhere else. It never modifies your notes.
+
+The test suite checks the same things on every change, against the pinned engine wheel after verifying its sha256 (see [`.github/workflows/tests.yml`](.github/workflows/tests.yml)):
+
+| File | What it holds |
+|---|---|
+| [`tests/test_scan_isolation.py`](tests/test_scan_isolation.py) | The scan opens and lists nothing outside the folder; folders with symlinks that lead out of it, or to directories, or that redirect `.jidoseal/`, are refused before the engine runs. |
+| [`tests/test_write_boundary.py`](tests/test_write_boundary.py) | The only files created or changed are the two under `<folder>/.jidoseal/`; notes are byte-for-byte unchanged. |
+| [`tests/test_network_boundary.py`](tests/test_network_boundary.py) | No socket, DNS lookup or child process during a scan — in-process with sockets blocked, and end to end over stdio in a process that exits on any socket event. |
+| [`tests/test_checkout_confirmation.py`](tests/test_checkout_confirmation.py) | Checkout makes no request without `confirm: true`, and with it sends exactly the eight fields above (HTTP mocked). |
+| [`tests/test_import_graph.py`](tests/test_import_graph.py) | Static check of every module on the scan path, the engine's included. |
+| [`tests/test_packaging.py`](tests/test_packaging.py) | The engine pin, `ENGINE-SHA256SUMS`, the SBOM and the installed engine files all agree. |
+
+One difference to know about: this server refuses a folder containing such symlinks, but the `jidoseal` command-line tool (engine 0.1.3) follows them, so run the CLI only on folders without symlinks that point elsewhere.
 
 ## Optional certification
 
@@ -242,7 +263,7 @@ Scanning is free and unlimited, and so are the fixes. If you want a dated certif
 
 ## About this repository
 
-This repository holds the source of the `jidoseal-mcp` package: an MCP server implemented on the Python standard library alone (no MCP SDK), speaking JSON-RPC 2.0 over stdio. It depends on the separately published [`jidoseal`](https://pypi.org/project/jidoseal/) package for the scan engine, which is **not** part of this repository. Issues are welcome; there is no test suite in this repository, so please include the `jidoseal-mcp` and `jidoseal` versions and the smallest folder that reproduces a problem.
+This repository holds the source of the `jidoseal-mcp` package: an MCP server implemented on the Python standard library alone (no MCP SDK), speaking JSON-RPC 2.0 over stdio. It depends on the separately published [`jidoseal`](https://pypi.org/project/jidoseal/) package for the scan engine, which is **not** part of this repository and is pinned to one tested version. Run the tests with `pip install -e ".[test]" && pytest`. Issues are welcome; please include the `jidoseal-mcp` and `jidoseal` versions and the smallest folder that reproduces a problem.
 
 ## License
 

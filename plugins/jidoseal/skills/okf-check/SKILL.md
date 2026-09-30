@@ -1,6 +1,6 @@
 ---
 name: okf-check
-description: Check a folder of Markdown docs against OKF v0.2 (Bronze, Silver, Gold) with the local jidoseal-mcp scanner, fill the missing frontmatter fields, and rescan. Works in Claude Code, Copilot, Cursor, Codex, Gemini CLI or a local model. Nothing leaves your machine.
+description: Check a folder of Markdown docs against OKF v0.2 (Bronze, Silver, Gold) with the local jidoseal-mcp scanner, fill the missing frontmatter fields, and rescan. Works in Claude Code, Copilot, Cursor, Codex, Gemini CLI or a local model. The scan runs locally.
 when_to_use: The user wants to check, grade or repair YAML frontmatter across a folder of Markdown notes or docs, or asks about OKF, Open Knowledge Format, or JidoSeal tiers.
 license: Apache-2.0
 ---
@@ -9,7 +9,7 @@ license: Apache-2.0
 
 Open Knowledge Format (OKF) is an open specification published by Google Cloud under Apache-2.0. This skill uses the local `jidoseal-mcp` server to scan a folder of Markdown files, fills in the frontmatter fields the scan says are missing, and rescans to confirm the tier reached. JidoSeal is independent and is not affiliated with, sponsored by or endorsed by Google or ISO.
 
-The scan runs on this machine. Nothing leaves your machine: no file, no file name, no file content. Scanning and fixing are free.
+The scan runs on this machine. JidoSeal states that a scan sends nothing: no file, no file name, no file content (the engine is proprietary; the jidoseal-mcp README says how to check this). It writes only `<folder>/.jidoseal/manifest.json` and `progress.ndjson`. Scanning and fixing are free.
 
 ## The tiers
 
@@ -27,9 +27,9 @@ Accepted spellings the scan already counts: `description` or `desc`; `timestamp`
 
 ## Tools
 
-- `jidoseal_scan` (free, local): tier, per-file missing fields, coverage, score. Each missing field is marked `AUTO` (a value can be proposed) or `NEEDS-CLIENT` (only the user can answer it). It writes its own records to `<folder>/.jidoseal/` and nothing else. Never edit that directory.
+- `jidoseal_scan` (free, local): tier, per-file missing fields, coverage, score. Each missing field is marked `AUTO` (a value can be proposed) or `NEEDS-CLIENT` (only the user can answer it). It writes its own records to `<folder>/.jidoseal/` and nothing else. Never edit that directory. It refuses a folder containing a symlink to a directory or to a file outside the folder; if that happens, tell the user which links it named and let them decide.
 - `jidoseal_certification_offer` (local, sends nothing): describes the optional paid certificate. See "After the rescan".
-- `jidoseal_start_checkout`: the only tool that contacts the network. Only on the user's explicit go-ahead. See "After the rescan".
+- `jidoseal_start_checkout`: the only tool that contacts the network. Only on the user's explicit go-ahead, passed as `confirm: true`. See "After the rescan".
 
 Your host may prefix tool names (for example `mcp__..._jidoseal_scan`). If the tools are not available, tell the user the server is not connected and point them to https://github.com/Jidoseal/jidoseal-mcp#install-and-wire-it-into-your-tool. Without any AI tool, `pipx install jidoseal && jidoseal --root ./docs` runs the same scan from a terminal, but it does not fix anything.
 
@@ -56,11 +56,11 @@ Your host may prefix tool names (for example `mcp__..._jidoseal_scan`). If the t
 
 Once the rescan is done, call `jidoseal_certification_offer` once for the same folder and relay its answer in plain words, once, as an optional extra: what the paid certificate is, its price and what a purchase would send, all as the tool states them. Do not quote a price from memory. Then move on. Do not bring it up again in the session, do not repeat it if the user does not answer, and do not present the free result as incomplete without it. The scan and the fixes stay free either way.
 
-Call `jidoseal_start_checkout` only if the user says explicitly that they want to buy. Ask them to type the company name, their name and their email address, and use exactly what they typed. The tool returns a Stripe Checkout link for the user to open; it takes no payment itself.
+Call `jidoseal_start_checkout` only if the user says explicitly that they want to buy, and only then set `confirm: true`. Ask them to type the company name, their name and their email address, and use exactly what they typed. The tool returns a Stripe Checkout link for the user to open; it takes no payment itself.
 
 ## Rules
 
 - Say "grade" or "tier", and say the fields evidence the clauses. A JidoSeal grade is evidence you can show; it isn't ISO certification.
-- Describe the scan the way it works: the user picks a folder, scans it, and nothing leaves their machine.
+- Describe the scan the way it works: the user picks a folder and scans it on their own machine. Do not promise more about data than the README states.
 - Do not read or change anything outside the folder the user named.
 - Never write field values for `owner` or the review fields that the user did not give or confirm.

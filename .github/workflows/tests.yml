@@ -1,0 +1,38 @@
+# Run the test suite against the pinned engine, installed from a wheel whose sha256 has been
+# checked against ENGINE-SHA256SUMS first. Also called by release.yml, so nothing is published
+# to PyPI unless this passes.
+name: tests
+
+on:
+  push:
+  pull_request:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Download the pinned engine and check its sha256
+        run: |
+          version="$(sed -n 's/^dependencies = \["jidoseal==\([0-9.]*\)"\]$/\1/p' pyproject.toml)"
+          test -n "${version}" || { echo "pyproject.toml must pin jidoseal==X.Y.Z"; exit 1; }
+          python -m pip download "jidoseal==${version}" --no-deps --only-binary=:all: -d engine-dist
+          (cd engine-dist && sha256sum -c --strict --ignore-missing ../ENGINE-SHA256SUMS)
+      - name: Install the verified engine, this package, and pytest
+        run: |
+          python -m pip install engine-dist/jidoseal-*.whl
+          python -m pip install ".[test]"
+      - run: python -m pytest -v tests

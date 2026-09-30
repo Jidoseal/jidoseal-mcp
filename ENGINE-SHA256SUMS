@@ -1,0 +1,5 @@
+# sha256 of the jidoseal engine release that jidoseal-mcp pins (pyproject.toml: jidoseal==0.1.3),
+# as published on PyPI (https://pypi.org/project/jidoseal/0.1.3/#files).
+# Check a download:  pip download jidoseal==0.1.3 --no-deps -d . && sha256sum -c ENGINE-SHA256SUMS --ignore-missing
+5d2ed7d6b3b8136a4624aa30621f30d9714b8d9a61814e5ca5ee02c76d28164f  jidoseal-0.1.3-py3-none-any.whl
+bb172632786b690f7b7330acbd788dede4ab09768fa206765d14fe7bf8ec3f13  jidoseal-0.1.3.tar.gz

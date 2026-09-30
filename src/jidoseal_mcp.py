@@ -52,8 +52,10 @@ This module imports stdlib (json/os/sys/typing) plus `scan_result` and `offer`, 
 they nor anything they pull in (`local_runner`, `okf_manifest`, `attestation`, and the engine
 modules those use) imports socket, urllib, or any HTTP client. `checkout_client` — the one
 module that does — is imported INSIDE the `jidoseal_start_checkout` handler, so it is not even
-loaded during a scan. Both halves are checked by static AST inspection, and a real scan
-run with sockets disabled proves the executed path opens no socket and resolves no hostname either.
+loaded during a scan. Both halves are checked by static AST inspection
+(tests/test_import_graph.py), and real scans with sockets blocked, in-process and over stdio,
+prove the executed path opens no socket and resolves no hostname either
+(tests/test_network_boundary.py).
 """
 from __future__ import annotations
 
@@ -108,7 +110,9 @@ TOOLS: List[Dict[str, Any]] = [
             "so the caller can close them for free before paying for anything. "
             "Free and unlimited. " + EGRESS_LINE + " "
             "Writes the scan's own records to <root>/.jidoseal/ (manifest.json and an "
-            "appended progress.ndjson) and nowhere else."
+            "appended progress.ndjson) and nowhere else. Refuses a folder that contains a "
+            "symlink to a directory or to a file outside the folder, so nothing outside it is "
+            "read."
         ),
         "inputSchema": {
             "type": "object",
@@ -167,7 +171,8 @@ TOOLS: List[Dict[str, Any]] = [
         "description": (
             "Ask jidoseal.com to create a Stripe Checkout session for certifying this corpus, "
             "and return the checkout URL for the customer to open and pay. Call it only with "
-            "the customer's explicit go-ahead: it is the purchase step. It does NOT take a "
+            "the customer's explicit go-ahead, and set `confirm` to true only then: without "
+            "`confirm: true` it sends nothing and returns an error. It does NOT take a "
             "payment — this server never sees a card, Stripe hosts the checkout, and nothing "
             "is charged or issued unless the customer completes it themselves. "
             "This is the one JidoSeal tool that contacts the network, and it sends only: "
@@ -183,6 +188,11 @@ TOOLS: List[Dict[str, Any]] = [
                 "company": {"type": "string", "description": "The customer's company name, as it should appear on the certificate."},
                 "submitter_name": {"type": "string", "description": "The person submitting, as typed by them."},
                 "submitter_email": {"type": "string", "description": "Where the certificate and receipt go."},
+                "confirm": {
+                    "type": "boolean",
+                    "description": "Must be true, and set only after the customer has explicitly "
+                                   "said to start the purchase. Anything else sends nothing.",
+                },
                 "include_machine": {
                     "type": "boolean",
                     "default": False,
@@ -192,7 +202,7 @@ TOOLS: List[Dict[str, Any]] = [
                                    "scans without it.",
                 },
             },
-            "required": ["root", "company", "submitter_name", "submitter_email"],
+            "required": ["root", "company", "submitter_name", "submitter_email", "confirm"],
             "additionalProperties": False,
         },
         "annotations": {"readOnlyHint": False, "destructiveHint": False, "openWorldHint": True},
@@ -216,7 +226,50 @@ def _root_arg(args: Dict[str, Any]) -> str:
     root = os.path.expanduser(root.strip())
     if not os.path.isdir(root):
         raise ToolError(f"scan root does not exist (or is not a directory): {root}")
+    _refuse_links_out(root)
     return root
+
+
+# The engine finds files with `glob("**/*.md", recursive=True)`, which follows symlinks: a
+# symlinked directory is descended into (a link back up the tree is expanded until the OS gives
+# up), and a symlinked `.md` file is read wherever it points. So a folder holding such a link
+# would have content from OUTSIDE it hashed into the scan. This server refuses that folder
+# instead of scanning it. The check mirrors what the glob can reach — `**` and `*.md` skip
+# names starting with "." — plus the `.jidoseal/` records the scan reads and writes, so that
+# its writes cannot be redirected out of the folder either.
+_RECORD_NAMES = ("manifest.json", "progress.ndjson", "config.yaml")
+
+
+def _inside(path: str, real_root: str) -> bool:
+    return os.path.commonpath([os.path.realpath(path), real_root]) == real_root
+
+
+def _refuse_links_out(root: str) -> None:
+    real_root = os.path.realpath(root)
+    bad: List[str] = []
+    jdir = os.path.join(root, ".jidoseal")
+    for p in [jdir] + [os.path.join(jdir, n) for n in _RECORD_NAMES]:
+        if os.path.islink(p):
+            bad.append(os.path.relpath(p, root))
+    for dirpath, dirnames, filenames in os.walk(root, followlinks=False):
+        dirnames[:] = sorted(d for d in dirnames if not d.startswith("."))
+        for d in dirnames:
+            if os.path.islink(os.path.join(dirpath, d)):
+                bad.append(os.path.relpath(os.path.join(dirpath, d), root) + os.sep)
+        for f in sorted(filenames):
+            p = os.path.join(dirpath, f)
+            if (f.endswith(".md") and not f.startswith(".") and os.path.islink(p)
+                    and not _inside(p, real_root)):
+                bad.append(os.path.relpath(p, root))
+    # `os.walk` lists a symlinked directory under `dirnames` but, with followlinks=False,
+    # never descends into it — so the refusal above is complete for what the glob could reach.
+    if bad:
+        shown = ", ".join(bad[:10]) + (f" (and {len(bad) - 10} more)" if len(bad) > 10 else "")
+        raise ToolError(
+            "Not scanned: this folder contains symlinks that would make the scan read or write "
+            f"outside it: {shown}. JidoSeal does not follow symlinks to directories, or to files "
+            "outside the folder. Remove them, or scan the folder they point to directly."
+        )
 
 
 def _scan(args: Dict[str, Any]) -> Dict[str, Any]:
@@ -238,6 +291,15 @@ def tool_jidoseal_certification_offer(args: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def tool_jidoseal_start_checkout(args: Dict[str, Any]) -> Dict[str, Any]:
+    # The explicit go-ahead, checked before anything else: no scan, no import of the network
+    # module, no request. Only the JSON literal `true` counts — not "true", not 1.
+    if args.get("confirm") is not True:
+        raise ToolError(
+            "Nothing was sent. jidoseal_start_checkout starts a purchase, so it runs only with "
+            "`confirm: true`, set after the customer has explicitly said to go ahead. A "
+            "purchase would send: " + ", ".join(offer_mod.PURCHASE_EGRESS_FIELDS) + "."
+        )
+
     # Imported HERE, and only here: the network-capable module must not be on the scan path's
     # import graph. See this file's header.
     import checkout_client
@@ -360,7 +422,8 @@ def handle_message(msg: Dict[str, Any]) -> Optional[Dict[str, Any]]:
                 "on this machine, costs nothing, and returns the tier plus the missing fields "
                 "per file so they can be fixed for free. jidoseal_certification_offer then "
                 "prices the optional certificate, and jidoseal_start_checkout returns a Stripe "
-                "link for the customer to pay — only ever with their explicit go-ahead."
+                "link for the customer to pay — only ever with their explicit go-ahead, passed as "
+                "confirm: true."
             ),
         })
 

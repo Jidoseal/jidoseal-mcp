@@ -1,0 +1,211 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-09-30T00:00:00Z",
+    "component": {
+      "type": "application",
+      "bom-ref": "pkg:pypi/jidoseal-mcp@0.1.3",
+      "name": "jidoseal-mcp",
+      "version": "0.1.3",
+      "purl": "pkg:pypi/jidoseal-mcp@0.1.3",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "description": "MCP server (Python standard library only) over the jidoseal scan engine."
+    },
+    "properties": [
+      {
+        "name": "note",
+        "value": "Hand-maintained. tests/test_packaging.py checks it against pyproject.toml, ENGINE-SHA256SUMS and the installed engine files."
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/jidoseal@0.1.3",
+      "name": "jidoseal",
+      "version": "0.1.3",
+      "purl": "pkg:pypi/jidoseal@0.1.3",
+      "licenses": [
+        {
+          "license": {
+            "name": "Proprietary"
+          }
+        }
+      ],
+      "description": "JidoSeal scan engine. Proprietary licence; shipped as plain Python source (the ten modules listed below).",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5d2ed7d6b3b8136a4624aa30621f30d9714b8d9a61814e5ca5ee02c76d28164f"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/jidoseal/0.1.3/"
+        }
+      ],
+      "components": [
+        {
+          "type": "file",
+          "bom-ref": "file:jidoseal@0.1.3/consent.py",
+          "name": "consent.py",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "f5aaaab5b1c869072e96d5b6533d556db89acb6ef045b715250684bb0685cb68"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "bom-ref": "file:jidoseal@0.1.3/frontmatter_i18n.py",
+          "name": "frontmatter_i18n.py",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "bf25c055889017509400122bfa3b8e8a8ce171cfcbd0b94e6e34f807d252d80f"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "bom-ref": "file:jidoseal@0.1.3/i18n.py",
+          "name": "i18n.py",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "758283e3f9855cf1b9df197453aeb7a0de6e95f497f83ef032e2d9f6ed444a25"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "bom-ref": "file:jidoseal@0.1.3/jidoseal.py",
+          "name": "jidoseal.py",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "161584629857777b485c1819681514d8396712440e84a061e18b9a787b4eaa4e"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "bom-ref": "file:jidoseal@0.1.3/local_runner.py",
+          "name": "local_runner.py",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "328fdd13842be67d470da29e7f837f1d6e6b15fd626e0d1d2e123b7714456451"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "bom-ref": "file:jidoseal@0.1.3/okf_manifest.py",
+          "name": "okf_manifest.py",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "8cc13ded86bccc740e77bfab6c11dd8419723b8999fd3f156f5abe2799711dc3"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "bom-ref": "file:jidoseal@0.1.3/okf_remediate.py",
+          "name": "okf_remediate.py",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "1c9abca1e253de01bf6ef3bd3a041fe3c680a29f279437550d1e772e99df2082"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "bom-ref": "file:jidoseal@0.1.3/scan_config.py",
+          "name": "scan_config.py",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "0d5c8d218de290f2699f4b45ed7cae456b09203d317b81e9169d3c186c0bff67"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "bom-ref": "file:jidoseal@0.1.3/syntax_gate.py",
+          "name": "syntax_gate.py",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "7a98c511f1a3c09ef1a4161bc6d8334904f19930496dcdb9db3536e4312c68c5"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "bom-ref": "file:jidoseal@0.1.3/tier1_gate.py",
+          "name": "tier1_gate.py",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "921e5af6aa163689cd56f28af4ce1922604435de57cc30095029ec9564457c6d"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/pyyaml@6.0.3",
+      "name": "PyYAML",
+      "version": "6.0.3",
+      "purl": "pkg:pypi/pyyaml@6.0.3",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "description": "The engine's only dependency (PyYAML>=6.0); 6.0.3 is the version tested. Wheels are platform-specific, so the sdist hash is given.",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://pypi.org/project/PyYAML/6.0.3/"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:pypi/jidoseal-mcp@0.1.3",
+      "dependsOn": [
+        "pkg:pypi/jidoseal@0.1.3"
+      ]
+    },
+    {
+      "ref": "pkg:pypi/jidoseal@0.1.3",
+      "dependsOn": [
+        "pkg:pypi/pyyaml@6.0.3"
+      ]
+    }
+  ]
+}

@@ -17,8 +17,8 @@ build-backend = "setuptools.build_meta"
 name = "jidoseal-mcp"
 # 0.1.2 is the first release built from this repository. The distribution version is
 # independent of the engine version.
-version = "0.1.2"
-description = "Local Self-Check for markdown knowledge bases against OKF v0.2 — an MCP server for Claude, Cursor, GitHub Copilot, Codex, Gemini CLI, Zed and local models. Zero content egress."
+version = "0.1.3"
+description = "Local check of a folder of markdown against OKF v0.2 frontmatter tiers — an MCP server for Claude, Cursor, GitHub Copilot, Codex, Gemini CLI, Zed and local models. The scan sends nothing (vendor claim, see README)."
 readme = "README.md"
 requires-python = ">=3.9"
 license = "Apache-2.0"
@@ -34,7 +34,15 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Topic :: Documentation",
 ]
-dependencies = ["jidoseal>=0.1.3"]
+# The engine is pinned to the ONE version this repository's test suite runs against, and whose
+# wheel hash is published in ENGINE-SHA256SUMS. A range would let pip install an engine release
+# nobody has run these tests on. A new engine version reaches users only through a new
+# jidoseal-mcp release that moves this pin, ENGINE-SHA256SUMS and sbom.cdx.json together
+# (tests/test_packaging.py fails if they disagree).
+dependencies = ["jidoseal==0.1.3"]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
 
 [project.urls]
 Homepage = "https://jidoseal.com"

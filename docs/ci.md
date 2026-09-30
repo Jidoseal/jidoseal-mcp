@@ -32,5 +32,6 @@ jobs:
           PY
 ```
 
-The scan runs entirely on the CI runner. Nothing is sent anywhere.
+The scan runs entirely on the CI runner and, by JidoSeal's own account, sends nothing anywhere (see the README's "What leaves your machine" for how to check). It writes `docs/.jidoseal/manifest.json` and `progress.ndjson`.
+The `jidoseal` CLI follows symlinks, so do not point it at a folder whose symlinks lead outside it.
 Add `.jidoseal/` to `.gitignore` so scan records are not committed.
