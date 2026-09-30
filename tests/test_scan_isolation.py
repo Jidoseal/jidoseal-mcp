@@ -1,12 +1,13 @@
 """
 The scan reads nothing outside the folder it was given.
 
-The engine discovers files with `glob("**/*.md", recursive=True)`, which follows symlinks.
-jidoseal-mcp therefore refuses, before the engine runs, any folder in which that glob could
+Engine 0.1.3 discovered files with `glob("**/*.md", recursive=True)`, which follows symlinks.
+jidoseal-mcp therefore refuses, before the engine runs, any folder in which such a walk could
 reach outside the folder: a symlinked directory (inside or out, including a loop back up the
 tree), a symlinked `.md` file whose target is outside, or a symlinked `.jidoseal/` record.
 These tests hold both halves: normal scans stay inside, and the refusals happen before a
-single outside byte is read.
+single outside byte is read. Engine 0.1.4 (the pinned version) refuses links out on its own as
+well; the last tests here check that the installed `jidoseal` CLI does.
 """
 from __future__ import annotations
 
@@ -95,12 +96,20 @@ def test_symlinked_directory_inside_root_is_refused_too(world):
     assert is_error and "sub-again" in payload["error"]
 
 
-def test_symlinked_md_file_inside_root_is_scanned(world, recorder):
+def test_symlinked_md_file_inside_root_is_read_once(world, recorder):
+    # Not refused: the link stays inside. Engine 0.1.4 reads each file once, so a link to a file
+    # that is scanned anyway adds nothing (0.1.3 listed it twice); a link to an inside file the
+    # scan would not otherwise reach is scanned under the link's own name.
+    (world["root"] / ".drafts").mkdir()
+    (world["root"] / ".drafts" / "draft.md").write_text("---\ntype: note\n---\n", encoding="utf-8")
     os.symlink(str(world["root"] / "gold.md"), str(world["root"] / "alias.md"))
+    os.symlink(str(world["root"] / ".drafts" / "draft.md"), str(world["root"] / "draft.md"))
     with recorder:
         is_error, payload = call_tool("jidoseal_scan", {"root": str(world["root"])})
     assert not is_error, payload
-    assert "alias.md" in [f["name"] for f in payload["files"]]
+    names = [f["name"] for f in payload["files"]]
+    assert "gold.md" in names and "alias.md" not in names
+    assert "draft.md" in names
     assert _outside_reads(recorder, world["root"]) == []
 
 
@@ -114,7 +123,8 @@ def test_symlink_in_a_hidden_directory_is_ignored_because_the_scan_never_goes_th
     assert not any(within(p, world["outside"]) for p in _reads(recorder))
 
 
-@pytest.mark.parametrize("record", [None, "manifest.json", "progress.ndjson", "config.yaml"])
+@pytest.mark.parametrize("record", [None, "manifest.json", "progress.ndjson", "config.yaml",
+                                    "consent.json", "audit.jsonl", "backups"])
 def test_symlinked_jidoseal_records_are_refused(world, recorder, record):
     target_dir = world["outside"] / "records"
     target_dir.mkdir()
@@ -145,3 +155,46 @@ def test_root_given_through_a_symlink_is_scanned_inside_its_target(world, record
 def test_missing_root_is_an_error_not_an_empty_scan(tmp_path):
     is_error, payload = call_tool("jidoseal_scan", {"root": str(tmp_path / "nope")})
     assert is_error and "does not exist" in payload["error"]
+
+
+# The installed engine's own command line (engine 0.1.4 and later). The server above refuses
+# before the engine runs; these check that the `jidoseal` CLI, used without this server, also
+# refuses a link out, writes nothing, and reads nothing outside the folder.
+def _run_cli(root):
+    import subprocess
+    import sys
+    return subprocess.run([sys.executable, "-m", "jidoseal", "--root", str(root)],
+                          capture_output=True, text=True, timeout=120)
+
+
+@pytest.mark.parametrize("link", ["dir", "file", "parent", "jidoseal"])
+def test_the_installed_cli_refuses_a_link_out(world, link):
+    root, outside = world["root"], world["outside"]
+    if link == "dir":
+        os.symlink(str(outside), str(root / "linked"))
+    elif link == "file":
+        os.symlink(str(outside / "secret.md"), str(root / "secret.md"))
+    elif link == "parent":
+        os.symlink("..", str(root / "up"))
+    else:
+        (outside / "records").mkdir()
+        os.symlink(str(outside / "records"), str(root / ".jidoseal"))
+    before = sorted(p.name for p in outside.rglob("*"))
+    r = _run_cli(root)
+    assert r.returncode == 2, (r.returncode, r.stdout, r.stderr)
+    assert "Not scanned: this folder contains symlinks" in r.stderr
+    assert "scanned " not in r.stdout
+    assert sorted(p.name for p in outside.rglob("*")) == before
+    if link != "jidoseal":
+        assert not (root / ".jidoseal").exists()
+
+
+def test_the_installed_cli_reads_an_inside_directory_link_once(world):
+    import json
+    root = world["root"]
+    os.symlink(str(root / "sub"), str(root / "sub-again"))
+    os.symlink("..", str(root / "sub" / "up"))
+    r = _run_cli(root)
+    assert r.returncode == 0, r.stderr
+    manifest = json.loads((root / ".jidoseal" / "manifest.json").read_text(encoding="utf-8"))
+    assert not any(f.startswith(("sub-again", os.path.join("sub", "up"))) for f in manifest["files"])

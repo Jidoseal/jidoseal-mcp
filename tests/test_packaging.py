@@ -133,3 +133,11 @@ def test_checkout_text_names_the_stripe_hop():
         assert words in offer.PURCHASE_STRIPE_HOP
     readme = _read("README.md")
     assert readme.count("session metadata") >= 2  # the brief and "What leaves your machine"
+
+
+def test_the_pinned_engine_states_its_own_line_as_a_claim():
+    """From engine 0.1.4 the CLI's banner is qualified too. The README says so; this holds it."""
+    import local_runner
+    line = local_runner.EGRESS_DISCLOSURE.replace("\n", " ")
+    _no_absolute_claim(line)
+    assert "JidoSeal's own claim" in line and "not an independent audit" in line

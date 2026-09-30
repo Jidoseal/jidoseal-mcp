@@ -89,9 +89,9 @@ LATEST_PROTOCOL_VERSION = SUPPORTED_PROTOCOL_VERSIONS[0]
 
 # Copy-truth, stated once (scan_result.SCAN_EGRESS_CLAIM) and reused in the scan and offer tool
 # descriptions, their results and the stderr banner. It is worded as JidoSeal's own claim,
-# because the engine is proprietary. The engine's absolute sentence (local_runner.
-# EGRESS_DISCLOSURE, "nothing — 100% local, zero content egress") is not shown anywhere by this
-# server; tests/test_packaging.py holds that. The paid path has its own, separately stated list.
+# because the engine is proprietary. The engine's own sentence (local_runner.EGRESS_DISCLOSURE,
+# which engine 0.1.3 stated as a bare fact) is not shown anywhere by this server;
+# tests/test_packaging.py holds that. The paid path has its own, separately stated list.
 EGRESS_LINE = scan_result.SCAN_EGRESS_CLAIM
 
 TOOLS: List[Dict[str, Any]] = [
@@ -237,14 +237,17 @@ def _root_arg(args: Dict[str, Any]) -> str:
     return root
 
 
-# The engine finds files with `glob("**/*.md", recursive=True)`, which follows symlinks: a
-# symlinked directory is descended into (a link back up the tree is expanded until the OS gives
-# up), and a symlinked `.md` file is read wherever it points. So a folder holding such a link
-# would have content from OUTSIDE it hashed into the scan. This server refuses that folder
-# instead of scanning it. The check mirrors what the glob can reach — `**` and `*.md` skip
-# names starting with "." — plus the `.jidoseal/` records the scan reads and writes, so that
-# its writes cannot be redirected out of the folder either.
-_RECORD_NAMES = ("manifest.json", "progress.ndjson", "config.yaml")
+# Engine 0.1.3 found files with `glob("**/*.md", recursive=True)`, which follows symlinks: a
+# symlinked directory was descended into (a link back up the tree was expanded until the OS gave
+# up), and a symlinked `.md` file was read wherever it pointed. So a folder holding such a link
+# had content from OUTSIDE it hashed into the scan. Engine 0.1.4, pinned here, refuses a link
+# that leads outside and never descends a directory link. This server keeps its own check anyway,
+# run before the engine is called, and a little stricter: it refuses any symlinked directory.
+# The check mirrors what a scan can reach — names starting with "." are skipped — plus the
+# `.jidoseal/` records the engine reads and writes (the same list engine 0.1.4 refuses), so
+# that writes cannot be redirected out of the folder either.
+_RECORD_NAMES = ("manifest.json", "progress.ndjson", "config.yaml", "consent.json",
+                 "audit.jsonl", "backups")
 
 
 def _inside(path: str, real_root: str) -> bool:
@@ -269,7 +272,7 @@ def _refuse_links_out(root: str) -> None:
                     and not _inside(p, real_root)):
                 bad.append(os.path.relpath(p, root))
     # `os.walk` lists a symlinked directory under `dirnames` but, with followlinks=False,
-    # never descends into it — so the refusal above is complete for what the glob could reach.
+    # never descends into it — so the refusal above is complete for what a scan could reach.
     if bad:
         shown = ", ".join(bad[:10]) + (f" (and {len(bad) - 10} more)" if len(bad) > 10 else "")
         raise ToolError(

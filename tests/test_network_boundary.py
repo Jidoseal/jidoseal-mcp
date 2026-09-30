@@ -161,6 +161,27 @@ def test_stdio_server_end_to_end_opens_no_socket(world, kill_on_socket):
     assert replies[5]["result"]["isError"] is True  # no confirm: refused, nothing sent
 
 
+def test_the_installed_engine_cli_opens_no_socket(world, kill_on_socket):
+    """The pinned engine's own `jidoseal` command, used without this server: a full scan in a
+    process that exits on the first socket event, and no network module ever imported."""
+    root = str(world["root"])
+    script = textwrap.dedent(f"""
+        import json, sys, runpy
+        sys.argv = ["jidoseal", "--root", {root!r}]
+        mod = runpy.run_module("jidoseal", run_name="__main__")
+        import jidoseal
+        print(json.dumps({{"file": jidoseal.__file__,
+                          "net": [m for m in {NETWORK_MODULES!r} if m in sys.modules]}}))
+    """)
+    out = subprocess.run([sys.executable, "-c", script], env=_child_env(kill_on_socket),
+                         cwd=str(world["tmp"]), capture_output=True, text=True, timeout=120)
+    assert out.returncode == 0, (out.returncode, out.stderr)
+    assert "scanned " in out.stdout
+    report = json.loads(out.stdout.strip().splitlines()[-1])
+    assert "site-packages" in report["file"], report  # the installed engine, not a checkout
+    assert report["net"] == []
+
+
 @pytest.mark.parametrize("tool", ["jidoseal_scan", "jidoseal_certification_offer"])
 def test_scan_starts_no_child_process(world, recorder, tool):
     # A child process would be outside every check above, so there must be none.

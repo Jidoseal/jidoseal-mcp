@@ -33,5 +33,5 @@ jobs:
 ```
 
 The scan runs entirely on the CI runner and, by JidoSeal's own account, sends nothing anywhere (see the README's "What leaves your machine" for how to check). It writes `docs/.jidoseal/manifest.json` and `progress.ndjson`.
-The `jidoseal` CLI follows symlinks, so do not point it at a folder whose symlinks lead outside it.
+From engine 0.1.4 the `jidoseal` CLI refuses a folder whose symlinks lead outside it, and exits with status 2, so such a folder fails the job instead of being scanned.
 Add `.jidoseal/` to `.gitignore` so scan records are not committed.

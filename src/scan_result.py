@@ -31,7 +31,7 @@ THE ONE DELIBERATE DIFFERENCE, STATED PLAINLY
 ---------------------------------------------
 /app/run reads a folder the visitor picked in the browser; this reads a folder on disk. So:
   * `skipped` is always `[]` here. It lists bundle entries the browser rejected before
-    scoring (not-`.md`, unsafe relative name); a filesystem scan globs `**/*.md` and never
+    scoring (not-`.md`, unsafe relative name); a filesystem scan reads `**/*.md` and never
     forms such an entry in the first place.
   * `include_machine=False` (the default) honours the corpus's OWN `.jidoseal/config.yaml`
     conventions, exactly as `jidoseal --root` and the certified issuance path do. For a corpus
@@ -72,8 +72,8 @@ TIER_ORDER = {"none": 0, "bronze": 1, "silver": 2, "gold": 3}
 OKF_SPEC_VERSION = "0.2"
 # What this server tells a user about a scan's network use: stated as JidoSeal's own claim,
 # because the engine that does the scan is proprietary. The engine's own absolute sentence
-# (local_runner.EGRESS_DISCLOSURE) is deliberately not shown by this server; the CLI still
-# prints it until the next engine release.
+# (local_runner.EGRESS_DISCLOSURE, qualified the same way since engine 0.1.4) is not shown by
+# this server, which states the claim once, here, in its own words.
 SCAN_EGRESS_CLAIM = (
     "JidoSeal states that a scan makes no network connection and sends no file, file name or "
     "file content anywhere. The scan engine is proprietary, so this is JidoSeal's own claim, "
@@ -137,8 +137,8 @@ def build_scan_result(root: str, include_machine: bool = False) -> Dict[str, Any
             "frontmatter_ok": e.get("frontmatter_ok", True),
             "language": e["language"],
         }
-        # build_manifest iterates `sorted(glob.glob(...))`, so `entries` is already in path
-        # order — sorted() again here only to say so explicitly.
+        # build_manifest returns its files in sorted path order, so `entries` is already in
+        # path order — sorted() again here only to say so explicitly.
         for rel, e in sorted(entries.items())
     ]
 

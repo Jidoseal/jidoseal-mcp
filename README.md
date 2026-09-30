@@ -22,7 +22,7 @@ Then ask your assistant: *"Scan ~/notes with JidoSeal and tell me what's missing
 - **Writes:** `<folder>/.jidoseal/manifest.json` (replaced on each scan) and `<folder>/.jidoseal/progress.ndjson` (appended to). Nothing else; your notes are not modified.
 - **Network, scan and offer:** none, by JidoSeal's own claim about its proprietary engine, not independently audited. The tests below check it on every change.
 - **Network, checkout (optional, paid):** `jidoseal_start_checkout` runs only with `confirm: true`. It sends eight fields to jidoseal.com: company, name and email as typed, the tier, a 0–100 score, the corpus's Merkle root, the local scan's id, and one flag saying which Bronze price applies. jidoseal.com copies them into the Stripe Checkout session it creates (the email as the session's customer email, all eight as session metadata), when the session is created, before any payment. No file contents, file names, per-file hashes or paths. No card data passes through this server.
-- **Engine:** the scan engine is the separate `jidoseal` package, under a proprietary licence. It ships as plain Python source and is pinned here to one version (0.1.3), with its sha256 in [`ENGINE-SHA256SUMS`](ENGINE-SHA256SUMS) and an SBOM in [`sbom.cdx.json`](sbom.cdx.json). So "nothing leaves your machine" is JidoSeal's own claim: you can check it with the commands under [What leaves your machine](#what-leaves-your-machine) and the tests in [`tests/`](tests/), but it has not been independently audited.
+- **Engine:** the scan engine is the separate `jidoseal` package, under a proprietary licence. It ships as plain Python source and is pinned here to one version (0.1.4), with its sha256 in [`ENGINE-SHA256SUMS`](ENGINE-SHA256SUMS) and an SBOM in [`sbom.cdx.json`](sbom.cdx.json). So "nothing leaves your machine" is JidoSeal's own claim: you can check it with the commands under [What leaves your machine](#what-leaves-your-machine) and the tests in [`tests/`](tests/), but it has not been independently audited.
 
 ---
 
@@ -239,14 +239,14 @@ The test suite checks the same things on every change, against the pinned engine
 
 | File | What it holds |
 |---|---|
-| [`tests/test_scan_isolation.py`](tests/test_scan_isolation.py) | The scan opens and lists nothing outside the folder; folders with symlinks that lead out of it, or to directories, or that redirect `.jidoseal/`, are refused before the engine runs. |
+| [`tests/test_scan_isolation.py`](tests/test_scan_isolation.py) | The scan opens and lists nothing outside the folder; folders with symlinks that lead out of it, or to directories, or that redirect `.jidoseal/`, are refused before the engine runs; and the installed `jidoseal` CLI (engine 0.1.4) refuses links out on its own, writing nothing. |
 | [`tests/test_write_boundary.py`](tests/test_write_boundary.py) | The only files created or changed are the two under `<folder>/.jidoseal/`; notes are byte-for-byte unchanged. |
 | [`tests/test_network_boundary.py`](tests/test_network_boundary.py) | No socket, DNS lookup or child process during a scan — in-process with sockets blocked, and end to end over stdio in a process that exits on any socket event. |
 | [`tests/test_checkout_confirmation.py`](tests/test_checkout_confirmation.py) | Checkout makes no request without `confirm: true`, and with it sends exactly the eight fields above (HTTP mocked). |
 | [`tests/test_import_graph.py`](tests/test_import_graph.py) | Static check of every module on the scan path, the engine's included. |
 | [`tests/test_packaging.py`](tests/test_packaging.py) | The engine pin, `ENGINE-SHA256SUMS`, the SBOM and the installed engine files all agree. No tool text or result shows the engine's unqualified no-egress line, and the checkout text names the Stripe step. |
 
-One difference to know about: this server refuses a folder containing such symlinks, but the `jidoseal` command-line tool (engine 0.1.3) follows them, so run the CLI only on folders without symlinks that point elsewhere. The CLI also still prints the engine's own unqualified line ("100% local, zero content egress") on every run; this server does not show that line. Both change in a later engine release.
+The `jidoseal` command-line tool refuses such folders too, from engine 0.1.4 (the version pinned here): a symlink to a file or directory outside the folder, or a symlinked `.jidoseal/`, stops the run before anything is read or written, and the command exits with status 2. It does not follow a symlinked directory inside the folder either, so each file is read once. This server is a little stricter: it refuses a symlinked directory even when it stays inside. The CLI's own no-network line is worded as JidoSeal's claim, like this server's. Engine 0.1.3 and earlier followed symlinks and printed an unqualified line, so use 0.1.4 or later.
 
 ## Optional certification
 
