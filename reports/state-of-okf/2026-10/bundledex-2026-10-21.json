@@ -1,0 +1,6312 @@
+{
+ "_meta": {
+  "total": 900,
+  "generated_at": "2026-10-21T19:02:06Z",
+  "source": "bundledex.net",
+  "description": "OKF Bundle Directory - full dataset",
+  "sha256_of_full_download": "1567bf810be117ec2d8ed76521e9e3c737407c956956b7fa99ec88929f4e14e7",
+  "note": "Reduced to the fields this report uses; the full file was downloaded from bundledex.net/api/bundles.json."
+ },
+ "bundles": [
+  {
+   "slug": "iwe",
+   "repo_url": "https://github.com/iwe-org/iwe",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "jonex",
+   "repo_url": "https://github.com/yuezhiai/jonex",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "okf-agent-memory",
+   "repo_url": "https://github.com/okf-memory/okf-agent-memory",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "pi-llm-wiki",
+   "repo_url": "https://github.com/zosmaai/pi-llm-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "lineage-skill",
+   "repo_url": "https://github.com/JuneYaooo/lineage-skill",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "okf-skills",
+   "repo_url": "https://github.com/scaccogatto/okf-skills",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-20"
+  },
+  {
+   "slug": "groma.md",
+   "repo_url": "https://github.com/MrLesk/Groma.md",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "terrain",
+   "repo_url": "https://github.com/sopaco/terrain",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-20"
+  },
+  {
+   "slug": "remnic",
+   "repo_url": "https://github.com/joshuaswarren/remnic",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-19"
+  },
+  {
+   "slug": "mcp-memory",
+   "repo_url": "https://github.com/fellowgeek/mcp-memory",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-19"
+  },
+  {
+   "slug": "llm-wiki-v2",
+   "repo_url": "https://github.com/crow-hq/llm-wiki-v2",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-13"
+  },
+  {
+   "slug": "okf-gem",
+   "repo_url": "https://github.com/serradura/okf-gem",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "ai-rulez",
+   "repo_url": "https://github.com/Goldziher/ai-rulez",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-16"
+  },
+  {
+   "slug": "echoes-vault-opencode",
+   "repo_url": "https://github.com/psinetron/echoes-vault-opencode",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "cole-medin-knowledge-base",
+   "repo_url": "https://github.com/coleam00/cole-medin-knowledge-base",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "cole-medin-ai-coding",
+   "repo_url": "https://github.com/coleam00/cole-medin-ai-coding",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-02"
+  },
+  {
+   "slug": "echoes-vault-codex",
+   "repo_url": "https://github.com/psinetron/echoes-vault-codex",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "claude-mega-brain",
+   "repo_url": "https://github.com/guhcostan/claude-mega-brain",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "obsidian-gemini-helper",
+   "repo_url": "https://github.com/takeshy/obsidian-gemini-helper",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-12"
+  },
+  {
+   "slug": "okf-generator",
+   "repo_url": "https://github.com/UmairBaig8/okf-generator",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-18"
+  },
+  {
+   "slug": "okf-rs",
+   "repo_url": "https://github.com/jyjeanne/okf-rs",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-09"
+  },
+  {
+   "slug": "coleam00-cole-medin-ai-coding",
+   "repo_url": "https://github.com/coleam00/cole-medin-ai-coding",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "models",
+   "repo_url": "https://github.com/OWOX/models",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-26"
+  },
+  {
+   "slug": "awesome-okf",
+   "repo_url": "https://github.com/yzfly/awesome-okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-19"
+  },
+  {
+   "slug": "yzfly-awesome-okf",
+   "repo_url": "https://github.com/yzfly/awesome-okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "okfy",
+   "repo_url": "https://github.com/0dust/OKFy",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "owox-owox-model-canvas",
+   "repo_url": "https://github.com/OWOX/owox-model-canvas",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "openknowledge",
+   "repo_url": "https://github.com/openknowledge-sh/openknowledge",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "okf-knowledge",
+   "repo_url": "https://github.com/sniperunder123/okf-knowledge",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "scaccogatto-okf-skills",
+   "repo_url": "https://github.com/scaccogatto/okf-skills",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "kiso",
+   "repo_url": "https://github.com/oak-invest/kiso",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-10"
+  },
+  {
+   "slug": "0dust-okfy",
+   "repo_url": "https://github.com/0dust/OKFy",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "sniperunder123-okf-knowledge",
+   "repo_url": "https://github.com/sniperunder123/okf-knowledge",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "okf-studio",
+   "repo_url": "https://github.com/saschb2b/okf-studio",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "llmwiking",
+   "repo_url": "https://github.com/ZeroDot1/LLMWikiNG",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-13"
+  },
+  {
+   "slug": "wiki-as-an-mcp",
+   "repo_url": "https://github.com/taikunudel/wiki-as-an-mcp",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-11"
+  },
+  {
+   "slug": "okf-frontmatter",
+   "repo_url": "https://github.com/longsizhuo/okf-frontmatter",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-01"
+  },
+  {
+   "slug": "agent-knowledge",
+   "repo_url": "https://github.com/stjbrown/agent-knowledge",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-29"
+  },
+  {
+   "slug": "longsizhuo-okf-frontmatter",
+   "repo_url": "https://github.com/longsizhuo/okf-frontmatter",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "okf-harness",
+   "repo_url": "https://github.com/pumblus/okf-harness",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-10"
+  },
+  {
+   "slug": "ai-xf-format",
+   "repo_url": "https://github.com/DavidROliverBA/ai-xf-format",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-20"
+  },
+  {
+   "slug": "okf-crossplane-v2",
+   "repo_url": "https://github.com/jkroepke/okf-crossplane-v2",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-10"
+  },
+  {
+   "slug": "fab-kit",
+   "repo_url": "https://github.com/sahil87/fab-kit",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-26"
+  },
+  {
+   "slug": "sample-okf-llm-wiki",
+   "repo_url": "https://github.com/aws-samples/sample-okf-llm-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-10"
+  },
+  {
+   "slug": "data-olympus",
+   "repo_url": "https://github.com/knaisoma/data-olympus",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-14"
+  },
+  {
+   "slug": "okf",
+   "repo_url": "https://github.com/okfcli/okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-20"
+  },
+  {
+   "slug": "surface",
+   "repo_url": "https://github.com/Connorrmcd6/surface",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-14"
+  },
+  {
+   "slug": "ai-x-format",
+   "repo_url": "https://github.com/DavidROliverBA/ai-x-format",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-27"
+  },
+  {
+   "slug": "aix-format",
+   "repo_url": "https://github.com/DavidROliverBA/aix-format",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-26"
+  },
+  {
+   "slug": "open-knowledge-compiler",
+   "repo_url": "https://github.com/kushal-omnius/open-knowledge-compiler",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-03"
+  },
+  {
+   "slug": "hermes-okf",
+   "repo_url": "https://github.com/EliaszDev/hermes-okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "xsavikx-okf-skills",
+   "repo_url": "https://github.com/xSAVIKx/okf-skills",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "power-framework",
+   "repo_url": "https://github.com/weby-homelab/power-framework",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-26"
+  },
+  {
+   "slug": "claude-skills-mental-models",
+   "repo_url": "https://github.com/cyperx84/claude-skills-mental-models",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-16"
+  },
+  {
+   "slug": "okf-schema",
+   "repo_url": "https://github.com/gsemet/okf-schema",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-20"
+  },
+  {
+   "slug": "mnemo-wiki",
+   "repo_url": "https://github.com/jeromeetienne/mnemo_wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-21"
+  },
+  {
+   "slug": "ochakai",
+   "repo_url": "https://github.com/na0fu3y/ochakai",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-09"
+  },
+  {
+   "slug": "pumblus-okf-harness",
+   "repo_url": "https://github.com/pumblus/okf-harness",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "stjbrown-agent-knowledge",
+   "repo_url": "https://github.com/stjbrown/agent-knowledge",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "mnemos",
+   "repo_url": "https://github.com/arhuman/mnemos",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-15"
+  },
+  {
+   "slug": "crystalline",
+   "repo_url": "https://github.com/jordiboehme/crystalline",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-15"
+  },
+  {
+   "slug": "okf-matt-skills",
+   "repo_url": "https://github.com/evist0/okf-matt-skills",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "taikunudel-wiki-as-an-mcp",
+   "repo_url": "https://github.com/taikunudel/wiki-as-an-mcp",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "kl4a",
+   "repo_url": "https://github.com/CogniSwitch/KL4A",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-20"
+  },
+  {
+   "slug": "okf-conformance",
+   "repo_url": "https://github.com/Sudhakaran88/okf-conformance",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-enforcer",
+   "repo_url": "https://github.com/MartinForReal/okf-enforcer",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-02"
+  },
+  {
+   "slug": "omind",
+   "repo_url": "https://github.com/CryptoJones/omind",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-14"
+  },
+  {
+   "slug": "linyiru-awesome-okf",
+   "repo_url": "https://github.com/linyiru/awesome-okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "lokf",
+   "repo_url": "https://github.com/nicholsn/lokf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-23"
+  },
+  {
+   "slug": "superops-team-okf",
+   "repo_url": "https://github.com/superops-team/okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "mif",
+   "repo_url": "https://github.com/modeled-information-format/MIF",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-16"
+  },
+  {
+   "slug": "living-docs-skill",
+   "repo_url": "https://github.com/ejklock/living-docs-skill",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-11"
+  },
+  {
+   "slug": "sudhakaran88-okf-conformance",
+   "repo_url": "https://github.com/Sudhakaran88/okf-conformance",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "openknowledge-sh-openknowledge",
+   "repo_url": "https://github.com/openknowledge-sh/openknowledge",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "samemind",
+   "repo_url": "https://github.com/alexgrebeshok-coder/samemind",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-12"
+  },
+  {
+   "slug": "abode101",
+   "repo_url": "https://github.com/nothans/abode101",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "adk-okf-grounded-chat",
+   "repo_url": "https://github.com/deskulpt/adk-okf-grounded-chat",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-09"
+  },
+  {
+   "slug": "agent-knowledge-repo-blueprint",
+   "repo_url": "https://github.com/perelin/agent-knowledge-repo-blueprint",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-20"
+  },
+  {
+   "slug": "gemini-okf-compiler",
+   "repo_url": "https://github.com/vishal-raaj-dnd/gemini-okf-compiler",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-24"
+  },
+  {
+   "slug": "oak-invest-kiso",
+   "repo_url": "https://github.com/oak-invest/kiso",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "kdd",
+   "repo_url": "https://github.com/MauricioPerera/KDD",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-07"
+  },
+  {
+   "slug": "knowledgex",
+   "repo_url": "https://github.com/rahulnyk/KnowledgeX",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "onyxwriter",
+   "repo_url": "https://github.com/activetwist/OnyxWriter",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-07"
+  },
+  {
+   "slug": "agentic-task-system",
+   "repo_url": "https://github.com/renezander030/agentic-task-system",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-20"
+  },
+  {
+   "slug": "dev-workspace",
+   "repo_url": "https://github.com/iwe-org/dev-workspace",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-20"
+  },
+  {
+   "slug": "okf-kit",
+   "repo_url": "https://github.com/vinodborole/okf-kit",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "akasha",
+   "repo_url": "https://github.com/chntnm/akasha",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-29"
+  },
+  {
+   "slug": "doc-bridge",
+   "repo_url": "https://github.com/AgentsKit-io/doc-bridge",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "galdor",
+   "repo_url": "https://github.com/YasserCR/galdor",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "odyssey-okf-wiki",
+   "repo_url": "https://github.com/inkeep/odyssey-okf-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-19"
+  },
+  {
+   "slug": "jkroepke-okf-crossplane-v2",
+   "repo_url": "https://github.com/jkroepke/okf-crossplane-v2",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "okfgen",
+   "repo_url": "https://github.com/Arindam200/okfgen",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "modeled-information-format-mif",
+   "repo_url": "https://github.com/modeled-information-format/MIF",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "rankready",
+   "repo_url": "https://github.com/eticastudio/rankready",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-14"
+  },
+  {
+   "slug": "ultimate-design",
+   "repo_url": "https://github.com/aa2246740/ultimate-design",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-04"
+  },
+  {
+   "slug": "ai-tadpole-os",
+   "repo_url": "https://github.com/DDS-Solutions/AI-TadPole-OS",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-23"
+  },
+  {
+   "slug": "docparse-rs",
+   "repo_url": "https://github.com/yzlabai/docparse-rs",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-23"
+  },
+  {
+   "slug": "frontmatter-operator",
+   "repo_url": "https://github.com/pssah4/frontmatter-operator",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-06"
+  },
+  {
+   "slug": "fulvid",
+   "repo_url": "https://github.com/ManuelGil/fulvid",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-26"
+  },
+  {
+   "slug": "okf-atlas-mcp",
+   "repo_url": "https://github.com/rodcar/okf-atlas-mcp",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-02"
+  },
+  {
+   "slug": "evist0-okf-matt-skills",
+   "repo_url": "https://github.com/evist0/okf-matt-skills",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "okfctl",
+   "repo_url": "https://github.com/cwest/okfctl",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-12"
+  },
+  {
+   "slug": "okf-studio-egt",
+   "repo_url": "https://github.com/ahn1305/OKF_Studio_EGT",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-18"
+  },
+  {
+   "slug": "nothans-abode101",
+   "repo_url": "https://github.com/nothans/abode101",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "vishal-raaj-dnd-gemini-okf-compiler",
+   "repo_url": "https://github.com/vishal-raaj-dnd/gemini-okf-compiler",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "nodus",
+   "repo_url": "https://github.com/sorenwacker/nodus",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-20"
+  },
+  {
+   "slug": "obsidian-installationsparty",
+   "repo_url": "https://github.com/P3nny/obsidian-installationsparty",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-11"
+  },
+  {
+   "slug": "okf-builder",
+   "repo_url": "https://github.com/eli-l/okf-builder",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "okf-explorer",
+   "repo_url": "https://github.com/chris-page-gov/okf-explorer",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-21"
+  },
+  {
+   "slug": "thisismydesign-okf-lint",
+   "repo_url": "https://github.com/thisismydesign/okf-lint",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "okf-loom",
+   "repo_url": "https://github.com/ojamin/okf-loom",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-16"
+  },
+  {
+   "slug": "speckit-okf",
+   "repo_url": "https://github.com/alexcpn/speckit_okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-11"
+  },
+  {
+   "slug": "grafitodb",
+   "repo_url": "https://github.com/jpmanson/GrafitoDB",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "tlctc",
+   "repo_url": "https://github.com/Barnes70/TLCTC",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-22"
+  },
+  {
+   "slug": "wikiweave",
+   "repo_url": "https://github.com/Jiwei/WikiWeave",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-16"
+  },
+  {
+   "slug": "agent-dx",
+   "repo_url": "https://github.com/LanNguyenSi/agent-dx",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-12"
+  },
+  {
+   "slug": "crm-open-knowledge-wiki",
+   "repo_url": "https://github.com/jacquescorbytuech/crm-open-knowledge-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-04"
+  },
+  {
+   "slug": "gexsync",
+   "repo_url": "https://github.com/dgnsrekt/gexsync",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-22"
+  },
+  {
+   "slug": "okf-agent-memory-cn",
+   "repo_url": "https://github.com/passwordand/okf-agent-memory-cn",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-19"
+  },
+  {
+   "slug": "okf-mcp",
+   "repo_url": "https://github.com/travisjakel/okf-mcp",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "gsemet-okf-schema",
+   "repo_url": "https://github.com/gsemet/okf-schema",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "okf-skill",
+   "repo_url": "https://github.com/lorsabyan/okf-skill",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "okf-vault",
+   "repo_url": "https://github.com/alexandre-leites/okf-vault",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "arindam200-okfgen",
+   "repo_url": "https://github.com/Arindam200/okfgen",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "okq",
+   "repo_url": "https://github.com/mikevalstar/okq",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-17"
+  },
+  {
+   "slug": "pi-okf-wiki",
+   "repo_url": "https://github.com/Panzenbaby/pi-okf-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-06"
+  },
+  {
+   "slug": "presentation-wiki",
+   "repo_url": "https://github.com/trayburn/presentation-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-10"
+  },
+  {
+   "slug": "sill-ensoul",
+   "repo_url": "https://github.com/sillogic/sill-ensoul",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-29"
+  },
+  {
+   "slug": "speckit-ofk",
+   "repo_url": "https://github.com/alexcpn/speckit_ofk",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-13"
+  },
+  {
+   "slug": "wiki",
+   "repo_url": "https://github.com/agentic-wiki/wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "5dgai-okf-tutor",
+   "repo_url": "https://github.com/ellacharmed/5dgai-okf-tutor",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-03"
+  },
+  {
+   "slug": "bodhi",
+   "repo_url": "https://github.com/AI-First-Community/Bodhi",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "jayoram-mjml-ai-knowledge",
+   "repo_url": "https://github.com/JayOram/MJML-ai-knowledge",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "mjml-ai-knowledge",
+   "repo_url": "https://github.com/JayOram/MJML-ai-knowledge",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "auto-archivist",
+   "repo_url": "https://github.com/Jiwei/auto_archivist",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-12"
+  },
+  {
+   "slug": "clinical-rag-agent",
+   "repo_url": "https://github.com/jeevesh2515/clinical-rag-agent",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-27"
+  },
+  {
+   "slug": "espipe",
+   "repo_url": "https://github.com/VimCommando/espipe",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-23"
+  },
+  {
+   "slug": "gemihub-desktop",
+   "repo_url": "https://github.com/takeshy/gemihub-desktop",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-05"
+  },
+  {
+   "slug": "marketing-workspace",
+   "repo_url": "https://github.com/iwe-org/marketing-workspace",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-20"
+  },
+  {
+   "slug": "okf-agents",
+   "repo_url": "https://github.com/RonCodes88/okf-agents",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-19"
+  },
+  {
+   "slug": "okf-federation",
+   "repo_url": "https://github.com/manaty/okf-federation",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-01"
+  },
+  {
+   "slug": "okf-industrial",
+   "repo_url": "https://github.com/augurysys/okf-industrial",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-19"
+  },
+  {
+   "slug": "okf-llm-wiki",
+   "repo_url": "https://github.com/real-jiakai/okf_llm_wiki",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "okfmem",
+   "repo_url": "https://github.com/s-annam/okfmem",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-11"
+  },
+  {
+   "slug": "open-knowledge-format-starter",
+   "repo_url": "https://github.com/supachai-j/open-knowledge-format-starter",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-21"
+  },
+  {
+   "slug": "pacioli",
+   "repo_url": "https://github.com/ojhermann-org/pacioli",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-18"
+  },
+  {
+   "slug": "pensiever",
+   "repo_url": "https://github.com/matskoan/pensiever",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-29"
+  },
+  {
+   "slug": "pi-weave",
+   "repo_url": "https://github.com/EranYonai/pi-weave",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-18"
+  },
+  {
+   "slug": "gemini-okf-builder",
+   "repo_url": "https://github.com/MrBigleg/Gemini-OKF-BUILDER",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-05"
+  },
+  {
+   "slug": "okf-todo",
+   "repo_url": "https://github.com/dalby-md/OKF-Todo",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-11"
+  },
+  {
+   "slug": "activetwist-onyxwriter",
+   "repo_url": "https://github.com/activetwist/OnyxWriter",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "open-knowledge-format",
+   "repo_url": "https://github.com/SachinMishra-ux/Open_Knowledge_Format",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "pierrotknowledge2",
+   "repo_url": "https://github.com/yuimaruofbook/PierrotKnowledge2",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-08"
+  },
+  {
+   "slug": "skillsafe",
+   "repo_url": "https://github.com/GodModeAI2025/SkillSafe",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-19"
+  },
+  {
+   "slug": "claude-okf",
+   "repo_url": "https://github.com/theesfeld/claude-okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "databricks-okf",
+   "repo_url": "https://github.com/claudiobottari/databricks-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-04"
+  },
+  {
+   "slug": "knowl",
+   "repo_url": "https://github.com/baldaworks/knowl",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-06"
+  },
+  {
+   "slug": "mneme",
+   "repo_url": "https://github.com/Scott1743/mneme",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "w4g1-okf",
+   "repo_url": "https://github.com/W4G1/okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "okf-ingest",
+   "repo_url": "https://github.com/travisjakel/okf-ingest",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-06"
+  },
+  {
+   "slug": "okf4net",
+   "repo_url": "https://github.com/jchable/okf4net",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-05"
+  },
+  {
+   "slug": "openclaw-okf",
+   "repo_url": "https://github.com/CarelvanHeerden/openclaw-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "openknowledgebank",
+   "repo_url": "https://github.com/salian/openknowledgebank",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-12"
+  },
+  {
+   "slug": "openkos",
+   "repo_url": "https://github.com/jasonssdev/openkos",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "superbee",
+   "repo_url": "https://github.com/Holaxis-ai/superbee",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-23"
+  },
+  {
+   "slug": "tent",
+   "repo_url": "https://github.com/cucarol/tent",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "vibe-tent",
+   "repo_url": "https://github.com/cucarol/vibe-tent",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-03"
+  },
+  {
+   "slug": "wp-knowledge-layer",
+   "repo_url": "https://github.com/wooserv/wp-knowledge-layer",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-10"
+  },
+  {
+   "slug": "bmild",
+   "repo_url": "https://github.com/micfre/BMILD",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "git2okf",
+   "repo_url": "https://github.com/vickypandey14/Git2OKF",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "livingkb",
+   "repo_url": "https://github.com/LivingKB/LivingKB",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-02"
+  },
+  {
+   "slug": "okgf",
+   "repo_url": "https://github.com/OneHillAI/OKGF",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-05"
+  },
+  {
+   "slug": "pierrot-knowledge",
+   "repo_url": "https://github.com/yuimaruofbook/Pierrot-Knowledge",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-31"
+  },
+  {
+   "slug": "agent-smith",
+   "repo_url": "https://github.com/rmonier/agent-smith",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "agent-wiki",
+   "repo_url": "https://github.com/xinhuagu/agent-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "alms",
+   "repo_url": "https://github.com/ghassan-ai-projects/alms",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-09"
+  },
+  {
+   "slug": "cite-citadel",
+   "repo_url": "https://github.com/MarkusNeusinger/cite-citadel",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-18"
+  },
+  {
+   "slug": "clear",
+   "repo_url": "https://github.com/QBall-Inc/clear",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "dsh-okf-memory",
+   "repo_url": "https://github.com/ZHI-QI/dsh-okf-memory",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-03"
+  },
+  {
+   "slug": "edu-effect-okf",
+   "repo_url": "https://github.com/lloydrichards/edu_effect-okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-02"
+  },
+  {
+   "slug": "google-okf-implementation",
+   "repo_url": "https://github.com/pypi-ahmad/google-okf-implementation",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-09"
+  },
+  {
+   "slug": "guided-context-ledger",
+   "repo_url": "https://github.com/guided-context-ledger/guided-context-ledger",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-27"
+  },
+  {
+   "slug": "infrawiki",
+   "repo_url": "https://github.com/saba-ch/infrawiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-17"
+  },
+  {
+   "slug": "inter-llm-tokf",
+   "repo_url": "https://github.com/AnubhabBanerjee/inter-llm-tokf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-15"
+  },
+  {
+   "slug": "interspeech-2026-wiki",
+   "repo_url": "https://github.com/MIBlue119/interspeech-2026-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-18"
+  },
+  {
+   "slug": "knowledge-trust-ladder",
+   "repo_url": "https://github.com/noelmcloughlin/knowledge-trust-ladder",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "llm-knowledge-base-starter",
+   "repo_url": "https://github.com/martintoft1/llm-knowledge-base-starter",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-20"
+  },
+  {
+   "slug": "llm-wiki",
+   "repo_url": "https://github.com/Ekgardt/llm-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "llm-wiki-skills",
+   "repo_url": "https://github.com/weiiiii0622/llm-wiki-skills",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-01"
+  },
+  {
+   "slug": "obsidian-okf",
+   "repo_url": "https://github.com/kennyg/obsidian-okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-14"
+  },
+  {
+   "slug": "obsidian-task-tree",
+   "repo_url": "https://github.com/Aldorithm392/obsidian-task-tree",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-31"
+  },
+  {
+   "slug": "okapi-okf-knowledge-studio",
+   "repo_url": "https://github.com/sebastienfi/okapi-okf-knowledge-studio",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-02"
+  },
+  {
+   "slug": "okf-beginner-runbook",
+   "repo_url": "https://github.com/xbillwatsonx/okf-beginner-runbook",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "okf-civic-sample",
+   "repo_url": "https://github.com/TechSoup/okf-civic-sample",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-16"
+  },
+  {
+   "slug": "okf-desktop",
+   "repo_url": "https://github.com/vinodborole/okf-desktop",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-27"
+  },
+  {
+   "slug": "okf-editor",
+   "repo_url": "https://github.com/atteniv/okf-editor",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-guard",
+   "repo_url": "https://github.com/darshanNhb/okf-guard",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-20"
+  },
+  {
+   "slug": "okf-web-server",
+   "repo_url": "https://github.com/infurl/okf-web-server",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-manager",
+   "repo_url": "https://github.com/DrMarty/okf_manager",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-27"
+  },
+  {
+   "slug": "okflib",
+   "repo_url": "https://github.com/gwenlake/okflib",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-12"
+  },
+  {
+   "slug": "okflight",
+   "repo_url": "https://github.com/kriswill/okflight",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-24"
+  },
+  {
+   "slug": "okfx",
+   "repo_url": "https://github.com/okfx/okfx",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "supachai-j-open-knowledge-format-starter",
+   "repo_url": "https://github.com/supachai-j/open-knowledge-format-starter",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "open-wiki-studio",
+   "repo_url": "https://github.com/Panzenbaby/open-wiki-studio",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-22"
+  },
+  {
+   "slug": "opencode-okf-context",
+   "repo_url": "https://github.com/likai-hust/opencode-okf-context",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-08"
+  },
+  {
+   "slug": "second-brain-marketplace",
+   "repo_url": "https://github.com/SpillwaveSolutions/second-brain-marketplace",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-27"
+  },
+  {
+   "slug": "simple-okf",
+   "repo_url": "https://github.com/18studio/simple_okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "wooserv-wp-knowledge-layer",
+   "repo_url": "https://github.com/wooserv/wp-knowledge-layer",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "bundlewalker",
+   "repo_url": "https://github.com/HendrikReh/BundleWalker",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-04"
+  },
+  {
+   "slug": "cra-knowledge-base",
+   "repo_url": "https://github.com/JonasLundin/CRA-knowledge-base",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-26"
+  },
+  {
+   "slug": "knowbench",
+   "repo_url": "https://github.com/priyanshu015211/KnowBench",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-12"
+  },
+  {
+   "slug": "okengine",
+   "repo_url": "https://github.com/jalewis/OKEngine",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "okfnotes",
+   "repo_url": "https://github.com/note4gcom/OKFNotes",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-10"
+  },
+  {
+   "slug": "okfolio",
+   "repo_url": "https://github.com/Eijnewgnaw/OKFolio",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-20"
+  },
+  {
+   "slug": "sachinmishra-ux-open_knowledge_format",
+   "repo_url": "https://github.com/SachinMishra-ux/Open_Knowledge_Format",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "scriptorium",
+   "repo_url": "https://github.com/SunsetDrifter/Scriptorium",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-10"
+  },
+  {
+   "slug": "simplewiki",
+   "repo_url": "https://github.com/chottokun/SimpleWiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-17"
+  },
+  {
+   "slug": "tasleemat",
+   "repo_url": "https://github.com/fakhruldeen/Tasleemat",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-08"
+  },
+  {
+   "slug": "vesnai",
+   "repo_url": "https://github.com/J1drim/VesnAI",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-02"
+  },
+  {
+   "slug": "agent-knowledge-base",
+   "repo_url": "https://github.com/deniz-adbeam/agent-knowledge-base",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-23"
+  },
+  {
+   "slug": "amber",
+   "repo_url": "https://github.com/DefinitelyNotVibeCoded/amber",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "binder",
+   "repo_url": "https://github.com/ghchinoy/binder",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-19"
+  },
+  {
+   "slug": "catalogify",
+   "repo_url": "https://github.com/alexcpn/catalogify",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-06"
+  },
+  {
+   "slug": "cricketstudio-okf",
+   "repo_url": "https://github.com/i-m-arul/cricketstudio-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "deep-wiki-agent",
+   "repo_url": "https://github.com/giurlanda/deep-wiki-agent",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-14"
+  },
+  {
+   "slug": "dharma-okf",
+   "repo_url": "https://github.com/dharma-okf-foundation/dharma-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-17"
+  },
+  {
+   "slug": "escriba",
+   "repo_url": "https://github.com/Zetesis-Labs/escriba",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-16"
+  },
+  {
+   "slug": "factile",
+   "repo_url": "https://github.com/factile/factile",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "fulcra-shared-memory",
+   "repo_url": "https://github.com/keng009/fulcra-shared-memory",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-08"
+  },
+  {
+   "slug": "janet-agent",
+   "repo_url": "https://github.com/stjbrown/janet-agent",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-20"
+  },
+  {
+   "slug": "javascript-knowledge-bundle",
+   "repo_url": "https://github.com/bhagatabhijeet/javascript-knowledge-bundle",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-18"
+  },
+  {
+   "slug": "kaut",
+   "repo_url": "https://github.com/yurgeno/kaut",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-02"
+  },
+  {
+   "slug": "kbforge",
+   "repo_url": "https://github.com/flyersworder/kbforge",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-14"
+  },
+  {
+   "slug": "klustra",
+   "repo_url": "https://github.com/claudiobottari/klustra",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "kw-okf-memory-skill",
+   "repo_url": "https://github.com/KevinLuo1/kw-okf-memory-skill",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "librocat",
+   "repo_url": "https://github.com/librocat/librocat",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-22"
+  },
+  {
+   "slug": "lore",
+   "repo_url": "https://github.com/rafcip/lore",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "md2okf",
+   "repo_url": "https://github.com/lars20070/md2okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-16"
+  },
+  {
+   "slug": "mdbrain",
+   "repo_url": "https://github.com/romiluz13/mdbrain",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "mira-okf",
+   "repo_url": "https://github.com/gnunesmoura/mira-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-21"
+  },
+  {
+   "slug": "okam",
+   "repo_url": "https://github.com/juliano-ceconi/okam",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "eli-l-okf-builder",
+   "repo_url": "https://github.com/eli-l/okf-builder",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "okf-export-pack",
+   "repo_url": "https://github.com/nevoflux-browser/okf-export-pack",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-graphify",
+   "repo_url": "https://github.com/hah23255/okf-graphify",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-16"
+  },
+  {
+   "slug": "okf-loremaster",
+   "repo_url": "https://github.com/PFreda-Lab/okf-loremaster",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-01"
+  },
+  {
+   "slug": "okf-reader",
+   "repo_url": "https://github.com/lorsabyan/okf-reader",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-tools",
+   "repo_url": "https://github.com/hdean-ssp/okf-tools",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "okforge",
+   "repo_url": "https://github.com/jeromeetienne/okforge",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "ryansann-okfview",
+   "repo_url": "https://github.com/ryansann/okfview",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "opencode-graphify-refresh",
+   "repo_url": "https://github.com/theOnlyBoy/opencode-graphify-refresh",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-07"
+  },
+  {
+   "slug": "proj-okf-graph",
+   "repo_url": "https://github.com/lloydrichards/proj_okf-graph",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-15"
+  },
+  {
+   "slug": "pulumi-platform-okf-bundle",
+   "repo_url": "https://github.com/dirien/pulumi-platform-okf-bundle",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-28"
+  },
+  {
+   "slug": "pydantic-ai-okf",
+   "repo_url": "https://github.com/sbo-inc/pydantic-ai-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-11"
+  },
+  {
+   "slug": "repoglyph-py",
+   "repo_url": "https://github.com/remsky/repoglyph-py",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-13"
+  },
+  {
+   "slug": "research-knowledge-capture",
+   "repo_url": "https://github.com/SpillwaveSolutions/research-knowledge-capture",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-09"
+  },
+  {
+   "slug": "saidwhen",
+   "repo_url": "https://github.com/h4nz4/saidwhen",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "second-brain-core",
+   "repo_url": "https://github.com/SpillwaveSolutions/second-brain-core",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-09"
+  },
+  {
+   "slug": "self-grow-wiki",
+   "repo_url": "https://github.com/Ikalus1988/self-grow-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "signed-okf",
+   "repo_url": "https://github.com/dynamicfeed/signed-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "spec-okf",
+   "repo_url": "https://github.com/giossaurus/spec-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "taiwan-building-code-rag-benchmark",
+   "repo_url": "https://github.com/YuJunWang/taiwan-building-code-rag-benchmark",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-12"
+  },
+  {
+   "slug": "thirukkural-okf",
+   "repo_url": "https://github.com/antonykanagu/thirukkural-okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-05"
+  },
+  {
+   "slug": "throughline",
+   "repo_url": "https://github.com/inkxel/throughline",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "validate-action",
+   "repo_url": "https://github.com/okforest/validate-action",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "vrp-spec",
+   "repo_url": "https://github.com/HemmaBo-se/vrp-spec",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-09"
+  },
+  {
+   "slug": "vscode-llm-wiki",
+   "repo_url": "https://github.com/t04dJ14n9/vscode-llm-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-13"
+  },
+  {
+   "slug": "waqwaq",
+   "repo_url": "https://github.com/msradam/waqwaq",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-12"
+  },
+  {
+   "slug": "weave-context-skills",
+   "repo_url": "https://github.com/ManuelGil/weave-context-skills",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-29"
+  },
+  {
+   "slug": "yggdrasil",
+   "repo_url": "https://github.com/luizfelipedm/yggdrasil",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-29"
+  },
+  {
+   "slug": "50firsttapes",
+   "repo_url": "https://github.com/adilzuberi/50firsttapes",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "agents.okf",
+   "repo_url": "https://github.com/crapougnax/AGENTS.okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-12"
+  },
+  {
+   "slug": "akos",
+   "repo_url": "https://github.com/kevinkaupert/AKOS",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-31"
+  },
+  {
+   "slug": "ai-lab",
+   "repo_url": "https://github.com/ZenzerJs/Ai-Lab",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-15"
+  },
+  {
+   "slug": "ask-your-markdown",
+   "repo_url": "https://github.com/imelanthirayan/Ask-Your-Markdown",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-04"
+  },
+  {
+   "slug": "claude-okf-memory",
+   "repo_url": "https://github.com/Anurag-patil-26/Claude-OKF-Memory",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-07"
+  },
+  {
+   "slug": "disk.brain",
+   "repo_url": "https://github.com/mhancock537/Disk.Brain",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-15"
+  },
+  {
+   "slug": "free-knowledge-documents-format-specification",
+   "repo_url": "https://github.com/torvn77-2/Free-Knowledge-Documents-Format-Specification",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "knowledge-os-plugin",
+   "repo_url": "https://github.com/adrianskobiej/Knowledge-os-plugin",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "memoryplane",
+   "repo_url": "https://github.com/FelixKras/MemoryPlane",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "nexusrag",
+   "repo_url": "https://github.com/phoenix191919/NexusRAG",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-08"
+  },
+  {
+   "slug": "nova",
+   "repo_url": "https://github.com/hencter/Nova",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-05"
+  },
+  {
+   "slug": "okf-bundle-maker",
+   "repo_url": "https://github.com/praveenkumarl/OKF-Bundle-maker",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-15"
+  },
+  {
+   "slug": "okf-platform",
+   "repo_url": "https://github.com/AamirH1/OKF-Platform",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-24"
+  },
+  {
+   "slug": "officemd",
+   "repo_url": "https://github.com/GodModeAI2025/OfficeMD",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-20"
+  },
+  {
+   "slug": "opencontextvault",
+   "repo_url": "https://github.com/catinahat85/OpenContextVault",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "hu-qi-openknowledgeformat-skill",
+   "repo_url": "https://github.com/hu-qi/OpenKnowledgeFormat-Skill",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "openknowledgeformat-skill",
+   "repo_url": "https://github.com/hu-qi/OpenKnowledgeFormat-Skill",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "quick-organize",
+   "repo_url": "https://github.com/vipsyvipul/Quick-Organize",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "rag-vs-okf-open-knowledge-formatter-a-retrieval-benchmark",
+   "repo_url": "https://github.com/Thanush-pk/RAG-vs-OKF-Open-Knowledge-Formatter-A-Retrieval-Benchmark",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "spek-kit",
+   "repo_url": "https://github.com/1999Swarup/SpeK-Kit",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "swarmmojo",
+   "repo_url": "https://github.com/Buzburg/SwarmMojo",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-07"
+  },
+  {
+   "slug": "xinbaowiki",
+   "repo_url": "https://github.com/XinbaoQiao/XinbaoWiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "agent-docs-template",
+   "repo_url": "https://github.com/RTopdar/agent-docs-template",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-07"
+  },
+  {
+   "slug": "agent-skills",
+   "repo_url": "https://github.com/hstokes185/agent-skills",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-15"
+  },
+  {
+   "slug": "agent-workspace-templates",
+   "repo_url": "https://github.com/corbel-technology-ltd/agent-workspace-templates",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-10"
+  },
+  {
+   "slug": "agentic-knowledge-vault",
+   "repo_url": "https://github.com/EliasKouloures/agentic-knowledge-vault",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-30"
+  },
+  {
+   "slug": "agentkb-diag",
+   "repo_url": "https://github.com/techdou/agentkb-diag",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-24"
+  },
+  {
+   "slug": "agentstate-lite",
+   "repo_url": "https://github.com/Holaxis-ai/agentstate-lite",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "ai-knowledge-base",
+   "repo_url": "https://github.com/clarksprite/ai-knowledge-base",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-19"
+  },
+  {
+   "slug": "ai-wiki",
+   "repo_url": "https://github.com/Scorpion1221/ai-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-29"
+  },
+  {
+   "slug": "astro-huge-doc",
+   "repo_url": "https://github.com/MicroWebStacks/astro-huge-doc",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "awesome-okf-kit",
+   "repo_url": "https://github.com/vinodborole/awesome-okf-kit",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-27"
+  },
+  {
+   "slug": "brain-kit",
+   "repo_url": "https://github.com/aleckyann/brain-kit",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-18"
+  },
+  {
+   "slug": "church-wiki-starter",
+   "repo_url": "https://github.com/addmirer144/church-wiki-starter",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "citefid",
+   "repo_url": "https://github.com/amurlaniakea/citefid",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "clineflow",
+   "repo_url": "https://github.com/hassanvfx/clineflow",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-15"
+  },
+  {
+   "slug": "compendium",
+   "repo_url": "https://github.com/fuseraft/compendium",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-25"
+  },
+  {
+   "slug": "cursidian",
+   "repo_url": "https://github.com/Prgrmmrjns/cursidian",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "dba-knowledge-base",
+   "repo_url": "https://github.com/ggu-dba-kb-genai/dba-knowledge-base",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-07"
+  },
+  {
+   "slug": "deepagents-okf-backend",
+   "repo_url": "https://github.com/emanueleielo/deepagents-okf-backend",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "enkinex-okf",
+   "repo_url": "https://github.com/enkinex/enkinex-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "executive-coordination",
+   "repo_url": "https://github.com/SpillwaveSolutions/executive-coordination",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-24"
+  },
+  {
+   "slug": "executive-job-search",
+   "repo_url": "https://github.com/SpillwaveSolutions/executive-job-search",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-25"
+  },
+  {
+   "slug": "explore-forge-confluence-okf-producer",
+   "repo_url": "https://github.com/ibuchanan/explore-forge-confluence-okf-producer",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "fabric-clinical-supply-ontology",
+   "repo_url": "https://github.com/microsoft/fabric-clinical-supply-ontology",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-27"
+  },
+  {
+   "slug": "forge-wiki",
+   "repo_url": "https://github.com/chrono-meta/forge-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "gitagent-web-chat",
+   "repo_url": "https://github.com/tbrandenburg/gitagent-web-chat",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-18"
+  },
+  {
+   "slug": "gnosis",
+   "repo_url": "https://github.com/thanos/gnosis",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "good2go",
+   "repo_url": "https://github.com/jb9k62/good2go",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-10"
+  },
+  {
+   "slug": "graphql-okf",
+   "repo_url": "https://github.com/ayrtonvwf/graphql-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-31"
+  },
+  {
+   "slug": "graphspec",
+   "repo_url": "https://github.com/brandonburrus/graphspec",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-06"
+  },
+  {
+   "slug": "grazlab-content-research",
+   "repo_url": "https://github.com/allthingsclowd/grazlab-content-research",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "grey-matter",
+   "repo_url": "https://github.com/naikoob/grey-matter",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-06"
+  },
+  {
+   "slug": "homebrew-okf",
+   "repo_url": "https://github.com/okfcli/homebrew-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-06"
+  },
+  {
+   "slug": "human-context-bundle",
+   "repo_url": "https://github.com/catlikeflyer/human-context-bundle",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-05"
+  },
+  {
+   "slug": "jidoseal-mcp",
+   "repo_url": "https://github.com/Jidoseal/jidoseal-mcp",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-11"
+  },
+  {
+   "slug": "jonex-wiki",
+   "repo_url": "https://github.com/yuezhiai/jonex-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "kdd-book",
+   "repo_url": "https://github.com/MauricioPerera/kdd-book",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-02"
+  },
+  {
+   "slug": "kmctl",
+   "repo_url": "https://github.com/JasperHG90/kmctl",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-19"
+  },
+  {
+   "slug": "knowledge-bricks",
+   "repo_url": "https://github.com/damian0o/knowledge-bricks",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-24"
+  },
+  {
+   "slug": "knowledge-bundle-skill",
+   "repo_url": "https://github.com/driches/knowledge-bundle-skill",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-30"
+  },
+  {
+   "slug": "knowledge-site",
+   "repo_url": "https://github.com/chirag127/knowledge-site",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "knowledge-template",
+   "repo_url": "https://github.com/open-science-pillars/knowledge-template",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "ledgerkb",
+   "repo_url": "https://github.com/rajo69/ledgerkb",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-08"
+  },
+  {
+   "slug": "llm-wiki-plugin",
+   "repo_url": "https://github.com/TheAndrewStaker/llm-wiki-plugin",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-28"
+  },
+  {
+   "slug": "llm-yuki",
+   "repo_url": "https://github.com/yuchengml/llm_yuki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-26"
+  },
+  {
+   "slug": "lodestar",
+   "repo_url": "https://github.com/dbareagimeno/lodestar",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "lokf-agent-skills",
+   "repo_url": "https://github.com/noelmcloughlin/lokf-agent-skills",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-17"
+  },
+  {
+   "slug": "magi-knowledge",
+   "repo_url": "https://github.com/dogmaai/magi-knowledge",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-03"
+  },
+  {
+   "slug": "minimal-harness",
+   "repo_url": "https://github.com/LucianoLupo/minimal-harness",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-01"
+  },
+  {
+   "slug": "modaka-backup",
+   "repo_url": "https://github.com/crapougnax/modaka-backup",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-02"
+  },
+  {
+   "slug": "mosaic",
+   "repo_url": "https://github.com/vonargo/mosAIc",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "msxai-harness",
+   "repo_url": "https://github.com/vdom-1/msxai-harness",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "my-landing-page",
+   "repo_url": "https://github.com/Mahad-Usman-15/my-landing-page",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-28"
+  },
+  {
+   "slug": "nostr-dev",
+   "repo_url": "https://github.com/McClawdDigital/nostr-dev",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "oifmd",
+   "repo_url": "https://github.com/oifmd/oifmd",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-16"
+  },
+  {
+   "slug": "okc",
+   "repo_url": "https://github.com/Auran0s/okc",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "okf-agent-graph",
+   "repo_url": "https://github.com/SpillwaveSolutions/okf-agent-graph",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-06"
+  },
+  {
+   "slug": "okf-agent-memory-feedstock",
+   "repo_url": "https://github.com/conda-forge/okf-agent-memory-feedstock",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-02"
+  },
+  {
+   "slug": "okf-agent-skills",
+   "repo_url": "https://github.com/artemVeduta/okf-agent-skills",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-07"
+  },
+  {
+   "slug": "okf-attestor",
+   "repo_url": "https://github.com/Faizan-Shurjeel/okf-attestor",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-24"
+  },
+  {
+   "slug": "okf-author",
+   "repo_url": "https://github.com/parkscloud/okf-author",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-bootstrap",
+   "repo_url": "https://github.com/jb9k62/okf-bootstrap",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-06"
+  },
+  {
+   "slug": "okf-bundle-skill",
+   "repo_url": "https://github.com/kriangsak-puk/okf-bundle-skill",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-25"
+  },
+  {
+   "slug": "okf-bundle-template",
+   "repo_url": "https://github.com/Movida/okf-bundle-template",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-31"
+  },
+  {
+   "slug": "okf-catalog",
+   "repo_url": "https://github.com/drathm/okf-catalog",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-08"
+  },
+  {
+   "slug": "okf-cli",
+   "repo_url": "https://github.com/auto-medica-labs/okf-cli",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "okf-domain-elicit",
+   "repo_url": "https://github.com/NickMoignard/okf-domain-elicit",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-04"
+  },
+  {
+   "slug": "okf-gen",
+   "repo_url": "https://github.com/ovishkh/okf-gen",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-hub",
+   "repo_url": "https://github.com/Movida/okf-hub",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-31"
+  },
+  {
+   "slug": "okf-kb-framework",
+   "repo_url": "https://github.com/kaeferboeck/okf-kb-framework",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-knowledge-mcp",
+   "repo_url": "https://github.com/chirag127/okf-knowledge-mcp",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-28"
+  },
+  {
+   "slug": "okf-legal",
+   "repo_url": "https://github.com/apiotrowski-afk/okf-legal",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-18"
+  },
+  {
+   "slug": "okf-lint",
+   "repo_url": "https://github.com/playcode/okf-lint",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "okf-llm-content-erstellung",
+   "repo_url": "https://github.com/eullr/okf-llm-content-erstellung",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-12"
+  },
+  {
+   "slug": "okf-llm-wiki-template",
+   "repo_url": "https://github.com/blue42-david/okf-llm-wiki-template",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-06"
+  },
+  {
+   "slug": "okf-migrate",
+   "repo_url": "https://github.com/brianarizaga/okf-migrate",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-22"
+  },
+  {
+   "slug": "okf-ons",
+   "repo_url": "https://github.com/chris-page-gov/okf-ons",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-15"
+  },
+  {
+   "slug": "okf-operational-layer",
+   "repo_url": "https://github.com/teamdublabs/okf-operational-layer",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-pkm-starter",
+   "repo_url": "https://github.com/deepakjethwani-source/okf-pkm-starter",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-21"
+  },
+  {
+   "slug": "okf-plugin",
+   "repo_url": "https://github.com/SpillwaveSolutions/okf-plugin",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-07"
+  },
+  {
+   "slug": "okf-pointers",
+   "repo_url": "https://github.com/SpillwaveSolutions/okf-pointers",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-04"
+  },
+  {
+   "slug": "okf-postgres",
+   "repo_url": "https://github.com/mfdaves/okf-postgres",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-07"
+  },
+  {
+   "slug": "okf-proto",
+   "repo_url": "https://github.com/ghchinoy/okf-proto",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-19"
+  },
+  {
+   "slug": "okf-roam",
+   "repo_url": "https://github.com/zbodtorf/okf-roam",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-system",
+   "repo_url": "https://github.com/dja1369/okf-system",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-uk-living",
+   "repo_url": "https://github.com/chris-page-gov/okf-uk-living",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-16"
+  },
+  {
+   "slug": "okf-viewer",
+   "repo_url": "https://github.com/manojbajaj95/okf-viewer",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-04"
+  },
+  {
+   "slug": "okf-weaver",
+   "repo_url": "https://github.com/alusci/okf-weaver",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-22"
+  },
+  {
+   "slug": "okf-wiki",
+   "repo_url": "https://github.com/tom-jordan23/okf-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "okf-notebook",
+   "repo_url": "https://github.com/uxe-security-solutions/okf_notebook",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-28"
+  },
+  {
+   "slug": "okfdump",
+   "repo_url": "https://github.com/davebarnwell/okfdump",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okfleet",
+   "repo_url": "https://github.com/kodepapa/okfleet",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okfsync",
+   "repo_url": "https://github.com/daniellinuk/okfsync",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-09"
+  },
+  {
+   "slug": "okftool",
+   "repo_url": "https://github.com/ryansann/okftool",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okph",
+   "repo_url": "https://github.com/Fcmam5/okph",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-12"
+  },
+  {
+   "slug": "okworkspace",
+   "repo_url": "https://github.com/postfix/okworkspace",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "oneo",
+   "repo_url": "https://github.com/tbrandenburg/oneo",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "opencro",
+   "repo_url": "https://github.com/juliano-ceconi/opencro",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "opendpp-knowledge",
+   "repo_url": "https://github.com/OpenDPP/opendpp-knowledge",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "opengeo-spec",
+   "repo_url": "https://github.com/cangqiaoGEO/opengeo-spec",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-28"
+  },
+  {
+   "slug": "oqa",
+   "repo_url": "https://github.com/oqa-spec/oqa",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "pgokf",
+   "repo_url": "https://github.com/LogicOcean/pgokf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-30"
+  },
+  {
+   "slug": "pi-echoes-vault",
+   "repo_url": "https://github.com/matdev83/pi-echoes-vault",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-27"
+  },
+  {
+   "slug": "pi-okf",
+   "repo_url": "https://github.com/renezander030/pi-okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "pi-sat12",
+   "repo_url": "https://github.com/hillar/pi-sat12",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-10"
+  },
+  {
+   "slug": "portable-agent-workspace-template",
+   "repo_url": "https://github.com/MauricioPerera/portable-agent-workspace-template",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-30"
+  },
+  {
+   "slug": "project-knowledge-capture",
+   "repo_url": "https://github.com/SpillwaveSolutions/project-knowledge-capture",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-09"
+  },
+  {
+   "slug": "public-procurement-okf",
+   "repo_url": "https://github.com/downoff/public-procurement-okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-21"
+  },
+  {
+   "slug": "rag-on-okf",
+   "repo_url": "https://github.com/shunvel/rag-on-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-09"
+  },
+  {
+   "slug": "research-graph",
+   "repo_url": "https://github.com/SpillwaveSolutions/research-graph",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-04"
+  },
+  {
+   "slug": "rezzer",
+   "repo_url": "https://github.com/jordiboehme/rezzer",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-20"
+  },
+  {
+   "slug": "rokf",
+   "repo_url": "https://github.com/ashishtele/rokf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "scope-okf",
+   "repo_url": "https://github.com/jobindjohn/scope-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-02"
+  },
+  {
+   "slug": "second-brain-cli",
+   "repo_url": "https://github.com/DevPartner/second-brain-cli",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-05"
+  },
+  {
+   "slug": "site-shell",
+   "repo_url": "https://github.com/chirag127/site-shell",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "skalling-dev-team",
+   "repo_url": "https://github.com/alexskalling/skalling-dev-team",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-05"
+  },
+  {
+   "slug": "system-architecture-capture",
+   "repo_url": "https://github.com/SpillwaveSolutions/system-architecture-capture",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-09"
+  },
+  {
+   "slug": "thats-a-first-crawler",
+   "repo_url": "https://github.com/frkandris/thats-a-first-crawler",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "the-masters-shadow",
+   "repo_url": "https://github.com/nihilistau/the_masters_shadow",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "vault2okf",
+   "repo_url": "https://github.com/abhishekacharya200/vault2okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-26"
+  },
+  {
+   "slug": "vscode-weave-context",
+   "repo_url": "https://github.com/ManuelGil/vscode-weave-context",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-28"
+  },
+  {
+   "slug": "weave-context-dashboard",
+   "repo_url": "https://github.com/ManuelGil/weave-context-dashboard",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-28"
+  },
+  {
+   "slug": "website-to-okf",
+   "repo_url": "https://github.com/MvdB/website_to_okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "wiki-skills",
+   "repo_url": "https://github.com/ChenchaoZhao/wiki-skills",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "workmory",
+   "repo_url": "https://github.com/miantiao-me/workmory",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-14"
+  },
+  {
+   "slug": "zvec-okf-search",
+   "repo_url": "https://github.com/2767011/zvec-okf-search",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "2mem",
+   "repo_url": "https://github.com/brandonmead/2mem",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-28"
+  },
+  {
+   "slug": "ai-act-knowledge-base",
+   "repo_url": "https://github.com/JonasLundin/AI-Act-knowledge-base",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-27"
+  },
+  {
+   "slug": "ai-product-manager",
+   "repo_url": "https://github.com/Yoseph-Zuskin/AI-Product-Manager",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-07"
+  },
+  {
+   "slug": "ai-tadpole-os-industry-templates",
+   "repo_url": "https://github.com/DDS-Solutions/AI-Tadpole-OS-Industry-Templates",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "anethub",
+   "repo_url": "https://github.com/ANetResearch/ANetHub",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-16"
+  },
+  {
+   "slug": "agentbase-mcp",
+   "repo_url": "https://github.com/khoaha1904/AgentBase-MCP",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-02"
+  },
+  {
+   "slug": "astromity-devops",
+   "repo_url": "https://github.com/devsmithnow/Astromity-DevOps",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-10"
+  },
+  {
+   "slug": "autowikipathy",
+   "repo_url": "https://github.com/Lars-n-Anderson/Autowikipathy",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "biofairncare",
+   "repo_url": "https://github.com/pratikchandrani/BioFAIRnCARE",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-02"
+  },
+  {
+   "slug": "biofairncare-lite",
+   "repo_url": "https://github.com/pratikchandrani/BioFAIRnCARE-lite",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-02"
+  },
+  {
+   "slug": "cvd-knowledge-base",
+   "repo_url": "https://github.com/JonasLundin/CVD-knowledge-base",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-27"
+  },
+  {
+   "slug": "collectivesoftwareknowledgebase",
+   "repo_url": "https://github.com/CollectiveSoftware-Public/CollectiveSoftwareKnowledgeBase",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-07"
+  },
+  {
+   "slug": "conformity-assessment-knowledge-base",
+   "repo_url": "https://github.com/JonasLundin/Conformity-Assessment-knowledge-base",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-27"
+  },
+  {
+   "slug": "documents-to-markdown-okf-bundler",
+   "repo_url": "https://github.com/Lato-Masi/Documents-to-Markdown-OKF-bundler",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-16"
+  },
+  {
+   "slug": "driftgaurd",
+   "repo_url": "https://github.com/jpjoshua/Driftgaurd",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "entity.md",
+   "repo_url": "https://github.com/TangTalks/Entity.md",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-05"
+  },
+  {
+   "slug": "friedman-cli-okf",
+   "repo_url": "https://github.com/FriedmanJP/Friedman-cli-OKF",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-28"
+  },
+  {
+   "slug": "google-open-knowledge-format",
+   "repo_url": "https://github.com/SAIKIRANPATNANA/GOOGLE_OPEN_KNOWLEDGE_FORMAT",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-30"
+  },
+  {
+   "slug": "google-okf-forge",
+   "repo_url": "https://github.com/michaeldeguzman/Google-OKF-Forge",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-01"
+  },
+  {
+   "slug": "informa-awesome-design",
+   "repo_url": "https://github.com/Viottofc-Informa/Informa-Awesome-Design",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-31"
+  },
+  {
+   "slug": "itinfra",
+   "repo_url": "https://github.com/matrixNeo76/ItInfra",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-15"
+  },
+  {
+   "slug": "j-legal-okf",
+   "repo_url": "https://github.com/Manatan801/J-LEGAL-OKF",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-31"
+  },
+  {
+   "slug": "kaebea",
+   "repo_url": "https://github.com/Subworkflow-AI/Kaebea",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "knowit.ai",
+   "repo_url": "https://github.com/Shenone77/KnowIT.AI",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "leagents",
+   "repo_url": "https://github.com/ratelcode/LeAgents",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "workdoneby-srinivasan-learning-open-knowledge-format-okf",
+   "repo_url": "https://github.com/workdoneby-srinivasan/Learning-open-knowledge-format-OKF",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "llm-wiki-install",
+   "repo_url": "https://github.com/pennyworthatc/Llm-wiki-install",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-14"
+  },
+  {
+   "slug": "macroeconometricmodels-okf",
+   "repo_url": "https://github.com/FriedmanJP/MacroEconometricModels-OKF",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-25"
+  },
+  {
+   "slug": "mindbase",
+   "repo_url": "https://github.com/Madhusuthanan-B/Mindbase",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-02"
+  },
+  {
+   "slug": "nis2-knowledge-base",
+   "repo_url": "https://github.com/JonasLundin/NIS2-knowledge-base",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-27"
+  },
+  {
+   "slug": "nist-csf-knowledge-base",
+   "repo_url": "https://github.com/JonasLundin/NIST-CSF-knowledge-base",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-27"
+  },
+  {
+   "slug": "neuralkg",
+   "repo_url": "https://github.com/rvguha/NeuralKG",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-03"
+  },
+  {
+   "slug": "okeef",
+   "repo_url": "https://github.com/cakkes/OKEEF",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-17"
+  },
+  {
+   "slug": "okf-action",
+   "repo_url": "https://github.com/JackFliegel/OKF-Action",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-flat",
+   "repo_url": "https://github.com/knojuan/OKF-Flat",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-nt",
+   "repo_url": "https://github.com/quasvx/OKF-NT",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-30"
+  },
+  {
+   "slug": "okf-scalardb-scalardl",
+   "repo_url": "https://github.com/wfukatsu/OKF-ScalarDB-ScalarDL",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-28"
+  },
+  {
+   "slug": "okf-starter",
+   "repo_url": "https://github.com/jaygmx/OKF-Starter",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-21"
+  },
+  {
+   "slug": "okf-utils",
+   "repo_url": "https://github.com/Zircoz/OKF-utils",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-mail",
+   "repo_url": "https://github.com/pat229988/OKF_MAIL",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-03"
+  },
+  {
+   "slug": "okf-workspace",
+   "repo_url": "https://github.com/MrLouix/OKF_workspace",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-27"
+  },
+  {
+   "slug": "okfgraph",
+   "repo_url": "https://github.com/opticsWolf/OKFgraph",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okts",
+   "repo_url": "https://github.com/prabhukirangit/OKTS",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-03"
+  },
+  {
+   "slug": "okf.net",
+   "repo_url": "https://github.com/OzzieAI-AU/Okf.Net",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-11"
+  },
+  {
+   "slug": "open-knowledge-catalog",
+   "repo_url": "https://github.com/guifelix/Open-Knowledge-Catalog",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "abhisheksssss-open-knowledge-format",
+   "repo_url": "https://github.com/abhisheksssss/Open-Knowledge-Format",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "mukesh10368-open-knowledge-format",
+   "repo_url": "https://github.com/mukesh10368/Open-Knowledge-Format",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "saumyashah09-open-knowledge-format",
+   "repo_url": "https://github.com/SaumyaShah09/Open-Knowledge-Format",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "rohaanuv-open-knowledge-format-implementation",
+   "repo_url": "https://github.com/rohaanuv/Open-Knowledge-Format-Implementation",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "open-knowledge-format-implementation",
+   "repo_url": "https://github.com/rohaanuv/Open-Knowledge-Format-Implementation",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "open-knowledge-format-mesh",
+   "repo_url": "https://github.com/Analytics206/Open-Knowledge-Format-Mesh",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-02"
+  },
+  {
+   "slug": "open-knowledge-format-vs-rag",
+   "repo_url": "https://github.com/avinashmanivannan03/Open-Knowledge-Format-vs-RAG",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-30"
+  },
+  {
+   "slug": "opencontextscitool",
+   "repo_url": "https://github.com/aminHZDEV/OpenContextScitool",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "opendidactia",
+   "repo_url": "https://github.com/nmarafo/OpenDidactia",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-12"
+  },
+  {
+   "slug": "openkm",
+   "repo_url": "https://github.com/LeonardoDiasRR/OpenKM",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-29"
+  },
+  {
+   "slug": "rhdirectorassistant",
+   "repo_url": "https://github.com/peterharrad/RHDirectorAssistant",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-15"
+  },
+  {
+   "slug": "sdlc",
+   "repo_url": "https://github.com/war851/SDLC",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "snapp-brain",
+   "repo_url": "https://github.com/121Development/Snapp-brain",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "software-supply-chain-knowledge-base",
+   "repo_url": "https://github.com/JonasLundin/Software-Supply-Chain-knowledge-base",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-27"
+  },
+  {
+   "slug": "td-okf",
+   "repo_url": "https://github.com/clydewatts1/TD_OKF",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "techsoup-product-bundle",
+   "repo_url": "https://github.com/TechSoup/TechSoup-Product-Bundle",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-30"
+  },
+  {
+   "slug": "tradingagentsrunneradk",
+   "repo_url": "https://github.com/roberttips/TradingAgentsRunnerADK",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "truedoc",
+   "repo_url": "https://github.com/islandtimer/TrueDoc",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-18"
+  },
+  {
+   "slug": "verityrag-lab",
+   "repo_url": "https://github.com/Rafay755/VerityRAG-Lab",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-11"
+  },
+  {
+   "slug": "account-management",
+   "repo_url": "https://github.com/SpillwaveSolutions/account-management",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-15"
+  },
+  {
+   "slug": "acme-context-demo",
+   "repo_url": "https://github.com/GDG-PVD/acme-context-demo",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-13"
+  },
+  {
+   "slug": "adda-cli",
+   "repo_url": "https://github.com/vyasdx/adda-cli",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-26"
+  },
+  {
+   "slug": "aeps-llm-wiki-plugin",
+   "repo_url": "https://github.com/zhigangliu-bot/aeps-llm-wiki-plugin",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-03"
+  },
+  {
+   "slug": "agent-coding-standards",
+   "repo_url": "https://github.com/soniccyclone/agent-coding-standards",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "agent-core",
+   "repo_url": "https://github.com/timoshinoleg-eng/agent-core",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-07"
+  },
+  {
+   "slug": "agent-knowledge-graph-lab",
+   "repo_url": "https://github.com/rmax-ai/agent-knowledge-graph-lab",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-28"
+  },
+  {
+   "slug": "agent-maintained-wiki",
+   "repo_url": "https://github.com/infonex/agent-maintained-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-14"
+  },
+  {
+   "slug": "agent-memory",
+   "repo_url": "https://github.com/tsnAnh/agent-memory",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "agent-memory-os",
+   "repo_url": "https://github.com/tsnAnh/agent-memory-os",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-31"
+  },
+  {
+   "slug": "agent-spec-research",
+   "repo_url": "https://github.com/mjmiller41/agent-spec-research",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-31"
+  },
+  {
+   "slug": "agentic-agri-advisor",
+   "repo_url": "https://github.com/odisysai/agentic-agri-advisor",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "agentic-knowledge-bundle",
+   "repo_url": "https://github.com/mfxgu2i/agentic-knowledge-bundle",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-28"
+  },
+  {
+   "slug": "agentpay-brain-okf",
+   "repo_url": "https://github.com/shawnhvac/agentpay-brain-okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "agentscar",
+   "repo_url": "https://github.com/agentheavy/agentscar",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-07"
+  },
+  {
+   "slug": "ager-translators",
+   "repo_url": "https://github.com/SpillwaveSolutions/ager-translators",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-19"
+  },
+  {
+   "slug": "ai-brain-starter",
+   "repo_url": "https://github.com/david-wulf/ai-brain-starter",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "ai-contribution-policies",
+   "repo_url": "https://github.com/jrjsmrtn/ai-contribution-policies",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-05"
+  },
+  {
+   "slug": "ai-infrastructure-wiki",
+   "repo_url": "https://github.com/chris-page-gov/ai-infrastructure-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "ai-local-file-knowledge-sys",
+   "repo_url": "https://github.com/chrisglick/ai-local-file-knowledge-sys",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "al-dente",
+   "repo_url": "https://github.com/al-dente-processes/al-dente",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "alexandria",
+   "repo_url": "https://github.com/tbgallinucci/alexandria",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "ameesh",
+   "repo_url": "https://github.com/manaty/ameesh",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-05"
+  },
+  {
+   "slug": "amplifier-bundle-okf",
+   "repo_url": "https://github.com/manojp99/amplifier-bundle-okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-03"
+  },
+  {
+   "slug": "annpackv2",
+   "repo_url": "https://github.com/Arjun2729/annpackv2",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-29"
+  },
+  {
+   "slug": "antigravity-customizations",
+   "repo_url": "https://github.com/gmilen-sketch/antigravity-customizations",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "anyplugin",
+   "repo_url": "https://github.com/LabLaunchPad/anyplugin",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-22"
+  },
+  {
+   "slug": "anything-to-okf",
+   "repo_url": "https://github.com/CAgGen/anything-to-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "aorf",
+   "repo_url": "https://github.com/Reflow-AI/aorf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-28"
+  },
+  {
+   "slug": "archivist",
+   "repo_url": "https://github.com/dfirmin/archivist",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-07"
+  },
+  {
+   "slug": "astromesh-okf",
+   "repo_url": "https://github.com/monaccode/astromesh-okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-12"
+  },
+  {
+   "slug": "atlas",
+   "repo_url": "https://github.com/sergio-sisternes-epam/atlas",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-15"
+  },
+  {
+   "slug": "authfi-skills",
+   "repo_url": "https://github.com/authfi/authfi-skills",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-12"
+  },
+  {
+   "slug": "autogenesis",
+   "repo_url": "https://github.com/sergio-sisternes-epam/autogenesis",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-14"
+  },
+  {
+   "slug": "awesome-tools",
+   "repo_url": "https://github.com/eugenelim/awesome-tools",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-19"
+  },
+  {
+   "slug": "azimuth",
+   "repo_url": "https://github.com/mickywin22/azimuth",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "b2b-saas-metrics-ontology",
+   "repo_url": "https://github.com/micalytics/b2b-saas-metrics-ontology",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-04"
+  },
+  {
+   "slug": "batcave",
+   "repo_url": "https://github.com/manojp99/batcave",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-28"
+  },
+  {
+   "slug": "betterby-bike",
+   "repo_url": "https://github.com/robhowley/betterby-bike",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-21"
+  },
+  {
+   "slug": "bitomb",
+   "repo_url": "https://github.com/mrqc/bitomb",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-06"
+  },
+  {
+   "slug": "brain",
+   "repo_url": "https://github.com/aliahmad1967/brain",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "brainkit",
+   "repo_url": "https://github.com/Paldom/brainkit",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "bringmeback-okf",
+   "repo_url": "https://github.com/bringmeback-travel/bringmeback-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "cairn",
+   "repo_url": "https://github.com/asitha-w/cairn",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-19"
+  },
+  {
+   "slug": "carve-okf",
+   "repo_url": "https://github.com/markup-carve/carve-okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-14"
+  },
+  {
+   "slug": "cc-okf-plugin",
+   "repo_url": "https://github.com/betmoar/cc-okf-plugin",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "cc-sdlc",
+   "repo_url": "https://github.com/linus-McM/cc_sdlc",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-09"
+  },
+  {
+   "slug": "cern-graph",
+   "repo_url": "https://github.com/Zetesis-Labs/cern-graph",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-30"
+  },
+  {
+   "slug": "cern-graph-provisional",
+   "repo_url": "https://github.com/Zetesis-Labs/cern-graph-provisional",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-31"
+  },
+  {
+   "slug": "christina",
+   "repo_url": "https://github.com/amadeus-ex-machina/christina",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-25"
+  },
+  {
+   "slug": "churn",
+   "repo_url": "https://github.com/ndx-video/churn",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "claude-okf-docs",
+   "repo_url": "https://github.com/radionest/claude-okf-docs",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "claude-okf-repo-kit",
+   "repo_url": "https://github.com/lilabrooks/claude-okf-repo-kit",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "claude-okf-skill",
+   "repo_url": "https://github.com/edrod-oncology/claude-okf-skill",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-07"
+  },
+  {
+   "slug": "claude-skill-okf",
+   "repo_url": "https://github.com/kjx-talesofai/claude-skill-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "claude-skills",
+   "repo_url": "https://github.com/Cameron64/claude-skills",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "claude-wiki",
+   "repo_url": "https://github.com/jeongph/claude-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-03"
+  },
+  {
+   "slug": "cli",
+   "repo_url": "https://github.com/okforest/cli",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-12"
+  },
+  {
+   "slug": "cli-agent-okf",
+   "repo_url": "https://github.com/mjmiller41/cli-agent-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-31"
+  },
+  {
+   "slug": "cobol-wiki",
+   "repo_url": "https://github.com/msradam/cobol-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "code2okf",
+   "repo_url": "https://github.com/lars20070/code2okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-20"
+  },
+  {
+   "slug": "company-memory",
+   "repo_url": "https://github.com/azizarenner/company-memory",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-11"
+  },
+  {
+   "slug": "compass",
+   "repo_url": "https://github.com/dfirmin/compass",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-30"
+  },
+  {
+   "slug": "concept-router",
+   "repo_url": "https://github.com/prabhukirangit/concept-router",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "consulting-leads",
+   "repo_url": "https://github.com/SpillwaveSolutions/consulting-leads",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-15"
+  },
+  {
+   "slug": "container-camp",
+   "repo_url": "https://github.com/UNM-CARC/container-camp",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-11"
+  },
+  {
+   "slug": "content-media",
+   "repo_url": "https://github.com/SpillwaveSolutions/content-media",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-15"
+  },
+  {
+   "slug": "context",
+   "repo_url": "https://github.com/sachncs/context",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-11"
+  },
+  {
+   "slug": "context-manager",
+   "repo_url": "https://github.com/jefflanzi/context-manager",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-22"
+  },
+  {
+   "slug": "context-vault",
+   "repo_url": "https://github.com/SeeingBlue/context-vault",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-10"
+  },
+  {
+   "slug": "copernicus",
+   "repo_url": "https://github.com/Babinci/copernicus",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-09"
+  },
+  {
+   "slug": "copley-workiq",
+   "repo_url": "https://github.com/chris-mcnulty/copley-workiq",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "copy-tag-link",
+   "repo_url": "https://github.com/dpi-workshop/copy-tag-link",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "cq-git-template",
+   "repo_url": "https://github.com/MauricioPerera/cq-git-template",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "cq-gitstore",
+   "repo_url": "https://github.com/MauricioPerera/cq-gitstore",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "ctg-ai-okf",
+   "repo_url": "https://github.com/claymoretechgroup/ctg-ai-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "ctg-knowledge-oauth",
+   "repo_url": "https://github.com/claymoretechgroup/ctg-knowledge-oauth",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-28"
+  },
+  {
+   "slug": "ctg-knowledge-oidc",
+   "repo_url": "https://github.com/claymoretechgroup/ctg-knowledge-oidc",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-28"
+  },
+  {
+   "slug": "ctg-knowledge-ts",
+   "repo_url": "https://github.com/claymoretechgroup/ctg-knowledge-ts",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-28"
+  },
+  {
+   "slug": "cyclone-knowledge-platform",
+   "repo_url": "https://github.com/cyclone-tw/cyclone-knowledge-platform",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-13"
+  },
+  {
+   "slug": "cyverse",
+   "repo_url": "https://github.com/UNM-CARC/cyverse",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-11"
+  },
+  {
+   "slug": "data-analytics-superpowers",
+   "repo_url": "https://github.com/wenlongsong/data-analytics-superpowers",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "data-engineering-knowledge-capture",
+   "repo_url": "https://github.com/SpillwaveSolutions/data-engineering-knowledge-capture",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-09"
+  },
+  {
+   "slug": "dbmapper",
+   "repo_url": "https://github.com/kieran-a-egan/dbmapper",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-13"
+  },
+  {
+   "slug": "dca-knowledge-catalog",
+   "repo_url": "https://github.com/domain-centric-development/dca-knowledge-catalog",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-08"
+  },
+  {
+   "slug": "decklog",
+   "repo_url": "https://github.com/icostadev/decklog",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "devctx",
+   "repo_url": "https://github.com/davalillo/devctx",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-13"
+  },
+  {
+   "slug": "doc-repo-template",
+   "repo_url": "https://github.com/dukk/doc-repo-template",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "doc-repo-tools",
+   "repo_url": "https://github.com/dukk/doc-repo-tools",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "docs-wiki",
+   "repo_url": "https://github.com/viniciuschavesempresarial/docs-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-16"
+  },
+  {
+   "slug": "docs2md",
+   "repo_url": "https://github.com/andz-dev/docs2md",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-17"
+  },
+  {
+   "slug": "dotknowledge",
+   "repo_url": "https://github.com/polychrome-studio/dotKnowledge",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "drone-mission-plan",
+   "repo_url": "https://github.com/cdevarenne/drone-mission-plan",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-04"
+  },
+  {
+   "slug": "dsh-exploration-kit",
+   "repo_url": "https://github.com/kbaynes/dsh-exploration-kit",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-05"
+  },
+  {
+   "slug": "dsh-llm-wiki",
+   "repo_url": "https://github.com/pananfly/dsh-llm-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-09"
+  },
+  {
+   "slug": "dsh-memory-vault",
+   "repo_url": "https://github.com/Luisarg03/dsh-memory-vault",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-01"
+  },
+  {
+   "slug": "dsh-okf",
+   "repo_url": "https://github.com/TorRient/dsh-okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-20"
+  },
+  {
+   "slug": "dsh-prime-agent",
+   "repo_url": "https://github.com/moreWax/dsh-prime-agent",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-25"
+  },
+  {
+   "slug": "editor",
+   "repo_url": "https://github.com/langonrock/editor",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-02"
+  },
+  {
+   "slug": "email-agent-kdd",
+   "repo_url": "https://github.com/MauricioPerera/email-agent-kdd",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-11"
+  },
+  {
+   "slug": "engram",
+   "repo_url": "https://github.com/metalfinger/engram",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-30"
+  },
+  {
+   "slug": "engram-dev",
+   "repo_url": "https://github.com/phanijapps/engram-dev",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-10"
+  },
+  {
+   "slug": "enhanced-second-brain",
+   "repo_url": "https://github.com/buffalodebile/enhanced-second-brain",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-01"
+  },
+  {
+   "slug": "enkinex-okf-standalone",
+   "repo_url": "https://github.com/xaviervini/enkinex-okf-standalone",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-27"
+  },
+  {
+   "slug": "fable-autopilot",
+   "repo_url": "https://github.com/tidoemanuele/fable-autopilot",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-28"
+  },
+  {
+   "slug": "fast-llmwiki",
+   "repo_url": "https://github.com/reenigneEsrever92/fast-llmwiki",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-26"
+  },
+  {
+   "slug": "fastindex",
+   "repo_url": "https://github.com/manojbajaj95/fastindex",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-28"
+  },
+  {
+   "slug": "federated-knowledge",
+   "repo_url": "https://github.com/ftschindler/federated-knowledge",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-28"
+  },
+  {
+   "slug": "federated-knowledge-skills",
+   "repo_url": "https://github.com/ftschindler/federated-knowledge-skills",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-07"
+  },
+  {
+   "slug": "felix-felicis",
+   "repo_url": "https://github.com/notrepeat/felix_felicis",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-22"
+  },
+  {
+   "slug": "findata-graph",
+   "repo_url": "https://github.com/arun-ramakrishnan/findata-graph",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-25"
+  },
+  {
+   "slug": "flip",
+   "repo_url": "https://github.com/lavallee/flip",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-30"
+  },
+  {
+   "slug": "flw",
+   "repo_url": "https://github.com/tm42/flw",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-01"
+  },
+  {
+   "slug": "foodini-okf-ingest",
+   "repo_url": "https://github.com/Foodini-NG/foodini-okf-ingest",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-22"
+  },
+  {
+   "slug": "foresight",
+   "repo_url": "https://github.com/shakeeb1998/foresight",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-27"
+  },
+  {
+   "slug": "foss",
+   "repo_url": "https://github.com/UNM-CARC/foss",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-11"
+  },
+  {
+   "slug": "foveate",
+   "repo_url": "https://github.com/sachncs/foveate",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-08"
+  },
+  {
+   "slug": "gate-knowledge",
+   "repo_url": "https://github.com/deterministic-agents/gate-knowledge",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-18"
+  },
+  {
+   "slug": "gds-local-hackathon-20260909-early-years",
+   "repo_url": "https://github.com/chris-page-gov/gds-local-hackathon-20260909-early-years",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-06"
+  },
+  {
+   "slug": "graphify-okf",
+   "repo_url": "https://github.com/alderac/graphify-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "graphify2okf",
+   "repo_url": "https://github.com/mihajlo-jovanovic/graphify2okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-31"
+  },
+  {
+   "slug": "greek-knowledge-eee",
+   "repo_url": "https://github.com/EEE-project/greek-knowledge-eee",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-08"
+  },
+  {
+   "slug": "grepdown",
+   "repo_url": "https://github.com/Hanziness/grepdown",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "gtm-positioning",
+   "repo_url": "https://github.com/SpillwaveSolutions/gtm-positioning",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-15"
+  },
+  {
+   "slug": "guide-okf",
+   "repo_url": "https://github.com/demouv-projects/guide_okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-12"
+  },
+  {
+   "slug": "hamigenz",
+   "repo_url": "https://github.com/omwe77/hamiGenz",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-05"
+  },
+  {
+   "slug": "handoff",
+   "repo_url": "https://github.com/dandye/handoff",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-06"
+  },
+  {
+   "slug": "harness-okf",
+   "repo_url": "https://github.com/csalazart/harness-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "headcleaner-cli",
+   "repo_url": "https://github.com/jamesdsizemore/headcleaner-cli",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-17"
+  },
+  {
+   "slug": "homebrew-tap",
+   "repo_url": "https://github.com/okf-memory/homebrew-tap",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-06"
+  },
+  {
+   "slug": "ichnos",
+   "repo_url": "https://github.com/MohamedAliZouariEng/ichnos",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-19"
+  },
+  {
+   "slug": "intelliqx",
+   "repo_url": "https://github.com/sachncs/intelliqx",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-11"
+  },
+  {
+   "slug": "inventory-agent-okf",
+   "repo_url": "https://github.com/force2aipowered-svg/inventory-agent-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-04"
+  },
+  {
+   "slug": "irudd-okf",
+   "repo_url": "https://github.com/alundgren/irudd-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-04"
+  },
+  {
+   "slug": "iuvareai-sdlc",
+   "repo_url": "https://github.com/alfredt6/iuvareai-sdlc",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "journal",
+   "repo_url": "https://github.com/PromptPeter/journal",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-26"
+  },
+  {
+   "slug": "juceb-conhecimentos",
+   "repo_url": "https://github.com/glaucodeveloper/juceb-conhecimentos",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-20"
+  },
+  {
+   "slug": "kaggle-ai-workspace",
+   "repo_url": "https://github.com/MrBigleg/kaggle-ai-workspace",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-20"
+  },
+  {
+   "slug": "kakeratta",
+   "repo_url": "https://github.com/takeshy/kakeratta",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-12"
+  },
+  {
+   "slug": "karpathy-llm-wiki-okf",
+   "repo_url": "https://github.com/t04dJ14n9/karpathy-llm-wiki-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-13"
+  },
+  {
+   "slug": "kb-con-claude",
+   "repo_url": "https://github.com/fjolivaresDH/kb-con-claude",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-01"
+  },
+  {
+   "slug": "kimi-k3-agent-ops",
+   "repo_url": "https://github.com/McClawdDigital/kimi-k3-agent-ops",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-14"
+  },
+  {
+   "slug": "knot-okf-studio",
+   "repo_url": "https://github.com/Sharan-Babu/knot-okf-studio",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "knowledge",
+   "repo_url": "https://github.com/sachncs/knowledge",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "knowledge-as-infrastructure",
+   "repo_url": "https://github.com/The-Whitestone-Foundation/knowledge-as-infrastructure",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "knowledge-base-idb",
+   "repo_url": "https://github.com/Zeus0-3/knowledge-base-idb",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-24"
+  },
+  {
+   "slug": "knowledge-base-librarian",
+   "repo_url": "https://github.com/nshaviv1/knowledge-base-librarian",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "knowledge-base-template",
+   "repo_url": "https://github.com/JonasLundin/knowledge-base-template",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-27"
+  },
+  {
+   "slug": "knowledge-base-wiki-standard",
+   "repo_url": "https://github.com/denchco/knowledge-base-wiki-standard",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-04"
+  },
+  {
+   "slug": "knowledge-bases",
+   "repo_url": "https://github.com/oleksiyp/knowledge-bases",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-04"
+  },
+  {
+   "slug": "knowledge-dlc",
+   "repo_url": "https://github.com/aithinkers/knowledge-dlc",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-15"
+  },
+  {
+   "slug": "knowledge-foundation",
+   "repo_url": "https://github.com/muthub-ai/knowledge-foundation",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-19"
+  },
+  {
+   "slug": "knowledge-guide",
+   "repo_url": "https://github.com/evanleonard/knowledge-guide",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-01"
+  },
+  {
+   "slug": "knowledge-mcp",
+   "repo_url": "https://github.com/chirag127/knowledge-mcp",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-17"
+  },
+  {
+   "slug": "knowledge-project",
+   "repo_url": "https://github.com/briqt/knowledge-project",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-13"
+  },
+  {
+   "slug": "knowledgegathering",
+   "repo_url": "https://github.com/learningtour/knowledgegathering",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "knowledgeweaver",
+   "repo_url": "https://github.com/woropallo/knowledgeweaver",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-25"
+  },
+  {
+   "slug": "kompend",
+   "repo_url": "https://github.com/jr2804/kompend",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-13"
+  },
+  {
+   "slug": "lan-master-nes-kb",
+   "repo_url": "https://github.com/svijaykoushik/lan-master-nes-kb",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "law2markdown",
+   "repo_url": "https://github.com/chottokun/law2markdown",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-14"
+  },
+  {
+   "slug": "law3markdown",
+   "repo_url": "https://github.com/chottokun/law3markdown",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-13"
+  },
+  {
+   "slug": "lightweight-agentic-rag",
+   "repo_url": "https://github.com/mfxgu2i/lightweight-agentic-rag",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "limo",
+   "repo_url": "https://github.com/hxbbyr/limo",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "llm-brain-kit",
+   "repo_url": "https://github.com/hgkimdev/llm-brain-kit",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "llm-career-wiki",
+   "repo_url": "https://github.com/MariPS/llm-career-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-28"
+  },
+  {
+   "slug": "llm-wiki-governance",
+   "repo_url": "https://github.com/Dowon-Kim7949/llm-wiki-governance",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-03"
+  },
+  {
+   "slug": "llm-wiki-skill-kit",
+   "repo_url": "https://github.com/mingng18/llm-wiki-skill-kit",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "llm-wiki-template",
+   "repo_url": "https://github.com/Polobase/llm-wiki-template",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-01"
+  },
+  {
+   "slug": "loom",
+   "repo_url": "https://github.com/amod0017/loom",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-11"
+  },
+  {
+   "slug": "lore-cli",
+   "repo_url": "https://github.com/opum-ai/lore-cli",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-18"
+  },
+  {
+   "slug": "maintain-knowledge-wiki",
+   "repo_url": "https://github.com/DataJockey13/maintain-knowledge-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-05"
+  },
+  {
+   "slug": "malloy-context-layer",
+   "repo_url": "https://github.com/wwasilak/malloy-context-layer",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-08"
+  },
+  {
+   "slug": "manage-ckg",
+   "repo_url": "https://github.com/HwangJohn/manage-ckg",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-20"
+  },
+  {
+   "slug": "marksentinel",
+   "repo_url": "https://github.com/ebh/marksentinel",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-12"
+  },
+  {
+   "slug": "md2okf-gondolin",
+   "repo_url": "https://github.com/lars20070/md2okf-gondolin",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-09"
+  },
+  {
+   "slug": "mdfu",
+   "repo_url": "https://github.com/elicore/mdfu",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-18"
+  },
+  {
+   "slug": "mdv-mcp",
+   "repo_url": "https://github.com/chirag127/mdv-mcp",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-17"
+  },
+  {
+   "slug": "meerkat-bim",
+   "repo_url": "https://github.com/JonasLundin/meerkat-bim",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-31"
+  },
+  {
+   "slug": "memory",
+   "repo_url": "https://github.com/Aeryx-ai/memory",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-10"
+  },
+  {
+   "slug": "memvault",
+   "repo_url": "https://github.com/heonyus/memvault",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "meshlet",
+   "repo_url": "https://github.com/frkndimbo/meshlet",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "mneme-harness",
+   "repo_url": "https://github.com/SEORY0/mneme-harness",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-18"
+  },
+  {
+   "slug": "modaka",
+   "repo_url": "https://github.com/crapougnax/modaka",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "modelwrite",
+   "repo_url": "https://github.com/modelwrite/modelwrite",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-19"
+  },
+  {
+   "slug": "mokf",
+   "repo_url": "https://github.com/bizautomation/mokf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "musicwiki",
+   "repo_url": "https://github.com/mharner33/musicwiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-30"
+  },
+  {
+   "slug": "mvgeos-marketplace",
+   "repo_url": "https://github.com/IAmNo1Special/mvgeos-marketplace",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-05"
+  },
+  {
+   "slug": "my-brain-tools",
+   "repo_url": "https://github.com/DanielBerns/my-brain-tools",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "myokf",
+   "repo_url": "https://github.com/hkh1012/myokf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "n8n-memory-audit",
+   "repo_url": "https://github.com/sendacode-studios/n8n-memory-audit",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-01"
+  },
+  {
+   "slug": "nasa-daac-knowledge",
+   "repo_url": "https://github.com/open-science-pillars/nasa-daac-knowledge",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-05"
+  },
+  {
+   "slug": "neko",
+   "repo_url": "https://github.com/aqilputi/neko",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-15"
+  },
+  {
+   "slug": "news-digest",
+   "repo_url": "https://github.com/SpillwaveSolutions/news-digest",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-15"
+  },
+  {
+   "slug": "nkb-legal-okf-sample",
+   "repo_url": "https://github.com/drapermcp/nkb-legal-okf-sample",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-13"
+  },
+  {
+   "slug": "nonprofit-backpack-mvb",
+   "repo_url": "https://github.com/Guide-to-Good/nonprofit-backpack-mvb",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "novel-harness",
+   "repo_url": "https://github.com/TheForgivenOne/novel-harness",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-22"
+  },
+  {
+   "slug": "oas-okf",
+   "repo_url": "https://github.com/OAS-Framework/oas-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "obsidian-ktl-curator",
+   "repo_url": "https://github.com/noelmcloughlin/obsidian-ktl-curator",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-23"
+  },
+  {
+   "slug": "obsidian-ktl-registrar",
+   "repo_url": "https://github.com/noelmcloughlin/obsidian-ktl-registrar",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-23"
+  },
+  {
+   "slug": "obsidian-llm-wiki-toolkit",
+   "repo_url": "https://github.com/ParkJaeSeong/obsidian-llm-wiki-toolkit",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-29"
+  },
+  {
+   "slug": "obsidian-lokf-curator",
+   "repo_url": "https://github.com/noelmcloughlin/obsidian-lokf-curator",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-20"
+  },
+  {
+   "slug": "obsidian-lokf-registrar",
+   "repo_url": "https://github.com/noelmcloughlin/obsidian-lokf-registrar",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-20"
+  },
+  {
+   "slug": "obsidian-memory-bridge",
+   "repo_url": "https://github.com/mixx3/obsidian-memory-bridge",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-13"
+  },
+  {
+   "slug": "offerings-atlas-sample",
+   "repo_url": "https://github.com/Markus-Doc/offerings-atlas-sample",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-10"
+  },
+  {
+   "slug": "oidm-knowledge",
+   "repo_url": "https://github.com/openimagingdata/oidm-knowledge",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-22"
+  },
+  {
+   "slug": "ok-workbench",
+   "repo_url": "https://github.com/edoloughlin/ok-workbench",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-18"
+  },
+  {
+   "slug": "okf-landregistry",
+   "repo_url": "https://github.com/chris-page-gov/okf-LandRegistry",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-29"
+  },
+  {
+   "slug": "okf-abstracts",
+   "repo_url": "https://github.com/Yoseph-Zuskin/okf-abstracts",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-07"
+  },
+  {
+   "slug": "okf-agent-memory-starter",
+   "repo_url": "https://github.com/christian-varritech/okf-agent-memory-starter",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-06"
+  },
+  {
+   "slug": "okf-ai-agnostic",
+   "repo_url": "https://github.com/Caradog-alt/okf-ai-agnostic",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-14"
+  },
+  {
+   "slug": "okf-anchor",
+   "repo_url": "https://github.com/ai4se4ai-lab/okf-anchor",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-03"
+  },
+  {
+   "slug": "okf-anything",
+   "repo_url": "https://github.com/JacksonHe04/okf-anything",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-assessment",
+   "repo_url": "https://github.com/nadiadatepe-eng/okf-assessment",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-atlas",
+   "repo_url": "https://github.com/Fengzdadi/okf-atlas",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-attachment-brain",
+   "repo_url": "https://github.com/saulmcphd/okf-attachment-brain",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-07"
+  },
+  {
+   "slug": "okf-browse",
+   "repo_url": "https://github.com/jb9k62/okf-browse",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-08"
+  },
+  {
+   "slug": "okf-bundle",
+   "repo_url": "https://github.com/BlackBox-ai-lab/okf-bundle",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-06"
+  },
+  {
+   "slug": "okf-bundle-example",
+   "repo_url": "https://github.com/sknr/okf-bundle-example",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-01"
+  },
+  {
+   "slug": "okf-claude-code-plugins",
+   "repo_url": "https://github.com/gpr/okf-claude-code-plugins",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-10"
+  },
+  {
+   "slug": "okf-compliance-validator",
+   "repo_url": "https://github.com/aldow3n-a11y/okf-compliance-validator",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-convert",
+   "repo_url": "https://github.com/chapter42/okf-convert",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-core",
+   "repo_url": "https://github.com/xchewtoyx/okf-core",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-devkit",
+   "repo_url": "https://github.com/shirashu687/okf-devkit",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-25"
+  },
+  {
+   "slug": "okf-doc-sync",
+   "repo_url": "https://github.com/Tokiki17/okf-doc-sync",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-09"
+  },
+  {
+   "slug": "okf-droid-benchmark",
+   "repo_url": "https://github.com/zuwasi/okf-droid-benchmark",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-15"
+  },
+  {
+   "slug": "okf-drone-skill",
+   "repo_url": "https://github.com/cdevarenne/okf-drone-skill",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-29"
+  },
+  {
+   "slug": "okf-dwp",
+   "repo_url": "https://github.com/chris-page-gov/okf-dwp",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-15"
+  },
+  {
+   "slug": "okf-els-api",
+   "repo_url": "https://github.com/chris-page-gov/okf-els-api",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-export",
+   "repo_url": "https://github.com/drakax-jarvis/okf-export",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-fable5-showcase",
+   "repo_url": "https://github.com/az9713/okf-fable5-showcase",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-for-wordpress",
+   "repo_url": "https://github.com/Suganthan-Mohanadasan/okf-for-wordpress",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-galaxy-visualizer",
+   "repo_url": "https://github.com/cabezondigital/okf-galaxy-visualizer",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-10"
+  },
+  {
+   "slug": "okf-god",
+   "repo_url": "https://github.com/nsanta/okf-god",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "okf-graph-rag",
+   "repo_url": "https://github.com/letslego/okf-graph-rag",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-24"
+  },
+  {
+   "slug": "okf-grc",
+   "repo_url": "https://github.com/altiri-ai/okf-grc",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-grc-skill",
+   "repo_url": "https://github.com/cdevarenne/okf-grc-skill",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-26"
+  },
+  {
+   "slug": "okf-handoff",
+   "repo_url": "https://github.com/win4r/okf-handoff",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-hub-feedback",
+   "repo_url": "https://github.com/Movida/okf-hub-feedback",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-31"
+  },
+  {
+   "slug": "okf-ify",
+   "repo_url": "https://github.com/geoffjay/okf-ify",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-04"
+  },
+  {
+   "slug": "okf-image-retrieval",
+   "repo_url": "https://github.com/sbirvn/okf-image-retrieval",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-02"
+  },
+  {
+   "slug": "okf-ingest-feedstock",
+   "repo_url": "https://github.com/conda-forge/okf-ingest-feedstock",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-07"
+  },
+  {
+   "slug": "okf-job-sheet",
+   "repo_url": "https://github.com/muhaj/okf-job-sheet",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-07"
+  },
+  {
+   "slug": "okf-kb-template",
+   "repo_url": "https://github.com/egparedes/okf-kb-template",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-28"
+  },
+  {
+   "slug": "okf-knowledge-base",
+   "repo_url": "https://github.com/wang-junjian/okf-knowledge-base",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-16"
+  },
+  {
+   "slug": "okf-knowledge-gate",
+   "repo_url": "https://github.com/ahmedibrahim085/okf-knowledge-gate",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-15"
+  },
+  {
+   "slug": "okf-knowledge-graph-wiki",
+   "repo_url": "https://github.com/subho004/okf-knowledge-graph-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-kt",
+   "repo_url": "https://github.com/swdevsm/okf-kt",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-20"
+  },
+  {
+   "slug": "okf-linked-data",
+   "repo_url": "https://github.com/wagner-niklas/okf-linked-data",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-22"
+  },
+  {
+   "slug": "okf-loom-v2",
+   "repo_url": "https://github.com/SpatialNexus/okf-loom-v2",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-24"
+  },
+  {
+   "slug": "okf-lsp",
+   "repo_url": "https://github.com/brentlee-personal/okf-lsp",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "okf-mcp-server",
+   "repo_url": "https://github.com/maximemoreillon/okf-mcp-server",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-memory.github.io",
+   "repo_url": "https://github.com/okf-memory/okf-memory.github.io",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-06"
+  },
+  {
+   "slug": "okf-minisearch",
+   "repo_url": "https://github.com/robhowley/okf-minisearch",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-26"
+  },
+  {
+   "slug": "okf-model",
+   "repo_url": "https://github.com/ojhermann-org/okf-model",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-01"
+  },
+  {
+   "slug": "okf-model-bakeoff",
+   "repo_url": "https://github.com/adorosario/okf-model-bakeoff",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-19"
+  },
+  {
+   "slug": "okf-nav",
+   "repo_url": "https://github.com/lennney/okf-nav",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-navigator",
+   "repo_url": "https://github.com/darshan-p-2508/okf-navigator",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-24"
+  },
+  {
+   "slug": "okf-obsidian",
+   "repo_url": "https://github.com/rorotheworld/okf-obsidian",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-31"
+  },
+  {
+   "slug": "okf-ok",
+   "repo_url": "https://github.com/mark-ht/okf-ok",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-24"
+  },
+  {
+   "slug": "okf-parser",
+   "repo_url": "https://github.com/franklinbaldo/okf-parser",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-02"
+  },
+  {
+   "slug": "okf-pg-tenant",
+   "repo_url": "https://github.com/back1ply/okf-pg-tenant",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-29"
+  },
+  {
+   "slug": "okf-plan-browser",
+   "repo_url": "https://github.com/jhwohlgemuth/okf-plan-browser",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-19"
+  },
+  {
+   "slug": "okf-planning",
+   "repo_url": "https://github.com/chris-page-gov/okf-planning",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-16"
+  },
+  {
+   "slug": "okf-poc",
+   "repo_url": "https://github.com/AVVKavvk/okf-poc",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-03"
+  },
+  {
+   "slug": "okf-portfolio-standard",
+   "repo_url": "https://github.com/natcat38/okf-portfolio-standard",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-11"
+  },
+  {
+   "slug": "okf-postal-db",
+   "repo_url": "https://github.com/MauricioPerera/okf-postal-db",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-postgres-skill",
+   "repo_url": "https://github.com/coccoinomane/okf-postgres-skill",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-26"
+  },
+  {
+   "slug": "okf-profile-dist",
+   "repo_url": "https://github.com/conceptadev/okf-profile-dist",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-09"
+  },
+  {
+   "slug": "okf-project-starter",
+   "repo_url": "https://github.com/ConorMack/okf-project-starter",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-project-template",
+   "repo_url": "https://github.com/nitsuga/okf-project-template",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-remote",
+   "repo_url": "https://github.com/SpillwaveSolutions/okf-remote",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-04"
+  },
+  {
+   "slug": "okf-research-builder",
+   "repo_url": "https://github.com/saulmcphd/okf-research-builder",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-07"
+  },
+  {
+   "slug": "okf-retrieve",
+   "repo_url": "https://github.com/scionoftech/okf-retrieve",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-reviewer",
+   "repo_url": "https://github.com/PMSI-AlignAlytics/okf-reviewer",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-09"
+  },
+  {
+   "slug": "okf-royalty-os-bridge",
+   "repo_url": "https://github.com/SamuraiWriter7/okf-royalty-os-bridge",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-search",
+   "repo_url": "https://github.com/robhowley/okf-search",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-06"
+  },
+  {
+   "slug": "okf-seedling",
+   "repo_url": "https://github.com/watanabe3tipapa/okf-seedling",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-15"
+  },
+  {
+   "slug": "okf-server",
+   "repo_url": "https://github.com/paularlott/okf-server",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-site",
+   "repo_url": "https://github.com/okfcli/okf-site",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-skills-plugin",
+   "repo_url": "https://github.com/justusenumbers/okf-skills-plugin",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-01"
+  },
+  {
+   "slug": "okf-storage",
+   "repo_url": "https://github.com/yz4230/okf-storage",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-01"
+  },
+  {
+   "slug": "okf-time-series",
+   "repo_url": "https://github.com/SpillwaveSolutions/okf-time-series",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-04"
+  },
+  {
+   "slug": "okf-tool",
+   "repo_url": "https://github.com/hanfang5057-byte/okf-tool",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-toolkit",
+   "repo_url": "https://github.com/shreytam/okf-toolkit",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "okf-ts",
+   "repo_url": "https://github.com/Zenb0t/okf-ts",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-10"
+  },
+  {
+   "slug": "okf-validator",
+   "repo_url": "https://github.com/ThingsAI-io/okf-validator",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-20"
+  },
+  {
+   "slug": "okf-vault-kit",
+   "repo_url": "https://github.com/cronai-labs/okf-vault-kit",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-16"
+  },
+  {
+   "slug": "okf-viz",
+   "repo_url": "https://github.com/LeafLab-sh/okf-viz",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-12"
+  },
+  {
+   "slug": "okf-wiki-install",
+   "repo_url": "https://github.com/pennyworthatc/okf-wiki-install",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-14"
+  },
+  {
+   "slug": "okf-wiki-kit",
+   "repo_url": "https://github.com/olivermorgan2/okf-wiki-kit",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-wiki-plugin",
+   "repo_url": "https://github.com/pmmm114/okf-wiki-plugin",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf-wiki-template",
+   "repo_url": "https://github.com/Blackx16/okf-wiki-template",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "okf-wikirag-lab",
+   "repo_url": "https://github.com/ankitw497/okf-wikirag-lab",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-23"
+  },
+  {
+   "slug": "okf-workbench",
+   "repo_url": "https://github.com/koizumikento/okf-workbench",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okf.mq",
+   "repo_url": "https://github.com/harehare/okf.mq",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okfbundles",
+   "repo_url": "https://github.com/lars20070/okfbundles",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-05"
+  },
+  {
+   "slug": "okfi",
+   "repo_url": "https://github.com/harveymarshall/okfi",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-21"
+  },
+  {
+   "slug": "okfindex",
+   "repo_url": "https://github.com/wrpbr/okfindex",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-15"
+  },
+  {
+   "slug": "okflier",
+   "repo_url": "https://github.com/elijahsgh/okflier",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-27"
+  },
+  {
+   "slug": "okflify",
+   "repo_url": "https://github.com/eidos-agi/okflify",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-29"
+  },
+  {
+   "slug": "okflint",
+   "repo_url": "https://github.com/dongYK11/okflint",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-24"
+  },
+  {
+   "slug": "okfshare-cli",
+   "repo_url": "https://github.com/MegaPanchamZ/okfshare-cli",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-23"
+  },
+  {
+   "slug": "okfsmith",
+   "repo_url": "https://github.com/Bilal-Junaid-Jiwani/okfsmith",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-26"
+  },
+  {
+   "slug": "okft",
+   "repo_url": "https://github.com/PoorvaJ-WW/okft",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "okpacks-library",
+   "repo_url": "https://github.com/jalewis/okpacks-library",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "omf",
+   "repo_url": "https://github.com/eidos-agi/omf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-17"
+  },
+  {
+   "slug": "open-knowledge-agent-memory",
+   "repo_url": "https://github.com/Sourabh-Garg-tech/open-knowledge-agent-memory",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-24"
+  },
+  {
+   "slug": "jinke5245-open-knowledge-format",
+   "repo_url": "https://github.com/jinke5245/open-knowledge-format",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "mellobtc-open-knowledge-format",
+   "repo_url": "https://github.com/MelloBTC/open-knowledge-format",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "kathrinmotzkus-open-knowledge-format",
+   "repo_url": "https://github.com/kathrinmotzkus/open-knowledge-format",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "sarthak-2912-open-knowledge-format-demo",
+   "repo_url": "https://github.com/Sarthak-2912/open-knowledge-format-demo",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "open-knowledge-format-graph",
+   "repo_url": "https://github.com/brainquiver/open-knowledge-format-graph",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-30"
+  },
+  {
+   "slug": "open-knowledge-format-map",
+   "repo_url": "https://github.com/brainquiver/open-knowledge-format-map",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-01"
+  },
+  {
+   "slug": "os1ma-open-knowledge-format-tutorial",
+   "repo_url": "https://github.com/os1ma/open-knowledge-format-tutorial",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "amarel-taylor-scott-open-knowledge-formats-directory",
+   "repo_url": "https://github.com/Amarel-Taylor-Scott/open-knowledge-formats-directory",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "open-knowledge-management",
+   "repo_url": "https://github.com/LeonardoDiasRR/open-knowledge-management",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-26"
+  },
+  {
+   "slug": "open-knowledge-terminal",
+   "repo_url": "https://github.com/glentner/open-knowledge-terminal",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-08"
+  },
+  {
+   "slug": "open-knowledge-vault-kit",
+   "repo_url": "https://github.com/Aldorithm392/open-knowledge-vault-kit",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "open-lex-edu",
+   "repo_url": "https://github.com/nmarafo/open-lex-edu",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-27"
+  },
+  {
+   "slug": "openclaw-data",
+   "repo_url": "https://github.com/shuzhiyu500-sketch/openclaw-data",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "opencode-templates",
+   "repo_url": "https://github.com/VasilevNStas/opencode-templates",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-23"
+  },
+  {
+   "slug": "opff",
+   "repo_url": "https://github.com/eidos-agi/opff",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-09"
+  },
+  {
+   "slug": "ora-okf",
+   "repo_url": "https://github.com/s2005/ora-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-28"
+  },
+  {
+   "slug": "orbit",
+   "repo_url": "https://github.com/Scrollout/orbit",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-09"
+  },
+  {
+   "slug": "orca-ager",
+   "repo_url": "https://github.com/SpillwaveSolutions/orca-ager",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-24"
+  },
+  {
+   "slug": "orf",
+   "repo_url": "https://github.com/eidos-agi/orf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-09"
+  },
+  {
+   "slug": "org-kb",
+   "repo_url": "https://github.com/balaji-balu/org-kb",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-10-02"
+  },
+  {
+   "slug": "oriz-knowledge-site",
+   "repo_url": "https://github.com/chirag127/oriz-knowledge-site",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-17"
+  },
+  {
+   "slug": "paperclip-docs",
+   "repo_url": "https://github.com/conreo/paperclip-docs",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-23"
+  },
+  {
+   "slug": "paperclip-docs-builder",
+   "repo_url": "https://github.com/conreo/paperclip-docs-builder",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-23"
+  },
+  {
+   "slug": "parchment",
+   "repo_url": "https://github.com/tonyymacc/parchment",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-29"
+  },
+  {
+   "slug": "pdf-to-okf",
+   "repo_url": "https://github.com/anjarpw/pdf-to-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-30"
+  },
+  {
+   "slug": "perfect-doc",
+   "repo_url": "https://github.com/btfranklin/perfect-doc",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-04"
+  },
+  {
+   "slug": "personal-context-mcp",
+   "repo_url": "https://github.com/m17kea/personal-context-mcp",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-23"
+  },
+  {
+   "slug": "php-okf",
+   "repo_url": "https://github.com/EdouardCourty/php-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "pi-brain-wiki",
+   "repo_url": "https://github.com/kambodscharoger294-cyber/pi-brain-wiki",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-30"
+  },
+  {
+   "slug": "pi-okf-memory",
+   "repo_url": "https://github.com/ZHI-QI/pi-okf-memory",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-13"
+  },
+  {
+   "slug": "pixkb",
+   "repo_url": "https://github.com/dyammarcano/pixkb",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "pkstack",
+   "repo_url": "https://github.com/njs14/pkstack",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-09"
+  },
+  {
+   "slug": "planet-ai",
+   "repo_url": "https://github.com/SebasEliens/planet-ai",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-04"
+  },
+  {
+   "slug": "pnp-okf-bundler",
+   "repo_url": "https://github.com/Wahajolla/pnp-okf-bundler",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "poolboy",
+   "repo_url": "https://github.com/grosspoetrysystems/poolboy",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-25"
+  },
+  {
+   "slug": "portable-brain",
+   "repo_url": "https://github.com/bmccarn/portable-brain",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-23"
+  },
+  {
+   "slug": "prim.cre.opaf",
+   "repo_url": "https://github.com/eidos-agi/prim.cre.opaf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-19"
+  },
+  {
+   "slug": "prim.obif",
+   "repo_url": "https://github.com/eidos-agi/prim.obif",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-19"
+  },
+  {
+   "slug": "prim.omf",
+   "repo_url": "https://github.com/eidos-agi/prim.omf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-19"
+  },
+  {
+   "slug": "prim.opff",
+   "repo_url": "https://github.com/eidos-agi/prim.opff",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-19"
+  },
+  {
+   "slug": "prim.orf",
+   "repo_url": "https://github.com/eidos-agi/prim.orf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-19"
+  },
+  {
+   "slug": "prithvi-wxc-skills",
+   "repo_url": "https://github.com/midatm1234/prithvi-wxc-skills",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-02"
+  },
+  {
+   "slug": "python-cli-template",
+   "repo_url": "https://github.com/lilabrooks/python-cli-template",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "quartz-okf",
+   "repo_url": "https://github.com/Zetesis-Labs/quartz-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-02"
+  },
+  {
+   "slug": "rag-llm-ai-system",
+   "repo_url": "https://github.com/Pratham1227-beep/rag-llm-ai-system",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-20"
+  },
+  {
+   "slug": "rag-local",
+   "repo_url": "https://github.com/MauricioPerera/rag-local",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "rea-rl-mcp",
+   "repo_url": "https://github.com/vtrsharvin-sj/rea-rl-mcp",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "readb",
+   "repo_url": "https://github.com/slukyano/readb",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "registry",
+   "repo_url": "https://github.com/okf-memory/registry",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-30"
+  },
+  {
+   "slug": "regleg-okf",
+   "repo_url": "https://github.com/Verdus-Tech/regleg-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "repo2okf",
+   "repo_url": "https://github.com/suisya-systems/repo2okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-13"
+  },
+  {
+   "slug": "research-repo-template",
+   "repo_url": "https://github.com/dukk/research-repo-template",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "robot-ai-memory",
+   "repo_url": "https://github.com/fupbot/robot_ai_memory",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-16"
+  },
+  {
+   "slug": "rsif-spec",
+   "repo_url": "https://github.com/idarknightrex/rsif-spec",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "rsokf",
+   "repo_url": "https://github.com/radiasoft/rsokf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "runlore-kb-commons",
+   "repo_url": "https://github.com/Smana/runlore-kb-commons",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-03"
+  },
+  {
+   "slug": "running-knowledge-base",
+   "repo_url": "https://github.com/jacquescorbytuech/running-knowledge-base",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "sales-pipeline",
+   "repo_url": "https://github.com/SpillwaveSolutions/sales-pipeline",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-15"
+  },
+  {
+   "slug": "sdp-okf",
+   "repo_url": "https://github.com/Igladyshev/sdp-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-02"
+  },
+  {
+   "slug": "seal-okf",
+   "repo_url": "https://github.com/playidea-lab/seal-okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-02"
+  },
+  {
+   "slug": "seal-spec",
+   "repo_url": "https://github.com/playidea-lab/seal-spec",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-02"
+  },
+  {
+   "slug": "second-brain-starter",
+   "repo_url": "https://github.com/SpillwaveSolutions/second-brain-starter",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-15"
+  },
+  {
+   "slug": "second-brain-template",
+   "repo_url": "https://github.com/uesugitorachiyo/second-brain-template",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-26"
+  },
+  {
+   "slug": "showme",
+   "repo_url": "https://github.com/MauricioPerera/showme",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "skill-okf",
+   "repo_url": "https://github.com/Cortiq-Lab/skill-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-18"
+  },
+  {
+   "slug": "skills",
+   "repo_url": "https://github.com/agentic-wiki/skills",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-28"
+  },
+  {
+   "slug": "skywatch",
+   "repo_url": "https://github.com/lilabrooks/skywatch",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "slo.okf",
+   "repo_url": "https://github.com/daniel-ciaglia/slo.okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "smart-okf",
+   "repo_url": "https://github.com/TuxLux40/smart-okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "sock",
+   "repo_url": "https://github.com/SteveAtSentosa/sock",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-02"
+  },
+  {
+   "slug": "software-supply-chain-landscape",
+   "repo_url": "https://github.com/jrjsmrtn/software-supply-chain-landscape",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-05"
+  },
+  {
+   "slug": "souvra",
+   "repo_url": "https://github.com/kwmaddox/souvra",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "specful",
+   "repo_url": "https://github.com/unkos-dev/specful",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-28"
+  },
+  {
+   "slug": "specification",
+   "repo_url": "https://github.com/ArtisanPack-UI/specification",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-10"
+  },
+  {
+   "slug": "spo-okf",
+   "repo_url": "https://github.com/samyost/spo-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "spring-ai-accelerator",
+   "repo_url": "https://github.com/crittje-zerofifty/spring-ai-accelerator",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-11"
+  },
+  {
+   "slug": "ssss",
+   "repo_url": "https://github.com/gregiteen/ssss",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "steering-knowledge-index",
+   "repo_url": "https://github.com/toyohikomotoyama/steering-knowledge-index",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-14"
+  },
+  {
+   "slug": "superjoin-engineering-explorer-vit-2026",
+   "repo_url": "https://github.com/harishy0406/superjoin-engineering-explorer-vit-2026",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-08"
+  },
+  {
+   "slug": "synapse-mesh",
+   "repo_url": "https://github.com/sinny777/synapse-mesh",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-12"
+  },
+  {
+   "slug": "team-os",
+   "repo_url": "https://github.com/cla1redonald/team-os",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "telamon",
+   "repo_url": "https://github.com/joepietrzak/telamon",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-02"
+  },
+  {
+   "slug": "tenderlens-agentic-ai",
+   "repo_url": "https://github.com/syedzish/tenderlens-agentic-ai",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "tianna-howard-open-knowledge",
+   "repo_url": "https://github.com/markmcd19702404-web/tianna-howard-open-knowledge",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-02"
+  },
+  {
+   "slug": "token-atlas",
+   "repo_url": "https://github.com/duelistraj/token-atlas",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "tokenizart-agentic",
+   "repo_url": "https://github.com/tokenizartinfo-ops/tokenizart-agentic",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-11"
+  },
+  {
+   "slug": "touchstone",
+   "repo_url": "https://github.com/gaberger/touchstone",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-02"
+  },
+  {
+   "slug": "training",
+   "repo_url": "https://github.com/sleepypod/training",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-21"
+  },
+  {
+   "slug": "tree-sitter-okf",
+   "repo_url": "https://github.com/antstanley/tree-sitter-okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-23"
+  },
+  {
+   "slug": "truth",
+   "repo_url": "https://github.com/0jrm/truth",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "typescript-open-knowledge-format-example",
+   "repo_url": "https://github.com/ebamberg/typescript_open_knowledge_format_example",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-04"
+  },
+  {
+   "slug": "uig-studios-ai",
+   "repo_url": "https://github.com/DrVelvetFog/uig-studios-ai",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-17"
+  },
+  {
+   "slug": "unistile",
+   "repo_url": "https://github.com/Varybai/unistile",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-26"
+  },
+  {
+   "slug": "v2w",
+   "repo_url": "https://github.com/joyrayai/v2w",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "valut",
+   "repo_url": "https://github.com/k933167h/valut",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "vault-kit",
+   "repo_url": "https://github.com/mattraby/vault-kit",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "vaultkit",
+   "repo_url": "https://github.com/thodo67/vaultkit",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "vector-gene",
+   "repo_url": "https://github.com/Osmosy/vector-gene",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-08-16"
+  },
+  {
+   "slug": "video-to-okf",
+   "repo_url": "https://github.com/eibrahimov/video-to-okf",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "void-core",
+   "repo_url": "https://github.com/migriv24/void-core",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "vulcan",
+   "repo_url": "https://github.com/VENIZIA-AI/vulcan",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-17"
+  },
+  {
+   "slug": "wayfinder",
+   "repo_url": "https://github.com/conceptadev/wayfinder",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-09-11"
+  },
+  {
+   "slug": "wiki-llm",
+   "repo_url": "https://github.com/DimonR82/wiki-llm",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-22"
+  },
+  {
+   "slug": "wiki2okf",
+   "repo_url": "https://github.com/LucasMarchnd/wiki2okf",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "wiki-app",
+   "repo_url": "https://github.com/pantelisgeorg/wiki_app",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-22"
+  },
+  {
+   "slug": "wikicommit",
+   "repo_url": "https://github.com/wikicommit/wikicommit",
+   "okf_version": "0.1",
+   "okf_conformant": true,
+   "last_updated": "2026-09-26"
+  },
+  {
+   "slug": "wisp",
+   "repo_url": "https://github.com/scryptedai/wisp",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-20"
+  },
+  {
+   "slug": "wukong",
+   "repo_url": "https://github.com/phanijapps/wukong",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-11"
+  },
+  {
+   "slug": "wuwei-knowledge-garden",
+   "repo_url": "https://github.com/jonnjonzz73/wuwei-knowledge-garden",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "ytcrawl",
+   "repo_url": "https://github.com/oioio-ai/ytcrawl",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-08-28"
+  },
+  {
+   "slug": "zettelkern-starter-kit",
+   "repo_url": "https://github.com/devdotbo/zettelkern-starter-kit",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-07-25"
+  },
+  {
+   "slug": "zoomdoc",
+   "repo_url": "https://github.com/shallow1992/zoomdoc",
+   "okf_version": "0.1",
+   "okf_conformant": false,
+   "last_updated": "2026-10-08"
+  }
+ ]
+}
