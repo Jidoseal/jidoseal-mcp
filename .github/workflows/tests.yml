@@ -13,7 +13,9 @@ permissions:
 
 jobs:
   pytest:
-    runs-on: ubuntu-latest
+    # Pinned: ubuntu-latest is moving to 26.04, for which setup-python has no 3.9 build, so the
+    # 3.9 job failed whenever it landed there. 24.04 has every version in the matrix.
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
