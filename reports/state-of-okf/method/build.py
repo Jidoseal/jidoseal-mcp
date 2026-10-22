@@ -170,6 +170,7 @@ def page(r):
     title = f"{r['name']} ({r['author']})" if r["named"] else f"Bundle {r['anon_id']}"
     js = r.get("jidoseal", {})
     conf = ("meets it" if r["conformant"]
+            else "no concept files found under the bundle folder" if not r["concepts"]
             else f"not yet: {r['nonconformant_files']} file(s) to change")
     lines = [f"# {title}", ""]
     if r["named"]:
@@ -210,6 +211,10 @@ def page(r):
                 if n > len(probs[k]):
                     lines.append(f"- … and {n - len(probs[k])} more")
                 lines.append("")
+    elif not r["concepts"]:
+        lines += ["Every `.md` file under the bundle folder is a reserved file, hidden, or "
+                  "listed in `.okfignore`, so there was nothing to check. If the bundle is "
+                  "elsewhere in the repository, open an issue (below).", ""]
     else:
         lines += ["Nothing to change under the checks in this report.", ""]
     lines += [

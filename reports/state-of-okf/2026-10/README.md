@@ -41,14 +41,14 @@ So a bundle's own timestamps are the only way to tell which text it follows. (Bu
 
 Across all files, 5,309 timestamp values are written the 2026-08-15 way. They are valid under that text; to follow the current one, `2026-12-31` becomes `2026-12-31T00:00:00Z`. A bare date names a different instant in each timezone, which is the reason pull 6 gives for the change.
 
-The 33 bundles with a value neither text allows fall into two groups: 18 have template placeholders left in place (`YYYY-MM-DD`, `<ISO timestamp>`, `{{date}}`), and 15 write `generated.at` or `verified[].at` as a bare date, which both texts call a datetime. (5 have other values, such as `soon` or a relative period.)
+The 33 bundles with a value neither text allows fall into two groups: 18 have template placeholders left in place (`YYYY-MM-DD`, `<ISO timestamp>`, `{{date}}`), and 15 write `generated.at` or `verified[].at` as a bare date, which both texts call a datetime. (5 have other values, such as `soon` or a relative period. Some bundles are in more than one group.)
 
 ## Conformance
 
 OKF v0.2 §11 calls a bundle conformant when (1) every non-reserved `.md` file has a parseable YAML frontmatter block and (2) every block has a non-empty `type`. This report checks those two items; it does not check item 3 (the structure of `index.md` and `log.md`).
 
 - 282 of 528 bundles meet both. Where the bundle declares its own root with an `index.md` carrying `okf_version`, 222 of 304 do; where the root had to be inferred, 60 of 224.
-- Of the 246 that do not yet, 91 are one or two files away, and 159 have a `README.md` without frontmatter inside the bundle folder (typically because the bundle is the repository root). Moving the bundle into its own folder, or adding frontmatter to that file, is usually the whole change.
+- Of the 246 that do not yet, 12 have no concept files under the identified folder, 91 are one or two files away, and 159 have a `README.md` without frontmatter inside the bundle folder (typically because the bundle is the repository root). Moving the bundle into its own folder, or adding frontmatter to that file, is usually the whole change.
 - By file: 2,288 files have no frontmatter block, 1,055 have frontmatter but no `type`, and 285 have a block that does not parse as YAML.
 
 **Compared with BundleDex's own flag.** BundleDex marks each entry `okf_conformant` true or false, and does not publish its rule. On the 528 bundles, the two agree on 266 (112 yes, 154 no) and differ on 262 (170 that this check finds conformant and BundleDex does not, 92 the other way). Most differences come from where the bundle is taken to start: BundleDex gives only the repository. This report states its rule below, and each bundle page names the folder it used.
