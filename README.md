@@ -14,6 +14,51 @@ claude mcp add jidoseal -- jidoseal-mcp     # Claude Code; every other tool is b
 
 Then ask your assistant: *"Scan ~/notes with JidoSeal and tell me what's missing for Silver."*
 
+### Try it in 60 seconds
+
+Free and local; the scan engine is proprietary; JidoSeal also sells optional certificates.
+
+Pick a folder, scan it. To try it on the three-file sample in this repository:
+
+```bash
+git clone --depth 1 https://github.com/Jidoseal/jidoseal-mcp && cd jidoseal-mcp/examples/tiers/mixed
+pip install jidoseal-mcp
+claude mcp add jidoseal -- jidoseal-mcp     # Claude Code; Cursor, Copilot, Codex, Gemini CLI, Zed and local models are below
+claude
+```
+
+(`claude mcp add` registers the server for the folder you run it in, so run it there, or add `-s user`.) Then ask: *"Scan this folder with JidoSeal. Which tier does it reach, and what does each file need for Silver?"*
+
+The `jidoseal_scan` result it gets back, from a real run of `jidoseal-mcp` 0.1.4 (engine 0.1.4) on that folder on 2026-10-22 (UTC), trimmed to the summary and the Silver gaps:
+
+```jsonc
+{
+  "corpus": { "file_count": 3, "tier": "none",
+              "coverage": { "bronze": 66.7, "silver": 33.3, "gold": 33.3 } },
+  "files": [
+    { "name": "expenses.md", "tier": "bronze", "present": [ "type", "title" ],
+      "missing": { "silver": [ { "field": "description", "fix": "AUTO" },
+                               { "field": "timestamp",   "fix": "AUTO" },
+                               { "field": "owner",       "fix": "NEEDS-CLIENT" } ] } },  // gold gaps trimmed
+    { "name": "leave-policy.md", "tier": "gold",
+      "missing": { "silver": [], "gold": [] } },
+    { "name": "notes.md", "tier": "none", "present": [],
+      "missing": { "silver": [ { "field": "title",       "fix": "AUTO" },
+                               { "field": "description", "fix": "AUTO" },
+                               { "field": "timestamp",   "fix": "AUTO" },
+                               { "field": "owner",       "fix": "NEEDS-CLIENT" } ],
+                   // gold gaps trimmed
+                   "bronze": [ { "field": "type", "fix": "AUTO", "value": "note", "confidence": "MEDIUM", "inferred": true } ] } }
+  ],
+  "skipped": [],
+  "certified_eligible": false,
+  "score": 44
+  // … plus audit id, rubric, file hashes, Merkle root and the paths of the two files written under .jidoseal/
+}
+```
+
+The folder reaches no tier yet because `notes.md` has no frontmatter: a corpus's tier is that of its weakest file. `AUTO` marks a value JidoSeal can propose; `NEEDS-CLIENT` marks one only you can answer (here, `owner`).
+
 > **Independent.** OKF is an open specification from Google Cloud. JidoSeal is not affiliated with, sponsored by, or endorsed by Google or ISO. ISO names no fields: the Bronze/Silver/Gold tiers and their fields are defined by JidoSeal, as one way of evidencing selected ISO clauses. A JidoSeal tier or certificate is not an ISO certification.
 
 ### Side effects and data, in brief
