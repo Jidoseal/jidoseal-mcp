@@ -1,0 +1,40 @@
+# Bundle 8a6cdcfa204a
+
+Checked at commit `ce5447f52ac8` (2026-09-21T21:34:28Z), on 2026-10-22 (UTC), for the [State of OKF, October 2026](../README.md).
+
+| | |
+|---|---|
+| Bundle folder | `examples/` (inferred: see the method) |
+| `okf_version` declared | none |
+| Concept files | 4 |
+| OKF v0.2 conformance (§11, items 1–2) | not yet: 2 file(s) to change |
+| Timestamps follow | no timestamp fields |
+| Trust and lifecycle fields used | `sources` (2) |
+| Trust tiers (§5.3) | unverified 3 |
+| JidoSeal checker | score 17, tier none |
+
+## What to change
+
+### Files with no frontmatter block (1)
+
+OKF v0.2 §11 asks every `.md` file other than `index.md` and `log.md` to start with a YAML frontmatter block holding a non-empty `type`. The smallest change is:
+
+```yaml
+---
+type: Note
+---
+```
+
+If these files are not meant to be part of the bundle (a README, a changelog), moving the bundle into its own folder keeps them out.
+
+- `bootstrap/raw/okf-spec.md`
+
+### Files with frontmatter but no `type` (1)
+
+`type` is the one key OKF v0.2 always requires (§4.1). Any short descriptive string works, for example `type: Reference`.
+
+- `bootstrap/raw/llm-wiki-okf-skill.md`
+
+## Check it again yourself
+
+The `jidoseal_trust` tool of `jidoseal-mcp` (0.2.0 and later) applies the same per-file rules as this page, on your own machine: point it at the bundle folder. See [run it on your own folder](../README.md#run-it-on-your-own-folder). Something wrong here, or a different bundle folder? [Open an issue](https://github.com/Jidoseal/jidoseal-mcp/issues/new?template=state-of-okf.md).

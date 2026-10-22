@@ -1,0 +1,36 @@
+# Bundle cc33dbae74c2
+
+Checked at commit `e821df027a4e` (2026-07-09T10:38:55-06:00), on 2026-10-22 (UTC), for the [State of OKF, October 2026](../README.md).
+
+| | |
+|---|---|
+| Bundle folder | `(repository root)/` (inferred: see the method) |
+| `okf_version` declared | none |
+| Concept files | 2 |
+| OKF v0.2 conformance (§11, items 1–2) | not yet: 1 file(s) to change |
+| Timestamps follow | no timestamp fields |
+| Trust and lifecycle fields used | none |
+| Trust tiers (§5.3) | unverified 1 |
+| JidoSeal checker | score 17, tier none |
+
+1 file(s) use the v0.1 `timestamp` key, which v0.2 supersedes with `generated: {by, at}` (§13.1); consumers may still fall back to it.
+
+## What to change
+
+### Files with no frontmatter block (1)
+
+OKF v0.2 §11 asks every `.md` file other than `index.md` and `log.md` to start with a YAML frontmatter block holding a non-empty `type`. The smallest change is:
+
+```yaml
+---
+type: Note
+---
+```
+
+If these files are not meant to be part of the bundle (a README, a changelog), moving the bundle into its own folder keeps them out.
+
+- `README.md`
+
+## Check it again yourself
+
+The `jidoseal_trust` tool of `jidoseal-mcp` (0.2.0 and later) applies the same per-file rules as this page, on your own machine: point it at the bundle folder. See [run it on your own folder](../README.md#run-it-on-your-own-folder). Something wrong here, or a different bundle folder? [Open an issue](https://github.com/Jidoseal/jidoseal-mcp/issues/new?template=state-of-okf.md).

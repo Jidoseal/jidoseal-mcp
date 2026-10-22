@@ -23,6 +23,13 @@ It exposes the website's model, unchanged:
                                         tool here that touches the network, and it still takes
                                         no payment: Stripe does that, on jidoseal.com, only
                                         when the customer completes the checkout themselves.
+  4. `jidoseal_trust`                 — stale / unverified / ok for a document (or every
+                                        document in a folder), from its OKF v0.2 trust and
+                                        lifecycle frontmatter (okf_trust.py). Local, read-only.
+  5. `jidoseal_changes`               — what changed in a folder's Markdown since a git commit,
+                                        and which verified documents the edit left
+                                        unconfirmed (git_changes.py). Local, read-only; runs
+                                        the `git` program with transports disabled.
 
 =================================================================================================
 ARM'S LENGTH — WHY THIS IS A SEPARATE PROCESS SPEAKING A PUBLIC PROTOCOL
@@ -69,6 +76,7 @@ from typing import Any, Callable, Dict, List, Optional
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import offer as offer_mod  # noqa: E402
+import okf_trust  # noqa: E402
 import scan_result  # noqa: E402
 from engine_path import ensure_engine_on_path  # noqa: E402
 
@@ -80,7 +88,7 @@ SERVER_NAME = "jidoseal"
 # Tracks the engine/CLI version (local_runner.VERSION) it scans with, with this surface's own
 # suffix: the scan a host gets is the CLI's scan, so a bug report naming a version can be
 # resolved against one number.
-SERVER_VERSION = f"{local_runner.VERSION}+mcp.1"
+SERVER_VERSION = f"{local_runner.VERSION}+mcp.2"
 
 # The MCP revisions this server implements. `initialize` echoes the client's own when we know
 # it (the spec's negotiation rule) and otherwise offers the newest we speak.
@@ -213,6 +221,72 @@ TOOLS: List[Dict[str, Any]] = [
             "additionalProperties": False,
         },
         "annotations": {"readOnlyHint": False, "destructiveHint": False, "openWorldHint": True},
+    },
+    {
+        "name": "jidoseal_trust",
+        "title": "Can I rely on this document? (OKF v0.2 trust check, free, local)",
+        "description": (
+            "Before relying on a Markdown document, ask whether it is still trustworthy. Reads "
+            "its OKF v0.2 frontmatter on THIS machine and answers \"stale\", \"unverified\" "
+            "or \"ok\", with the reasons: stale when `stale_after` has passed or `status` is "
+            "deprecated; unverified when there is no `verified` entry, when the content "
+            "changed (`generated.at`) after its latest verification, or when `status` is "
+            "draft. Also says whether each file meets OKF v0.2 conformance (parseable "
+            "frontmatter with a non-empty `type`), returns the trust tier of OKF v0.2 §5.3 (unverified / "
+            "machine-confirmed / human-reviewed) and which text of OKF v0.2 the timestamps "
+            "follow: OKF v0.2 changed on 2026-08-21 (bare dates became datetimes with a UTC "
+            "offset) without a version bump, and both forms are accepted. Give a file for "
+            "one answer, or a folder for every *.md under it. Free. Reads only; writes "
+            "nothing. Makes no network connection: this tool is plain Python in this package "
+            "and does not call the proprietary scan engine."
+        ),
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "description": "Absolute path of a Markdown file, or of a folder to check "
+                                   "every *.md under it.",
+                },
+            },
+            "required": ["path"],
+            "additionalProperties": False,
+        },
+        "annotations": {"readOnlyHint": True, "destructiveHint": False, "openWorldHint": False},
+    },
+    {
+        "name": "jidoseal_changes",
+        "title": "What changed in these notes, and what trust did it break? (free, local)",
+        "description": (
+            "After an agent (or a person) edits a folder of Markdown that is in a git "
+            "repository, list every *.md that differs from a commit (default HEAD, so: the "
+            "edits not yet committed, plus new files), and for each one say what changed in "
+            "its frontmatter and body and what that did to its OKF v0.2 trust: a verified "
+            "document whose content changed while `verified` did not (its confirmation now "
+            "predates the text), `verified` removed, `generated.at` not updated, `type` "
+            "removed, `status` or `stale_after` changed, a document that was ok and no longer "
+            "is. Free. Reads only; writes nothing. Runs the local `git` program with "
+            "transports disabled (protocol.allow=never, no lazy fetch), so it makes no network "
+            "connection; it does not call the proprietary scan engine."
+        ),
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "root": {
+                    "type": "string",
+                    "description": "Absolute path of the folder (inside a git working tree).",
+                },
+                "since": {
+                    "type": "string",
+                    "default": "HEAD",
+                    "description": "The commit, branch or tag to compare the files on disk "
+                                   "against, for example HEAD (uncommitted edits) or HEAD~5.",
+                },
+            },
+            "required": ["root"],
+            "additionalProperties": False,
+        },
+        "annotations": {"readOnlyHint": True, "destructiveHint": False, "openWorldHint": False},
     },
 ]
 
@@ -369,10 +443,72 @@ def tool_jidoseal_start_checkout(args: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+# How many files a folder answer from jidoseal_trust lists in full; the summary counts them all.
+TRUST_MAX_FILES = 500
+
+
+def tool_jidoseal_trust(args: Dict[str, Any]) -> Dict[str, Any]:
+    path = args.get("path")
+    if not isinstance(path, str) or not path.strip():
+        raise ToolError("`path` is required: the absolute path of a Markdown file or a folder.")
+    path = os.path.expanduser(path.strip())
+    if os.path.isfile(path):
+        if not path.endswith(".md"):
+            raise ToolError(f"not a Markdown (.md) file: {path}")
+        with open(path, "rb") as fh:
+            answer = okf_trust.trust_of_text(fh.read().decode("utf-8", "replace"))
+        return {"path": os.path.abspath(path), **answer}
+    if not os.path.isdir(path):
+        raise ToolError(f"no such file or folder: {path}")
+    _refuse_links_out(path)
+    rels: List[str] = []
+    for dirpath, dirnames, filenames in os.walk(path, followlinks=False):
+        dirnames[:] = sorted(d for d in dirnames if not d.startswith("."))
+        for f in sorted(filenames):
+            if f.endswith(".md") and not f.startswith(".") and f not in ("index.md", "log.md"):
+                rels.append(os.path.relpath(os.path.join(dirpath, f), path))
+    files = []
+    for rel in rels:
+        with open(os.path.join(path, rel), "rb") as fh:
+            files.append({"path": rel, **okf_trust.trust_of_text(fh.read().decode("utf-8", "replace"))})
+    count: Dict[str, int] = {"stale": 0, "unverified": 0, "ok": 0}
+    for f in files:
+        count[f["verdict"]] += 1
+    return {
+        "root": os.path.abspath(path),
+        "summary": {"files": len(files), **count,
+                    "okf_conformant": all(f["okf_conformant"] for f in files) if files else None,
+                    "files_not_conformant": sum(not f["okf_conformant"] for f in files),
+                    "which_0_2": okf_trust.which_text(
+                        s["fits"] for f in files for s in f["timestamps"])},
+        "not_checked": "index.md and log.md (OKF v0.2 reserved files), and hidden files",
+        "files": [f for f in files if f["verdict"] != "ok"][:TRUST_MAX_FILES]
+                 + [{"path": f["path"], "verdict": "ok", "trust_tier": f["trust_tier"],
+                     "okf_conformant": f["okf_conformant"]}
+                    for f in files if f["verdict"] == "ok"][:TRUST_MAX_FILES],
+        "spec_texts": okf_trust.SPEC_TEXTS,
+    }
+
+
+def tool_jidoseal_changes(args: Dict[str, Any]) -> Dict[str, Any]:
+    # Imported HERE, and only here: the one module that starts a process (`git`) must not be
+    # on the scan path's import graph. See git_changes.py.
+    import git_changes
+
+    root = _root_arg(args)
+    since = args.get("since", "HEAD")
+    try:
+        return {"root": os.path.abspath(root), **git_changes.changes(root, since)}
+    except git_changes.ChangesError as e:
+        raise ToolError(str(e)) from None
+
+
 HANDLERS: Dict[str, Callable[[Dict[str, Any]], Dict[str, Any]]] = {
     "jidoseal_scan": tool_jidoseal_scan,
     "jidoseal_certification_offer": tool_jidoseal_certification_offer,
     "jidoseal_start_checkout": tool_jidoseal_start_checkout,
+    "jidoseal_trust": tool_jidoseal_trust,
+    "jidoseal_changes": tool_jidoseal_changes,
 }
 
 
@@ -435,7 +571,11 @@ def handle_message(msg: Dict[str, Any]) -> Optional[Dict[str, Any]]:
                 "jidoseal_certification_offer then "
                 "prices the optional certificate, and jidoseal_start_checkout returns a Stripe "
                 "link for the customer to pay — only ever with their explicit go-ahead, passed as "
-                "confirm: true."
+                "confirm: true. Two more free, local, read-only tools: call jidoseal_trust on a "
+                "document before relying on it (stale / unverified / ok, from its OKF v0.2 "
+                "trust and lifecycle fields), and jidoseal_changes after editing notes in a git "
+                "repository, to list what changed and which verified documents the edit left "
+                "unconfirmed."
             ),
         })
 

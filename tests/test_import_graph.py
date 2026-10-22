@@ -21,7 +21,7 @@ from conftest import SRC
 FORBIDDEN = {"socket", "ssl", "http", "urllib", "urllib3", "requests", "httpx", "aiohttp",
              "ftplib", "smtplib", "poplib", "imaplib", "nntplib", "telnetlib", "xmlrpc",
              "socketserver", "asyncio", "selectors", "subprocess", "multiprocessing", "ctypes",
-             "webbrowser", "checkout_client"}
+             "webbrowser", "checkout_client", "git_changes"}
 FORBIDDEN_CALLS = {"__import__", "exec", "eval", "import_module", "system", "popen",
                    "execv", "execve", "execvp", "spawnv", "spawnl", "startfile"}
 
@@ -31,7 +31,7 @@ FORBIDDEN_CALLS = {"__import__", "exec", "eval", "import_module", "system", "pop
 #  * PyYAML's constructor calls __import__ for its UNSAFE loaders. The engine uses safe_load only.
 ALLOWED = {("okf_manifest.py", "import", "subprocess"), ("constructor.py", "call", "__import__")}
 
-SCAN_PATH_SRC = ["jidoseal_mcp", "scan_result", "offer", "engine_path", "attestation"]
+SCAN_PATH_SRC = ["jidoseal_mcp", "scan_result", "offer", "engine_path", "attestation", "okf_trust"]
 ENGINE_MODULES = {"jidoseal", "local_runner", "okf_manifest", "okf_remediate", "scan_config",
                   "tier1_gate", "syntax_gate", "consent", "i18n", "frontmatter_i18n"}
 
@@ -134,19 +134,41 @@ def test_server_imports_checkout_client_only_inside_the_checkout_handler():
                 if name in FORBIDDEN:
                     where.append((fn.name, name))
     all_forbidden = [name for name, _ in _imports(tree) if name in FORBIDDEN]
-    assert where == [("tool_jidoseal_start_checkout", "checkout_client")]
-    assert all_forbidden == ["checkout_client"], "no module-level network import"
+    assert sorted(where) == [("tool_jidoseal_changes", "git_changes"),
+                             ("tool_jidoseal_start_checkout", "checkout_client")]
+    assert sorted(all_forbidden) == ["checkout_client", "git_changes"], \
+        "no module-level network or process import"
     assert sorted(set(_calls(tree)) & FORBIDDEN_CALLS) == []
 
 
-def test_checkout_client_is_the_only_module_here_that_imports_urllib():
+def _src_importers(names):
     users = []
     for name in sorted(os.listdir(SRC)):
         if name.endswith(".py"):
-            tree = _parse(os.path.join(SRC, name))
-            if any(n in FORBIDDEN - {"checkout_client"} for n, _ in _imports(tree)):
+            if any(n in names for n, _ in _imports(_parse(os.path.join(SRC, name)))):
                 users.append(name)
-    assert users == ["checkout_client.py"]
+    return users
+
+
+def test_checkout_client_is_the_only_module_here_that_imports_urllib():
+    network = FORBIDDEN - {"checkout_client", "git_changes", "subprocess"}
+    assert _src_importers(network) == ["checkout_client.py"]
+
+
+def test_git_changes_is_the_only_module_here_that_starts_a_process():
+    assert _src_importers({"subprocess"}) == ["git_changes.py"]
+    tree = _parse(os.path.join(SRC, "git_changes.py"))
+    assert {n for n, _ in _imports(tree)} <= {"__future__", "os", "subprocess", "typing",
+                                              "okf_trust"}
+    # One call site, and it runs `git` with transports disabled and no shell.
+    runs = [n for n in ast.walk(tree) if isinstance(n, ast.Call)
+            and isinstance(n.func, ast.Attribute) and n.func.attr == "run"]
+    assert len(runs) == 1
+    assert not any(k.arg == "shell" for k in runs[0].keywords)
+    import git_changes
+    assert "protocol.allow=never" in git_changes.GIT_CONFIG
+    assert "core.fsmonitor=false" in git_changes.GIT_CONFIG
+    assert git_changes.GIT_ENV["GIT_NO_LAZY_FETCH"] == "1"
 
 
 def test_engine_is_imported_from_the_installed_wheel():

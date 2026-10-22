@@ -1,0 +1,63 @@
+# Bundle cfe4bf870a0b
+
+Checked at commit `f4c2b20b3be7` (2026-10-21T13:38:57+03:00), on 2026-10-22 (UTC), for the [State of OKF, October 2026](../README.md).
+
+| | |
+|---|---|
+| Bundle folder | `(repository root)/` (inferred: see the method) |
+| `okf_version` declared | none |
+| Concept files | 232 |
+| OKF v0.2 conformance (§11, items 1–2) | not yet: 7 file(s) to change |
+| Timestamps follow | 2026-08-15 text |
+| Trust and lifecycle fields used | `sources` (19), `generated` (4), `verified` (1), `status` (1), `stale_after` (1) |
+| Trust tiers (§5.3) | human-reviewed 1, unverified 224 |
+| JidoSeal checker | score 33, tier none |
+
+177 file(s) use the v0.1 `timestamp` key, which v0.2 supersedes with `generated: {by, at}` (§13.1); consumers may still fall back to it.
+
+## What to change
+
+### Files with no frontmatter block (7)
+
+OKF v0.2 §11 asks every `.md` file other than `index.md` and `log.md` to start with a YAML frontmatter block holding a non-empty `type`. The smallest change is:
+
+```yaml
+---
+type: Note
+---
+```
+
+If these files are not meant to be part of the bundle (a README, a changelog), moving the bundle into its own folder keeps them out.
+
+- `CODE_OF_CONDUCT.md`
+- `CONTRIBUTING.md`
+- `README.md`
+- `SECURITY.md`
+- `packages/okf/test/fixtures/ossie/README.md`
+- `packages/web/public/okf-format.md`
+- `packages/web/public/ossie-format.md`
+
+### Values that follow the 2026-08-15 text (20)
+
+These are valid under the text of 2026-08-15. To follow the current text (2026-08-21), write each as a datetime with a UTC offset, for example `2026-12-31` becomes `2026-12-31T00:00:00Z`. Both texts call themselves `okf_version: "0.2"`.
+
+- `bundles/facebook-ads/ad-account-user.md: sources[].last_modified = '2026-05-18'`
+- `bundles/facebook-ads/ad-account.md: sources[].last_modified = '2026-05-18'`
+- `bundles/facebook-ads/ad-creatives.md: sources[].last_modified = '2026-09-28'`
+- `bundles/facebook-ads/ad-insights-by-age-and-gender.md: sources[].last_modified = '2026-09-16'`
+- `bundles/facebook-ads/ad-insights-by-country.md: sources[].last_modified = '2026-09-16'`
+- `bundles/facebook-ads/ad-insights-by-device-platform.md: sources[].last_modified = '2026-09-16'`
+- `bundles/facebook-ads/ad-insights-by-link-url-asset.md: sources[].last_modified = '2026-09-28'`
+- `bundles/facebook-ads/ad-insights-by-placement.md: sources[].last_modified = '2026-09-16'`
+- `bundles/facebook-ads/ad-insights-by-product-id.md: sources[].last_modified = '2026-09-16'`
+- `bundles/facebook-ads/ad-insights-by-region.md: sources[].last_modified = '2026-09-16'`
+- `bundles/facebook-ads/ad-insights.md: sources[].last_modified = '2026-09-16'`
+- `bundles/facebook-ads/ad-object-formerly-ad-group.md: sources[].last_modified = '2026-05-29'`
+- `bundles/facebook-ads/ad-set-insights.md: sources[].last_modified = '2026-09-16'`
+- `bundles/facebook-ads/ads.md: sources[].last_modified = '2026-05-18'`
+- `bundles/facebook-ads/campaign-insights.md: sources[].last_modified = '2026-09-16'`
+- … and 5 more
+
+## Check it again yourself
+
+The `jidoseal_trust` tool of `jidoseal-mcp` (0.2.0 and later) applies the same per-file rules as this page, on your own machine: point it at the bundle folder. See [run it on your own folder](../README.md#run-it-on-your-own-folder). Something wrong here, or a different bundle folder? [Open an issue](https://github.com/Jidoseal/jidoseal-mcp/issues/new?template=state-of-okf.md).

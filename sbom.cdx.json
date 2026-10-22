@@ -6,10 +6,10 @@
     "timestamp": "2026-09-30T00:00:00Z",
     "component": {
       "type": "application",
-      "bom-ref": "pkg:pypi/jidoseal-mcp@0.1.4",
+      "bom-ref": "pkg:pypi/jidoseal-mcp@0.2.0",
       "name": "jidoseal-mcp",
-      "version": "0.1.4",
-      "purl": "pkg:pypi/jidoseal-mcp@0.1.4",
+      "version": "0.2.0",
+      "purl": "pkg:pypi/jidoseal-mcp@0.2.0",
       "licenses": [
         {
           "license": {
@@ -196,7 +196,7 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:pypi/jidoseal-mcp@0.1.4",
+      "ref": "pkg:pypi/jidoseal-mcp@0.2.0",
       "dependsOn": [
         "pkg:pypi/jidoseal@0.1.4"
       ]

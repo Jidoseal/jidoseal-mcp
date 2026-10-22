@@ -1,0 +1,54 @@
+# Bundle 9181cff8beed
+
+Checked at commit `d094532d4cd0` (2026-10-19T01:16:28Z), on 2026-10-22 (UTC), for the [State of OKF, October 2026](../README.md).
+
+| | |
+|---|---|
+| Bundle folder | `(repository root)/` (inferred: see the method) |
+| `okf_version` declared | none |
+| Concept files | 68 |
+| OKF v0.2 conformance (§11, items 1–2) | not yet: 11 file(s) to change |
+| Timestamps follow | 2026-08-21 text |
+| Trust and lifecycle fields used | `sources` (51), `generated` (54), `verified` (10), `status` (11), `stale_after` (8) |
+| Trust tiers (§5.3) | human-reviewed 9, machine-confirmed 1, unverified 48 |
+| JidoSeal checker | score 54, tier none |
+
+## What to change
+
+### Files with no frontmatter block (9)
+
+OKF v0.2 §11 asks every `.md` file other than `index.md` and `log.md` to start with a YAML frontmatter block holding a non-empty `type`. The smallest change is:
+
+```yaml
+---
+type: Note
+---
+```
+
+If these files are not meant to be part of the bundle (a README, a changelog), moving the bundle into its own folder keeps them out.
+
+- `AGENTS.md`
+- `CHANGELOG.md`
+- `CLAUDE.md`
+- `CONTRIBUTING.md`
+- `README.md`
+- `SECURITY.md`
+- `SPEC.md`
+- `test/fixtures/edge/notes/plain.md`
+- `test/fixtures/edge/notes/unterminated.md`
+
+### Files whose frontmatter does not parse (1)
+
+The block between the `---` lines must be valid YAML that reads as a mapping. The parser's first message is shown for each file.
+
+- `test/fixtures/edge/notes/not-a-mapping.md: frontmatter is not a mapping`
+
+### Files with frontmatter but no `type` (1)
+
+`type` is the one key OKF v0.2 always requires (§4.1). Any short descriptive string works, for example `type: Reference`.
+
+- `test/fixtures/edge/notes/untyped.md`
+
+## Check it again yourself
+
+The `jidoseal_trust` tool of `jidoseal-mcp` (0.2.0 and later) applies the same per-file rules as this page, on your own machine: point it at the bundle folder. See [run it on your own folder](../README.md#run-it-on-your-own-folder). Something wrong here, or a different bundle folder? [Open an issue](https://github.com/Jidoseal/jidoseal-mcp/issues/new?template=state-of-okf.md).

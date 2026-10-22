@@ -14,6 +14,8 @@ claude mcp add jidoseal -- jidoseal-mcp     # Claude Code; every other tool is b
 
 Then ask your assistant: *"Scan ~/notes with JidoSeal and tell me what's missing for Silver."*
 
+> **New: [State of OKF, October 2026](https://github.com/Jidoseal/jidoseal-mcp/blob/main/reports/state-of-okf/2026-10/README.md).** All 900 bundles listed on BundleDex, checked against OKF v0.2 on 2026-10-22: conformance, which of the two v0.2 texts each bundle's timestamps follow, trust fields, and a [leaderboard](https://github.com/Jidoseal/jidoseal-mcp/blob/main/reports/state-of-okf/2026-10/leaderboard.md), with the method and a page per bundle.
+
 ### Try it in 60 seconds
 
 Free and local; the scan engine is proprietary; JidoSeal also sells optional certificates.
@@ -65,6 +67,7 @@ The folder reaches no tier yet because `notes.md` has no frontmatter: a corpus's
 
 - **Reads:** the `*.md` files under the folder you give it (hidden files and folders are skipped), plus `<folder>/.jidoseal/config.yaml` if present. The server refuses a folder that contains a symlink to a directory or to a file outside the folder.
 - **Writes:** `<folder>/.jidoseal/manifest.json` (replaced on each scan) and `<folder>/.jidoseal/progress.ndjson` (appended to). Nothing else; your notes are not modified.
+- **Trust and changes tools:** `jidoseal_trust` and `jidoseal_changes` read only and write nothing. `jidoseal_changes` runs the local `git` program, with transports disabled, to read the folder's history.
 - **Network, scan and offer:** none, by JidoSeal's own claim about its proprietary engine, not independently audited. The tests below check it on every change.
 - **Network, checkout (optional, paid):** `jidoseal_start_checkout` runs only with `confirm: true`. It sends eight fields to jidoseal.com: company, name and email as typed, the tier, a 0–100 score, the corpus's Merkle root, the local scan's id, and one flag saying which Bronze price applies. jidoseal.com copies them into the Stripe Checkout session it creates (the email as the session's customer email, all eight as session metadata), when the session is created, before any payment. No file contents, file names, per-file hashes or paths. No card data passes through this server.
 - **Engine:** the scan engine is the separate `jidoseal` package, under a proprietary licence. It ships as plain Python source and is pinned here to one version (0.1.4), with its sha256 in [`ENGINE-SHA256SUMS`](ENGINE-SHA256SUMS) and an SBOM in [`sbom.cdx.json`](sbom.cdx.json). So "nothing leaves your machine" is JidoSeal's own claim: you can check it with the commands under [What leaves your machine](#what-leaves-your-machine) and the tests in [`tests/`](tests/), but it has not been independently audited.
@@ -108,6 +111,8 @@ Worked examples for each tier, and a mixed folder, are in [`examples/tiers/`](ex
 | `jidoseal_scan` | The free Self-Check over a folder on this machine: corpus tier, per-file missing fields for the next tier (each marked `AUTO` — a value JidoSeal can propose — or `NEEDS-CLIENT` — only the owner can answer), coverage per tier, a 0–100 score, and a Merkle root of the corpus. | none (JidoSeal's claim; see [below](#what-leaves-your-machine)) |
 | `jidoseal_certification_offer` | What optional certification would cost for this corpus, why, what it includes, and exactly which facts a purchase would send. Computes locally; starts nothing. | none (same claim) |
 | `jidoseal_start_checkout` | Only on your explicit go-ahead, passed as `confirm: true` (without it, nothing is sent): asks jidoseal.com to create a Stripe Checkout session and returns the link for you to open. Takes no payment. | jidoseal.com, which passes the fields to Stripe |
+| `jidoseal_trust` | Before an agent relies on a document: `stale`, `unverified` or `ok`, with the reasons, from its OKF v0.2 trust and lifecycle fields (`stale_after`, `status`, `verified`, `generated`). Also its trust tier (§5.3), whether it meets OKF v0.2 conformance, and which text of v0.2 its timestamps follow. One file, or every `*.md` in a folder. Reads only. Plain Python in this package; does not use the scan engine. | none |
+| `jidoseal_changes` | After an edit: every `*.md` that differs from a git commit (default `HEAD`, so the uncommitted edits and new files), what changed in its frontmatter and body, and what that did to its trust: a verified document whose text changed while `verified` did not, `verified` or `type` removed, `generated.at` not updated, `status` or `stale_after` changed. Reads only. Runs the local `git` with `protocol.allow=never` and no lazy fetch. | none |
 
 Example `jidoseal_scan` result for [`examples/tiers/mixed`](examples/tiers/mixed) (three files, one Gold, one Bronze, one with no frontmatter):
 
@@ -128,6 +133,25 @@ Example `jidoseal_scan` result for [`examples/tiers/mixed`](examples/tiers/mixed
 ```
 
 `frontmatter_ok: false` on a file means its frontmatter block exists but does not parse; no field write can close its gaps until it is fixed by hand.
+
+### Trust before you rely on a document
+
+Ask: *"Before you use ~/notes/policies/leave.md, check it with jidoseal_trust."* or, after an agent has edited your notes, *"Run jidoseal_changes on ~/notes: what did you change, and which verified documents did it leave unconfirmed?"* A `jidoseal_trust` answer for one file:
+
+```jsonc
+{
+  "verdict": "unverified",
+  "reasons": [ "content changed at 2026-10-01T00:00:00Z, after its latest verification at 2026-06-25T09:00:00Z" ],
+  "okf_conformant": true,
+  "trust_tier": "human-reviewed",
+  "status": "stable",
+  "stale": false,
+  "which_0_2": "2026-08-21"
+  // … plus each timestamp as written and which v0.2 text it follows
+}
+```
+
+OKF v0.2 changed on 2026-08-21 without a version bump: `stale_after`, `sources[].last_modified` and `usage_window` went from bare dates to datetimes with a UTC offset. Both forms are accepted, and `which_0_2` says which one a document uses.
 
 ## Install and wire it into your tool
 
@@ -267,7 +291,7 @@ The CLI writes `.jidoseal/manifest.json`; a few lines turn it into a gate. See [
 
 ## What leaves your machine
 
-**A scan:** JidoSeal's claim is that it sends nothing: not the files, not their names, not their contents. The engine that does the scan is proprietary, and nobody independent has audited this claim. It is built to be checkable: `jidoseal_mcp.py`, `scan_result.py` and `offer.py` import no socket, no `urllib`, no HTTP client, and neither does anything they pull in, including the ten engine modules the pinned `jidoseal` wheel contains. `checkout_client.py` is the one module that can reach the network, and it is imported only inside the checkout handler.
+**A scan:** JidoSeal's claim is that it sends nothing: not the files, not their names, not their contents. The engine that does the scan is proprietary, and nobody independent has audited this claim. It is built to be checkable: `jidoseal_mcp.py`, `scan_result.py` and `offer.py` import no socket, no `urllib`, no HTTP client, and neither does anything they pull in, including the ten engine modules the pinned `jidoseal` wheel contains. `checkout_client.py` is the one module that can reach the network, and it is imported only inside the checkout handler. `git_changes.py`, behind `jidoseal_changes`, is the one module that starts a program: the local `git`, with transports disabled (`protocol.allow=never`, `GIT_NO_LAZY_FETCH=1`), imported only inside its own handler.
 
 **A purchase**, only if you choose one and the call carries `confirm: true`: the company, name and email you typed, the tier, a 0–100 score, the corpus's Merkle root, the local scan's id, and which Bronze price applies, sent to jidoseal.com. jidoseal.com copies them into the Stripe Checkout session it creates: the email as the session's customer email, and all eight as session metadata. That happens when the session is created, before any payment. No file contents, no file names, no per-file hashes, no paths, and no card data through this server (Stripe hosts the payment page). The Merkle root is a one-way digest.
 
@@ -289,6 +313,7 @@ The test suite checks the same things on every change, against the pinned engine
 | [`tests/test_network_boundary.py`](tests/test_network_boundary.py) | No socket, DNS lookup or child process during a scan — in-process with sockets blocked, and end to end over stdio in a process that exits on any socket event. |
 | [`tests/test_checkout_confirmation.py`](tests/test_checkout_confirmation.py) | Checkout makes no request without `confirm: true`, and with it sends exactly the eight fields above (HTTP mocked). |
 | [`tests/test_import_graph.py`](tests/test_import_graph.py) | Static check of every module on the scan path, the engine's included. |
+| [`tests/test_trust_and_changes.py`](tests/test_trust_and_changes.py) | `jidoseal_trust` and `jidoseal_changes`: verdicts, the two v0.2 timestamp texts, no writes, no socket, and `git` as the only program `jidoseal_changes` starts, always with transports disabled. |
 | [`tests/test_packaging.py`](tests/test_packaging.py) | The engine pin, `ENGINE-SHA256SUMS`, the SBOM and the installed engine files all agree. No tool text or result shows the engine's unqualified no-egress line, and the checkout text names the Stripe step. |
 
 The `jidoseal` command-line tool refuses such folders too, from engine 0.1.4 (the version pinned here): a symlink to a file or directory outside the folder, or a symlinked `.jidoseal/`, stops the run before anything is read or written, and the command exits with status 2. It does not follow a symlinked directory inside the folder either, so each file is read once. This server is a little stricter: it refuses a symlinked directory even when it stays inside. The CLI's own no-network line is worded as JidoSeal's claim, like this server's. Engine 0.1.3 and earlier followed symlinks and printed an unqualified line, so use 0.1.4 or later.
