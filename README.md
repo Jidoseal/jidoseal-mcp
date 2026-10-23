@@ -20,7 +20,7 @@ Then ask your assistant: *"Scan ~/notes with JidoSeal and tell me what's missing
 
 Free and local; the scan engine is proprietary; JidoSeal also sells optional certificates.
 
-Pick a folder, scan it. To try it on the three-file sample in this repository:
+Pick a folder, scan it. Watch the 76-second run first: [Check an OKF v0.2 folder in 60 seconds (free, local)](https://youtu.be/useMCASUHQ0). To try it on the three-file sample in this repository:
 
 ```bash
 git clone --depth 1 https://github.com/Jidoseal/jidoseal-mcp && cd jidoseal-mcp/examples/tiers/mixed
