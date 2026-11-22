@@ -1,6 +1,6 @@
 """
 `jidoseal_start_checkout` sends a request only with `confirm: true`, and then sends exactly the
-seven documented fields — nothing about the files.
+ten documented fields — nothing about the files.
 
 HTTP is mocked: `urllib.request.urlopen` is replaced, so no test here reaches jidoseal.com.
 """
@@ -44,9 +44,10 @@ def _args(root, **extra):
     return args
 
 
-def test_the_documented_list_is_the_seven_fields():
+def test_the_documented_list_is_the_ten_fields():
     assert DOCUMENTED_FIELDS == ["company", "submitterName", "submitterEmail", "requestedTier",
-                                 "score", "merkleRoot", "auditId"]
+                                 "score", "merkleRoot", "filesBelowBronze", "filesBelowSilver",
+                                 "filesBelowGold", "auditId"]
 
 
 @pytest.mark.parametrize("confirm", ["missing", False, None, "true", "yes", 1, [True], {"x": 1}])
@@ -74,6 +75,8 @@ def test_confirm_true_sends_one_post_with_only_the_documented_fields(gold_root, 
     assert body["submitterEmail"] == "ada@example.com"
     assert body["requestedTier"] == "gold"
     assert isinstance(body["score"], int) and 0 <= body["score"] <= 100
+    # /api/checkout refuses a body without the three counts; a gold folder has no file below any tier.
+    assert (body["filesBelowBronze"], body["filesBelowSilver"], body["filesBelowGold"]) == (0, 0, 0)
     assert "belowTier" not in body
     assert payload["checkout_url"] == "https://checkout.stripe.test/c/1"
     assert payload["sent_to_site"] == body

@@ -132,6 +132,7 @@ def build_scan_result(root: str, include_machine: bool = False) -> Dict[str, Any
     tier = corpus_v1["grade"]
     coverage = dict(corpus_v1["coverage"])
     okf11 = manifest["corpus"]["okf11"]
+    grades = [e["grade"] for e in entries.values()]
     files: List[Dict[str, Any]] = [
         {
             "name": rel,
@@ -169,6 +170,8 @@ def build_scan_result(root: str, include_machine: bool = False) -> Dict[str, Any
         # "3/3" when every file passes the three OKF v0.2 section 11 rules: the free OKF
         # Certified request needs exactly that string.
         "okf11Result": f"{okf11['rules_passed']}/3",
+        # Files below each tier: the folder-grade counts /api/checkout requires (since 0.3.1).
+        "filesBelow": {t: sum(1 for g in grades if TIER_ORDER[g] < TIER_ORDER[t]) for t in TIERS},
         "merkleRoot": attestation.manifest_root(manifest),
         # Not part of AuditResult — MCP-only provenance so a host can show the caller where the
         # scan's own records landed, and so `jidoseal_start_checkout` can prove the numbers it

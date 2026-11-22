@@ -119,7 +119,7 @@ CERTIFICATION_INCLUDES = [
 # The complete list of what a purchase sends to jidoseal.com — aggregate facts and the contact
 # details the customer types, and nothing else. Stated field by field because "no network use"
 # is a claim about the FREE path, and the paid path deserves the same precision rather than a
-# reassuring summary. (test_checkout_confirmation derives the seven keys from these strings'
+# reassuring summary. (test_checkout_confirmation derives the ten keys from these strings'
 # first words, so keep each key first.)
 PURCHASE_EGRESS_FIELDS = [
     "company (typed by the customer)",
@@ -128,6 +128,9 @@ PURCHASE_EGRESS_FIELDS = [
     "requestedTier — one of bronze/silver/gold",
     "score — a single integer 0-100",
     "merkleRoot — one sha256 hex digest over the corpus's per-file hashes",
+    "filesBelowBronze — a count of files below Bronze",
+    "filesBelowSilver — a count of files below Silver",
+    "filesBelowGold — a count of files below Gold",
     "auditId — the local scan's own random id",
 ]
 
@@ -157,10 +160,10 @@ FREE_NEXT_STEPS = (
 
 # Where those fields go next. jidoseal.com's /api/checkout copies them into the Stripe Checkout
 # session it creates (web/app/api/checkout/route.ts): the email as the session's customer_email,
-# all seven as session metadata. That happens when the session is created, before any payment.
+# all ten as session metadata. That happens when the session is created, before any payment.
 PURCHASE_STRIPE_HOP = (
     "jidoseal.com copies these fields into the Stripe Checkout session it creates for the "
-    "purchase: the email as the session's customer email, and all seven as session metadata. "
+    "purchase: the email as the session's customer email, and all ten as session metadata. "
     "That happens when the session is created, before any payment. No card data passes "
     "through this server; Stripe hosts the payment page."
 )

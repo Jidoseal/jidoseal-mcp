@@ -22,8 +22,9 @@ is held for the scan engine itself, and enforced by a static import check.
 WHAT LEAVES THE MACHINE, EXHAUSTIVELY
 -------------------------------------
 Paid: the JSON body built by `build_body()` and nothing else: company, submitterName,
-submitterEmail, requestedTier, score, merkleRoot, auditId (the website's own checkout button
-sends the same set; `belowTier` is gone, as Bronze has one price).
+submitterEmail, requestedTier, score, merkleRoot, filesBelowBronze, filesBelowSilver,
+filesBelowGold (counts of files below each tier), auditId (the website's own checkout
+button sends the same set; `belowTier` is gone, as Bronze has one price).
 Free: the JSON body built by `build_free_body()` and nothing else: company, submitterName,
 submitterEmail, score, merkleRoot, okf11Result, fileCount and configSha256. No file content, no file names, no
 per-file hashes, no paths. See offer.PURCHASE_EGRESS_FIELDS and offer.FREE_EGRESS_FIELDS,
@@ -66,9 +67,18 @@ def _require(value: Any, field: str, max_len: int) -> str:
     return v
 
 
+def _count(files_below: Any, tier: str, key: str) -> int:
+    """One folder-grade count for /api/checkout: how many files sit below `tier`. The site
+    refuses the checkout (400) without all three, so a missing or malformed count fails HERE."""
+    n = files_below.get(tier) if isinstance(files_below, dict) else None
+    if not isinstance(n, int) or isinstance(n, bool) or n < 0:
+        raise CheckoutError(f"the scan result has no valid {key} count.")
+    return n
+
+
 def build_body(company: str, submitter_name: str, submitter_email: str,
                requested_tier: str, score: int, merkle_root: str,
-               audit_id: str) -> Dict[str, Any]:
+               audit_id: str, files_below: Dict[str, int]) -> Dict[str, Any]:
     """The exact JSON body /api/checkout expects — same keys, same casing, same types as
     the website's own checkout button. Built as its own function so a test can assert what would
     leave the machine WITHOUT anything leaving it."""
@@ -79,6 +89,9 @@ def build_body(company: str, submitter_name: str, submitter_email: str,
         "requestedTier": str(requested_tier).strip().lower(),
         "score": int(score),
         "merkleRoot": str(merkle_root).strip().lower(),
+        "filesBelowBronze": _count(files_below, "bronze", "filesBelowBronze"),
+        "filesBelowSilver": _count(files_below, "silver", "filesBelowSilver"),
+        "filesBelowGold": _count(files_below, "gold", "filesBelowGold"),
         "auditId": str(audit_id),
     }
     if not _EMAIL_RE.match(body["submitterEmail"]):
