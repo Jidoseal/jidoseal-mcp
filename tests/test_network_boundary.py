@@ -84,6 +84,15 @@ def test_checkout_without_confirm_makes_no_socket_call(gold_root, no_network, re
     assert recorder.named("socket.") == []
 
 
+def test_free_certificate_without_confirm_makes_no_socket_call(okf_root, no_network, recorder):
+    with recorder:
+        is_error, _ = call_tool("jidoseal_request_free_certificate", {
+            "root": str(okf_root), "company": "A", "submitter_name": "B",
+            "submitter_email": "b@example.com"})
+    assert is_error
+    assert recorder.named("socket.") == []
+
+
 def _child_env(extra_path=None):
     env = dict(os.environ)
     parts = ([extra_path] if extra_path else []) + [SRC]

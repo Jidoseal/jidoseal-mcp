@@ -1,3 +1,6 @@
+# NOT SHIPPED since jidoseal-mcp 0.3.0 (task 1734): jidoseal 0.2.0 installs its own top-level
+# attestation.py, so this copy is left out of pyproject's py-modules to avoid two wheels owning
+# one file. Kept here for history; the MCP imports the engine's module.
 """
 attestation.py — Merkle-root construction over the scan-once manifest.
 

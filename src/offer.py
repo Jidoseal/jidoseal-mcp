@@ -15,31 +15,25 @@ import graph on every other path, held by a static import check.
 
 PRICING IS QUOTED, NOT INVENTED
 -------------------------------
-Every number and every qualifying clause below is the site's own published copy
-(jidoseal.com's pricing section: the per-grade table and the two price cards), reproduced
-verbatim so a host tool can never quote a price the customer would not actually be charged:
-    Bronze  $149 — if the folder met Bronze on its first scan
-            $199 — if JidoSeal's fixes got it there
-    Silver  $349
-    Gold    $599
+Every number below is the site's own published price list (OKF Folder Criteria v1.0.0 ladder),
+reproduced so a host tool can never quote a price the customer would not actually be charged:
+    OKF Certified  free (the free certificate; see `free_certificate_body` in checkout_client)
+    Bronze  $349  (renewal $200)
+    Silver  $599  (renewal $300)
+    Gold    $999  (renewal $450)
     Self-Check — free (the scan and the fixes)
-One flat price per grade, however many files; there is no file-count tiering. The scan and the
-fixes are free; the certificate is the only thing that costs money. Which Bronze price applies
-is decided by the website's own rule,
-reproduced in `first_scan_was_below_bronze()` below from the corpus's OWN scan history rather
-than from anything the caller asserts.
+One flat price per grade, however many files; there is no file-count tiering and Bronze has one
+price. The scan and the fixes are free; a paid certificate is the only thing that costs money.
 """
 from __future__ import annotations
 
-import json
 import os
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 
 from engine_path import ensure_engine_on_path
 
 ensure_engine_on_path()
 
-import local_runner  # noqa: E402  — progress_path(): the corpus's own append-only scan history
 import scan_result  # noqa: E402  — SCAN_EGRESS_CLAIM: the one qualified sentence about a scan
 
 # The public site. Overridable so a test (or a self-hosted instance) can point the checkout
@@ -51,42 +45,65 @@ def site_url() -> str:
     return (os.environ.get("JIDOSEAL_SITE_URL") or DEFAULT_SITE_URL).rstrip("/")
 
 
-# Verbatim from jidoseal.com — tier, what the tier means, the price(s), and the condition
-# attached to each price. `alt` exists only where the site itself publishes two prices.
+# Verbatim from jidoseal.com — tier, what the tier means, the price, the renewal price. The
+# `rubric` strings are the approved site wording and are the same text scan_result.RUBRIC shows.
 PRICING = {
+    "okf-certified": {
+        "tier": "OKF Certified",
+        "rubric": scan_result.RUBRIC["okf-certified"],
+        "price_usd": 0,
+        "price": "Free",
+        "price_note": "free certificate; one per email address, per folder and per company domain",
+    },
     "bronze": {
         "tier": "Bronze",
-        "rubric": "OKF v0.2, as written",
-        "price_usd": 149,
-        "price": "$149",
-        "price_note": "if the folder met Bronze on its first scan",
-        "alt_price_usd": 199,
-        "alt_price": "$199",
-        "alt_price_note": "if JidoSeal's fixes got it there",
+        "rubric": scan_result.RUBRIC["bronze"],
+        "price_usd": 349,
+        "price": "$349",
+        "renewal_usd": 200,
+        "renewal": "$200",
+        "india_business_inr": "₹18,499",
+        "price_note": "one flat price per grade, however many files",
     },
     "silver": {
         "tier": "Silver",
-        "rubric": "+ fields that evidence ISO 9001 §7.5.2",
-        "price_usd": 349,
-        "price": "$349",
+        "rubric": scan_result.RUBRIC["silver"],
+        "price_usd": 599,
+        "price": "$599",
+        "renewal_usd": 300,
+        "renewal": "$300",
+        "india_business_inr": "₹31,799",
         "price_note": "one flat price per grade, however many files",
     },
     "gold": {
         "tier": "Gold",
-        "rubric": "+ fields that evidence ISO 30401",
-        "price_usd": 599,
-        "price": "$599",
+        "rubric": scan_result.RUBRIC["gold"],
+        "price_usd": 999,
+        "price": "$999",
+        "renewal_usd": 450,
+        "renewal": "$450",
+        "india_business_inr": "₹53,099",
         "price_note": "one flat price per grade, however many files",
     },
 }
+
+# The tiers a paid checkout can be started for. OKF Certified is the free certificate.
+PAID_TIERS = ("bronze", "silver", "gold")
+
+# Bundles and referral, as the site words them.
+BUNDLES = [
+    "Agency 5-pack: five Bronze certificates, $1,299, use them within 12 months.",
+    "Certified OKF tool: includes one 50%-off Bronze code.",
+    "Refer a peer: they get 20% off a Bronze certificate.",
+]
 
 SELF_CHECK_PRICE = "Free"
 
 PRICING_NOTE = (
     "One flat price per grade, however many files. You only pay once your folder has reached "
     "the grade, so the free scan tells you exactly where you stand first. Scanning and fixing "
-    "stay free whether or not you buy a certificate. The certificate is the only thing that "
-    "costs money."
+    "stay free whether or not you buy a certificate. A paid certificate is the only thing that "
+    "costs money; OKF Certified is free."
 )
 
 # What the paid product is, verbatim from the site's JidoSeal Certified card.
@@ -102,7 +119,7 @@ CERTIFICATION_INCLUDES = [
 # The complete list of what a purchase sends to jidoseal.com — aggregate facts and the contact
 # details the customer types, and nothing else. Stated field by field because "no network use"
 # is a claim about the FREE path, and the paid path deserves the same precision rather than a
-# reassuring summary. (test_checkout_confirmation derives the eight keys from these strings'
+# reassuring summary. (test_checkout_confirmation derives the seven keys from these strings'
 # first words, so keep each key first.)
 PURCHASE_EGRESS_FIELDS = [
     "company (typed by the customer)",
@@ -112,15 +129,38 @@ PURCHASE_EGRESS_FIELDS = [
     "score — a single integer 0-100",
     "merkleRoot — one sha256 hex digest over the corpus's per-file hashes",
     "auditId — the local scan's own random id",
-    "belowTier — one boolean, which Bronze price applies",
 ]
+
+# What the FREE OKF Certified request sends to POST <site>/api/certify-free: the scan result
+# (a score, the OKF section 11 count, how many files) and the folder fingerprint, plus the
+# contact details the customer types. Nothing else. (test_free_certificate derives the keys
+# from these strings' first words, so keep each key first.)
+FREE_EGRESS_FIELDS = [
+    "company (typed by the customer)",
+    "submitterName (typed by the customer)",
+    "submitterEmail (typed by the customer)",
+    "score — a single integer 0-100",
+    "merkleRoot — one sha256 hex digest over the corpus's per-file hashes",
+    "okf11Result — the text 3/3: all three OKF v0.2 section 11 rules pass",
+    "fileCount — how many files were scanned (25 or more)",
+    "configSha256 — one digest of the folder's own .jidoseal/config.yaml, or the text absent:no-config-file",
+]
+
+FREE_MIN_FILES = 25
+
+FREE_NEXT_STEPS = (
+    "jidoseal.com emails a confirmation link to the address given; the link expires in 72 hours "
+    "and the certificate is issued when the customer opens it. Nothing is charged. A free "
+    "certificate needs 25 or more files, and there is one per email address, per folder and "
+    "per company domain."
+)
 
 # Where those fields go next. jidoseal.com's /api/checkout copies them into the Stripe Checkout
 # session it creates (web/app/api/checkout/route.ts): the email as the session's customer_email,
-# all eight as session metadata. That happens when the session is created, before any payment.
+# all seven as session metadata. That happens when the session is created, before any payment.
 PURCHASE_STRIPE_HOP = (
     "jidoseal.com copies these fields into the Stripe Checkout session it creates for the "
-    "purchase: the email as the session's customer email, and all eight as session metadata. "
+    "purchase: the email as the session's customer email, and all seven as session metadata. "
     "That happens when the session is created, before any payment. No card data passes "
     "through this server; Stripe hosts the payment page."
 )
@@ -132,77 +172,20 @@ PURCHASE_EGRESS_NOT_SENT = (
 )
 
 
-def first_scan_was_below_bronze(root: str) -> Optional[bool]:
-    """Was this corpus below Bronze the FIRST time it was scanned?
-
-    That is the question the website answers in the
-    browser (a fix was applied while the corpus was not yet `certified_eligible`), and it is
-    what decides the Bronze price. The browser knows it from session state; a host tool calling
-    over MCP has no session — but the corpus does: `<root>/.jidoseal/progress.ndjson` is an
-    append-only history, and every scan's `done` event carries its Bronze coverage. A corpus
-    whose EARLIEST recorded scan already had 100% Bronze coverage was at Bronze before any fix
-    (corpus tier = the lowest per-file tier, so `tier != "none"` is exactly `bronze == 100`).
-
-    Returns True (was below Bronze), False (was already at Bronze), or None when the history
-    cannot be read at all — in which case callers quote the HIGHER price rather than guess low.
-    """
-    path = local_runner.progress_path(root)
-    try:
-        with open(path, "r", encoding="utf-8") as fh:
-            for line in fh:
-                line = line.strip()
-                if not line:
-                    continue
-                try:
-                    ev = json.loads(line)
-                except json.JSONDecodeError:
-                    continue
-                if ev.get("phase") == "done" and ev.get("op") == "scan":
-                    cov = ev.get("coverage") or {}
-                    bronze = cov.get("bronze")
-                    if isinstance(bronze, (int, float)):
-                        return bronze < 100
-    except OSError:
-        return None
-    return None
-
-
-def price_for(tier: str, below_tier: Optional[bool]) -> Dict[str, Any]:
-    """The price the customer would actually be charged for `tier`, and why.
-
-    `below_tier` only ever changes the Bronze price (the site restricts the
-    below-tier product to Bronze); unknown (None) quotes the higher Bronze price, because a
-    quote that turns out low at the checkout screen is the one error mode with a cost attached.
-    """
+def price_for(tier: str) -> Dict[str, Any]:
+    """The price the customer would actually be charged for `tier`. One price per tier:
+    Bronze has no below-tier price any more."""
     entry = PRICING[tier]
-    if tier != "bronze":
-        return {
-            "amount_usd": entry["price_usd"],
-            "display": entry["price"],
-            "why": entry["price_note"],
-            "below_tier": False,
-        }
-    if below_tier is False:
-        return {
-            "amount_usd": entry["price_usd"],
-            "display": entry["price"],
-            "why": "This corpus was already at Bronze on its first scan, before any fix was "
-                   "applied, so certifying it is $149.",
-            "below_tier": False,
-        }
-    unknown = below_tier is None
-    return {
-        "amount_usd": entry["alt_price_usd"],
-        "display": entry["alt_price"],
-        "why": (
-            "No earlier scan of this corpus is on record, so the $199 price is quoted; if it "
-            "was already at Bronze on its first scan the price is $149."
-            if unknown else
-            "This corpus needed corrections before it reached Bronze, so certifying it is $199."
-        ),
-        "below_tier": True,
-        "price_unconfirmed": unknown,
+    out: Dict[str, Any] = {
+        "amount_usd": entry["price_usd"],
+        "display": entry["price"],
+        "why": entry["price_note"],
     }
+    if "renewal_usd" in entry:
+        out["renewal_usd"] = entry["renewal_usd"]
+        out["renewal"] = entry["renewal"]
+        out["india_business_inr"] = entry["india_business_inr"]
+    return out
 
 
 def gap_summary(result: Dict[str, Any]) -> Dict[str, Any]:
@@ -211,7 +194,7 @@ def gap_summary(result: Dict[str, Any]) -> Dict[str, Any]:
     (`AUTO`). Counts only — the per-file list is already in the scan result, and this exists so
     a host can say "7 gaps left" without walking it."""
     out: Dict[str, Any] = {}
-    for tier in ("bronze", "silver", "gold"):
+    for tier in scan_result.TIERS:
         gaps = [g for f in result["files"] for g in f["missing"].get(tier, [])]
         out[tier] = {
             "total": len(gaps),
@@ -225,19 +208,27 @@ def gap_summary(result: Dict[str, Any]) -> Dict[str, Any]:
     return out
 
 
+def free_eligible(result: Dict[str, Any]) -> bool:
+    """Can this folder ask for the free OKF Certified certificate? The same gate
+    /api/certify-free applies: all three OKF section 11 rules pass, and 25 or more files."""
+    return (result["okf11Result"] == "3/3"
+            and result["corpus"]["tier"] != "none"
+            and result["corpus"]["file_count"] >= FREE_MIN_FILES)
+
+
 def build_offer(result: Dict[str, Any], root: str) -> Dict[str, Any]:
     """The certification offer for an already-scanned corpus. Pure local computation over
     `result` (a scan_result.build_scan_result() return) — no network, no payment, no purchase.
     """
     tier = result["corpus"]["tier"]
-    eligible = result["certified_eligible"]
-    below = first_scan_was_below_bronze(root) if tier == "bronze" else None
+    paid = tier in PAID_TIERS
     site = site_url()
 
     offer: Dict[str, Any] = {
         "corpus": {
             "root": os.path.abspath(root),
             "tier": tier,
+            "criteria_version": result["corpus"]["criteria_version"],
             "file_count": result["corpus"]["file_count"],
             "coverage": result["corpus"]["coverage"],
             "score": result["score"],
@@ -249,7 +240,7 @@ def build_offer(result: Dict[str, Any], root: str) -> Dict[str, Any]:
             # certified, not a detail that surfaces only on the artifact afterwards.
             "config_hash": result["scan"]["config_hash"],
         },
-        "certified_eligible": eligible,
+        "certified_eligible": result["certified_eligible"],
         "gaps_remaining": gap_summary(result),
         "self_check": {
             "price": SELF_CHECK_PRICE,
@@ -260,6 +251,7 @@ def build_offer(result: Dict[str, Any], root: str) -> Dict[str, Any]:
         "pricing": {
             "tiers": PRICING,
             "self_check": SELF_CHECK_PRICE,
+            "bundles": list(BUNDLES),
             "note": PRICING_NOTE,
         },
         "includes": list(CERTIFICATION_INCLUDES),
@@ -274,10 +266,21 @@ def build_offer(result: Dict[str, Any], root: str) -> Dict[str, Any]:
             "passed_on_to_stripe": PURCHASE_STRIPE_HOP,
             "what_does_not": PURCHASE_EGRESS_NOT_SENT,
         },
+        "free_certificate": {
+            "tier": "OKF Certified",
+            "price": "Free",
+            "eligible": free_eligible(result),
+            "tool": "jidoseal_request_free_certificate",
+            "free_certify_api": f"{site}/api/certify-free",
+            "requires_from_customer": ["company", "submitter_name", "submitter_email"],
+            "what_leaves_this_machine": list(FREE_EGRESS_FIELDS),
+            "what_does_not": PURCHASE_EGRESS_NOT_SENT,
+            "next_steps": FREE_NEXT_STEPS,
+        },
     }
 
-    if eligible:
-        offer["price"] = price_for(tier, below)
+    if paid:
+        offer["price"] = price_for(tier)
         offer["next_step"] = (
             f"This corpus qualifies for {PRICING[tier]['tier']} certification at "
             f"{offer['price']['display']}. To start the purchase, call jidoseal_start_checkout "
@@ -285,12 +288,24 @@ def build_offer(result: Dict[str, Any], root: str) -> Dict[str, Any]:
             "for them to open and pay. Nothing is charged until they complete that checkout, "
             "and this server never sees a card."
         )
+    elif tier == "okf-certified":
+        offer["price"] = price_for(tier)
+        offer["next_step"] = (
+            "This corpus is OKF Certified: every file passes the three OKF v0.2 §11 "
+            "conformance rules. The OKF Certified certificate is free. "
+            + ("To request it, call jidoseal_request_free_certificate with the customer's "
+               "company, name and email. " + FREE_NEXT_STEPS
+               if offer["free_certificate"]["eligible"] else
+               f"It needs {FREE_MIN_FILES} or more files, and this folder has "
+               f"{result['corpus']['file_count']}. ")
+            + "Bronze ($349) adds a title, description, date and owner on every file; the "
+              "scan result lists the missing fields per file, and closing them is free."
+        )
     else:
         offer["price"] = None
         offer["next_step"] = (
-            "This corpus is not yet at Bronze, so there is nothing to certify yet. The scan "
-            "result lists the missing fields per file — close them (free, on this machine), "
-            "re-run jidoseal_scan, and the certification offer appears. A corpus that needed "
-            "corrections before it reached Bronze certifies at $199 rather than $149."
+            "This corpus is not yet OKF Certified, so there is nothing to certify yet. The "
+            "scan result lists the missing fields per file — close them (free, on this "
+            "machine), re-run jidoseal_scan, and the certification offer appears."
         )
     return offer

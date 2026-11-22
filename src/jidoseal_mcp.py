@@ -9,7 +9,7 @@ JidoSeal's own claim about a proprietary engine, checked by the tests (see the R
 
 It exposes the website's model, unchanged:
   1. `jidoseal_scan`                  — the free Self-Check. Returns the corpus's tier
-                                        (Bronze/Silver/Gold), the per-file list of missing
+                                        (OKF Certified/Bronze/Silver/Gold), the per-file list of missing
                                         fields, and coverage — the same answer /app/run gives
                                         for the same corpus (scan_result.py explains how that
                                         identity is held). Runs locally; opens no socket
@@ -18,11 +18,15 @@ It exposes the website's model, unchanged:
                                         what it includes, and exactly which facts a purchase
                                         would send. Also local: it computes an offer, it
                                         does not start one.
-  3. `jidoseal_start_checkout`        — creates a real Stripe Checkout session on jidoseal.com
+  3. `jidoseal_start_checkout`        — (Bronze/Silver/Gold) creates a real Stripe Checkout session on jidoseal.com
                                         and returns its URL for the customer to open. THE ONLY
                                         tool here that touches the network, and it still takes
                                         no payment: Stripe does that, on jidoseal.com, only
                                         when the customer completes the checkout themselves.
+     `jidoseal_request_free_certificate` — asks jidoseal.com for the FREE OKF Certified
+                                        certificate (POST /api/certify-free); the site emails
+                                        the customer a confirmation link. Also network-touching,
+                                        also only with `confirm: true`.
   4. `jidoseal_trust`                 — stale / unverified / ok for a document (or every
                                         document in a folder), from its OKF v0.2 trust and
                                         lifecycle frontmatter (okf_trust.py). Local, read-only.
@@ -60,7 +64,8 @@ ZERO NETWORK ON THE FREE PATH — A PROPERTY OF THE IMPORT GRAPH
 This module imports stdlib (json/os/sys/typing) plus `scan_result` and `offer`, and neither
 they nor anything they pull in (`local_runner`, `okf_manifest`, `attestation`, and the engine
 modules those use) imports socket, urllib, or any HTTP client. `checkout_client` — the one
-module that does — is imported INSIDE the `jidoseal_start_checkout` handler, so it is not even
+module that does — is imported INSIDE the `jidoseal_start_checkout` and `jidoseal_request_free_certificate`
+handlers, so it is not even
 loaded during a scan. Both halves are checked by static AST inspection
 (tests/test_import_graph.py), and real scans with sockets blocked, in-process and over stdio,
 prove the executed path opens no socket and resolves no hostname either
@@ -88,7 +93,7 @@ SERVER_NAME = "jidoseal"
 # Tracks the engine/CLI version (local_runner.VERSION) it scans with, with this surface's own
 # suffix: the scan a host gets is the CLI's scan, so a bug report naming a version can be
 # resolved against one number.
-SERVER_VERSION = f"{local_runner.VERSION}+mcp.2"
+SERVER_VERSION = f"{local_runner.VERSION}+mcp.3"
 
 # The MCP revisions this server implements. `initialize` echoes the client's own when we know
 # it (the spec's negotiation rule) and otherwise offers the newest we speak.
@@ -108,16 +113,20 @@ TOOLS: List[Dict[str, Any]] = [
         "title": "JidoSeal Self-Check (free, local)",
         "description": (
             "Run JidoSeal's free Self-Check over a folder of Markdown documents on THIS "
-            "machine and return its JidoSeal tier — Bronze, Silver or Gold, tiers defined by "
-            "JidoSeal — "
+            "machine and return its JidoSeal tier under OKF Folder Criteria v1.0.0 — OKF Certified, "
+            "Bronze, Silver or Gold, tiers defined by JidoSeal — "
             "plus, for every file, which fields are missing for the next tier, and the "
             "corpus's coverage against each tier. Same rubric, and the same tier, coverage and "
             "per-file gap list as the Self-Check at jidoseal.com/app/run for the same folder. "
-            "Bronze = OKF v0.2 as written (a populated `type`); Silver = Bronze + fields that "
-            "evidence ISO 9001 §7.5.2 (title, description, timestamp, owner); Gold = Silver + "
-            "fields that evidence ISO 30401 (status, review_policy, reviewed_at, next_review_at). "
-            "ISO names no fields; these are JidoSeal's way of evidencing the clauses, and a tier "
-            "is not an ISO certification. "
+            "OKF Certified (free): every file passes the three OKF v0.2 §11 conformance rules. "
+            "Bronze: adds a title, description, date and owner on every file. "
+            "Silver: adds a status, a review policy and the dates of its last and next review on "
+            "every file. "
+            "Gold: adds AI-provenance fields: sources, AI involvement and licence. "
+            "Bronze and Silver fields help evidence documented-information practice described in "
+            "ISO 9001 clause 7.5 and do not show conformity with ISO 9001 or ISO 30401. "
+            "Gold is not ISO/IEC 42001 certification. A JidoSeal certificate is not an ISO "
+            "certification. "
             "Each gap is marked AUTO "
             "(JidoSeal can propose the value) or NEEDS-CLIENT (only the owner can answer it), "
             "so the caller can close them. "
@@ -152,8 +161,9 @@ TOOLS: List[Dict[str, Any]] = [
         "name": "jidoseal_certification_offer",
         "title": "What JidoSeal certification would cost for this corpus",
         "description": (
-            "Scan a folder locally and return the paid-certification offer for it: the tier it "
-            "qualifies for, the real price for that tier and why that price applies, what the "
+            "Scan a folder locally and return the certification offer for it: the tier it "
+            "qualifies for, the real price for that tier (OKF Certified is free; Bronze $349, "
+            "Silver $599, Gold $999) and why that price applies, what the "
             "certificate includes (a dated certificate bound to a Merkle root of the corpus, "
             "a verifiable badge, a public verification page, a registry listing), and the "
             "exact list of facts a purchase would send to jidoseal.com. Charges nothing, "
@@ -183,15 +193,17 @@ TOOLS: List[Dict[str, Any]] = [
         "name": "jidoseal_start_checkout",
         "title": "Start the JidoSeal certification purchase (returns a Stripe Checkout link)",
         "description": (
-            "Ask jidoseal.com to create a Stripe Checkout session for certifying this corpus, "
-            "and return the checkout URL for the customer to open and pay. Call it only with "
+            "Ask jidoseal.com to create a Stripe Checkout session for certifying this corpus at "
+            "Bronze, Silver or Gold, and return the checkout URL for the customer to open and "
+            "pay. (An OKF Certified folder is certified free: use "
+            "jidoseal_request_free_certificate.) Call it only with "
             "the customer's explicit go-ahead, and set `confirm` to true only then: without "
             "`confirm: true` it sends nothing and returns an error. It does NOT take a "
             "payment — this server never sees a card, Stripe hosts the checkout, and nothing "
             "is charged or issued unless the customer completes it themselves. "
             "This is the one JidoSeal tool that contacts the network, and it sends only: "
             "company, name and email as typed by the customer, the tier, a 0-100 score, the "
-            "corpus's Merkle root, the local scan's id, and which Bronze price applies. No "
+            "corpus's Merkle root and the local scan's id. No "
             "file contents, no file names, no per-file hashes, no paths. The tier, score and "
             "Merkle root are taken from a fresh local scan run here — never from the caller. "
             + offer_mod.PURCHASE_STRIPE_HOP
@@ -207,6 +219,51 @@ TOOLS: List[Dict[str, Any]] = [
                     "type": "boolean",
                     "description": "Must be true, and set only after the customer has explicitly "
                                    "said to start the purchase. Anything else sends nothing.",
+                },
+                "include_machine": {
+                    "type": "boolean",
+                    "default": False,
+                    "description": "Run the fresh local scan over every Markdown file, ignoring "
+                                   "this corpus's own machine/transient excludes from "
+                                   ".jidoseal/config.yaml. Leave false: the certified path "
+                                   "scans without it.",
+                },
+            },
+            "required": ["root", "company", "submitter_name", "submitter_email", "confirm"],
+            "additionalProperties": False,
+        },
+        "annotations": {"readOnlyHint": False, "destructiveHint": False, "openWorldHint": True},
+    },
+    {
+        "name": "jidoseal_request_free_certificate",
+        "title": "Request the free OKF Certified certificate (emails a confirmation link)",
+        "description": (
+            "Ask jidoseal.com for the FREE OKF Certified certificate for this corpus: every file "
+            "passes the three OKF v0.2 §11 conformance rules, and the folder has 25 or more "
+            "files. Call it only with the customer's explicit go-ahead, and set `confirm` to "
+            "true only then: without `confirm: true` it sends nothing and returns an error. "
+            "jidoseal.com answers by emailing the customer a confirmation link (it expires in "
+            "72 hours); the certificate is issued when they open it. Nothing is charged. "
+            "There is one free certificate per email address, per folder and per company "
+            "domain. This tool contacts the network, and it sends only: company, name and "
+            "email as typed by the customer, a 0-100 score, the corpus's Merkle root, the "
+            "text 3/3, the number of files and one digest of the folder's config file (or "
+            "the text absent:no-config-file). No file contents, no file names, no per-file "
+            "hashes, no paths. The score, Merkle root and file count are taken from a fresh "
+            "local scan run here — never from the caller."
+        ),
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "root": {"type": "string", "description": "Absolute path of the folder to certify."},
+                "company": {"type": "string", "description": "The customer's company name, as it should appear on the certificate."},
+                "submitter_name": {"type": "string", "description": "The person submitting, as typed by them."},
+                "submitter_email": {"type": "string", "description": "Where the confirmation link goes."},
+                "confirm": {
+                    "type": "boolean",
+                    "description": "Must be true, and set only after the customer has explicitly "
+                                   "said to request the free certificate. Anything else sends "
+                                   "nothing.",
                 },
                 "include_machine": {
                     "type": "boolean",
@@ -392,14 +449,19 @@ def tool_jidoseal_start_checkout(args: Dict[str, Any]) -> Dict[str, Any]:
     result = scan_result.build_scan_result(
         root, include_machine=bool(args.get("include_machine", False)))
     tier = result["corpus"]["tier"]
-    if not result["certified_eligible"]:
+    if tier == "okf-certified":
+        raise ToolError(
+            "This corpus is OKF Certified, which is free, so there is no checkout to start. "
+            "Call jidoseal_request_free_certificate for the free certificate, or close the "
+            "Bronze fields jidoseal_scan lists (free, on this machine) to reach Bronze ($349)."
+        )
+    if tier not in offer_mod.PAID_TIERS:
         raise ToolError(
             "This corpus is not at Bronze yet, so there is nothing to certify and no checkout "
             "to start. Run jidoseal_scan, close the missing fields it lists (free, on this "
             "machine), and try again."
         )
 
-    below = offer_mod.first_scan_was_below_bronze(root) if tier == "bronze" else False
     try:
         body = checkout_client.build_body(
             company=args.get("company", ""),
@@ -409,13 +471,12 @@ def tool_jidoseal_start_checkout(args: Dict[str, Any]) -> Dict[str, Any]:
             score=result["score"],
             merkle_root=result["merkleRoot"],
             audit_id=result["audit_id"],
-            below_tier=bool(below) if below is not None else True,
         )
         out = checkout_client.submit(offer_mod.site_url(), body)
     except checkout_client.CheckoutError as e:
         raise ToolError(str(e)) from None
 
-    price = offer_mod.price_for(tier, below)
+    price = offer_mod.price_for(tier)
     return {
         "checkout_url": out["url"],
         "instruction": "Open this link to pay. JidoSeal never sees the card — Stripe hosts the "
@@ -438,6 +499,68 @@ def tool_jidoseal_start_checkout(args: Dict[str, Any]) -> Dict[str, Any]:
         },
         "sent_to_site": out["sent"],
         "passed_on_to_stripe": offer_mod.PURCHASE_STRIPE_HOP,
+        "not_sent": offer_mod.PURCHASE_EGRESS_NOT_SENT,
+        "endpoint": out["endpoint"],
+    }
+
+
+def tool_jidoseal_request_free_certificate(args: Dict[str, Any]) -> Dict[str, Any]:
+    # Same gate as the paid tool: the explicit go-ahead, checked before anything else. No scan,
+    # no import of the network module, no request. Only the JSON literal `true` counts.
+    if args.get("confirm") is not True:
+        raise ToolError(
+            "Nothing was sent. jidoseal_request_free_certificate asks jidoseal.com for a "
+            "certificate, so it runs only with `confirm: true`, set after the customer has "
+            "explicitly said to go ahead. The request would send: "
+            + ", ".join(offer_mod.FREE_EGRESS_FIELDS) + "."
+        )
+
+    import checkout_client  # HERE, and only here (and in start_checkout): see this file's header.
+
+    root = _root_arg(args)
+    result = scan_result.build_scan_result(
+        root, include_machine=bool(args.get("include_machine", False)))
+    if result["okf11Result"] != "3/3" or result["corpus"]["tier"] == "none":
+        raise ToolError(
+            "This corpus is not OKF Certified yet: every file must pass the three OKF v0.2 §11 "
+            "conformance rules. Run jidoseal_scan, close what it lists (free, on this machine), "
+            "and try again. Nothing was sent."
+        )
+    if result["corpus"]["file_count"] < offer_mod.FREE_MIN_FILES:
+        raise ToolError(
+            f"A free certificate needs {offer_mod.FREE_MIN_FILES} or more files; this folder "
+            f"has {result['corpus']['file_count']}. Nothing was sent."
+        )
+    try:
+        body = checkout_client.build_free_body(
+            company=args.get("company", ""),
+            submitter_name=args.get("submitter_name", ""),
+            submitter_email=args.get("submitter_email", ""),
+            score=result["score"],
+            merkle_root=result["merkleRoot"],
+            okf11_result=result["okf11Result"],
+            file_count=result["corpus"]["file_count"],
+            config_sha256=result["scan"]["config_hash"],
+        )
+        out = checkout_client.submit_free(offer_mod.site_url(), body)
+    except checkout_client.CheckoutError as e:
+        raise ToolError(str(e)) from None
+
+    return {
+        "request_id": out["id"],
+        "status": out["status"],
+        "site_message": out["message"],
+        "instruction": "Ask the customer to open the confirmation link jidoseal.com emailed to "
+                       "them. " + offer_mod.FREE_NEXT_STEPS,
+        "tier": "okf-certified",
+        "price": offer_mod.price_for("okf-certified"),
+        "corpus": {
+            "root": os.path.abspath(root),
+            "file_count": result["corpus"]["file_count"],
+            "score": result["score"],
+            "merkle_root": result["merkleRoot"],
+        },
+        "sent_to_site": out["sent"],
         "not_sent": offer_mod.PURCHASE_EGRESS_NOT_SENT,
         "endpoint": out["endpoint"],
     }
@@ -507,6 +630,7 @@ HANDLERS: Dict[str, Callable[[Dict[str, Any]], Dict[str, Any]]] = {
     "jidoseal_scan": tool_jidoseal_scan,
     "jidoseal_certification_offer": tool_jidoseal_certification_offer,
     "jidoseal_start_checkout": tool_jidoseal_start_checkout,
+    "jidoseal_request_free_certificate": tool_jidoseal_request_free_certificate,
     "jidoseal_trust": tool_jidoseal_trust,
     "jidoseal_changes": tool_jidoseal_changes,
 }
@@ -562,16 +686,20 @@ def handle_message(msg: Dict[str, Any]) -> Optional[Dict[str, Any]]:
             "capabilities": {"tools": {"listChanged": False}},
             "serverInfo": {"name": SERVER_NAME, "title": "JidoSeal", "version": SERVER_VERSION},
             "instructions": (
-                "JidoSeal checks a Markdown knowledge base against OKF v0.2 and three "
-                "JidoSeal-defined tiers; Silver and Gold add fields meant to evidence ISO 9001 "
-                "§7.5.2 and ISO 30401 (ISO names no fields, and a JidoSeal tier or certificate is "
-                "not an ISO certification). Start with jidoseal_scan on the folder: it runs on "
+                "JidoSeal checks a Markdown knowledge base against OKF v0.2 and the OKF Folder "
+                "Criteria v1.0.0 tiers: OKF Certified (free), Bronze, Silver and Gold. Bronze and "
+                "Silver fields help evidence documented-information practice described in ISO "
+                "9001 clause 7.5 and do not show conformity with ISO 9001 or ISO 30401; Gold is "
+                "not ISO/IEC 42001 certification; a JidoSeal certificate is not an ISO "
+                "certification. Start with jidoseal_scan on the folder: it runs on "
                 "this machine, costs nothing, and returns the tier plus the missing fields "
                 "per file so they can be fixed for free. " + EGRESS_LINE + " "
                 "jidoseal_certification_offer then "
-                "prices the optional certificate, and jidoseal_start_checkout returns a Stripe "
-                "link for the customer to pay — only ever with their explicit go-ahead, passed as "
-                "confirm: true. Two more free, local, read-only tools: call jidoseal_trust on a "
+                "prices the optional certificate. For an OKF Certified folder the certificate is free: "
+                "jidoseal_request_free_certificate asks jidoseal.com to email the customer a "
+                "confirmation link. For Bronze, Silver or Gold, jidoseal_start_checkout returns a "
+                "Stripe link for the customer to pay. Both only ever with the customer's explicit "
+                "go-ahead, passed as confirm: true. Two more free, local, read-only tools: call jidoseal_trust on a "
                 "document before relying on it (stale / unverified / ok, from its OKF v0.2 "
                 "trust and lifecycle fields), and jidoseal_changes after editing notes in a git "
                 "repository, to list what changed and which verified documents the edit left "

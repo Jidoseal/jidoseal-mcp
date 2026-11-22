@@ -1,6 +1,6 @@
 """
 `jidoseal_start_checkout` sends a request only with `confirm: true`, and then sends exactly the
-eight documented fields — nothing about the files.
+seven documented fields — nothing about the files.
 
 HTTP is mocked: `urllib.request.urlopen` is replaced, so no test here reaches jidoseal.com.
 """
@@ -44,9 +44,9 @@ def _args(root, **extra):
     return args
 
 
-def test_the_documented_list_is_the_eight_fields():
+def test_the_documented_list_is_the_seven_fields():
     assert DOCUMENTED_FIELDS == ["company", "submitterName", "submitterEmail", "requestedTier",
-                                 "score", "merkleRoot", "auditId", "belowTier"]
+                                 "score", "merkleRoot", "auditId"]
 
 
 @pytest.mark.parametrize("confirm", ["missing", False, None, "true", "yes", 1, [True], {"x": 1}])
@@ -74,7 +74,7 @@ def test_confirm_true_sends_one_post_with_only_the_documented_fields(gold_root, 
     assert body["submitterEmail"] == "ada@example.com"
     assert body["requestedTier"] == "gold"
     assert isinstance(body["score"], int) and 0 <= body["score"] <= 100
-    assert isinstance(body["belowTier"], bool)
+    assert "belowTier" not in body
     assert payload["checkout_url"] == "https://checkout.stripe.test/c/1"
     assert payload["sent_to_site"] == body
 
@@ -111,6 +111,29 @@ def test_below_bronze_folder_is_refused_without_a_request(world, fake_http):
     is_error, payload = call_tool("jidoseal_start_checkout", _args(world["root"], confirm=True))
     assert is_error and "not at Bronze" in payload["error"]
     assert fake_http.requests == []
+
+
+def test_okf_certified_folder_is_pointed_to_the_free_tool_without_a_request(okf_root, fake_http):
+    is_error, payload = call_tool("jidoseal_start_checkout", _args(okf_root, confirm=True))
+    assert is_error and "jidoseal_request_free_certificate" in payload["error"]
+    assert fake_http.requests == []
+
+
+def test_the_prices_are_the_new_ladder():
+    assert [(t, offer.PRICING[t]["price"]) for t in ("bronze", "silver", "gold")] == [
+        ("bronze", "$349"), ("silver", "$599"), ("gold", "$999")]
+    assert [offer.PRICING[t]["renewal"] for t in ("bronze", "silver", "gold")] == [
+        "$200", "$300", "$450"]
+    assert offer.PRICING["okf-certified"]["price"] == "Free"
+    import re
+    assert not re.search(r"\$(149|199|99)\b", str(offer.PRICING))
+
+
+def test_the_offer_for_a_gold_folder_quotes_one_price(gold_root, fake_http):
+    is_error, payload = call_tool("jidoseal_certification_offer", {"root": str(gold_root)})
+    assert not is_error
+    assert payload["corpus"]["tier"] == "gold"
+    assert payload["price"]["display"] == "$999" and payload["price"]["renewal"] == "$450"
 
 
 def test_invalid_email_is_refused_locally(gold_root, fake_http):

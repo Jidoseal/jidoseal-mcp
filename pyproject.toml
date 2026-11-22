@@ -16,8 +16,8 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "jidoseal-mcp"
 # 0.1.2 is the first release built from this repository. The distribution version is
-# independent of the engine version.
-version = "0.2.0"
+# independent of the engine version. 0.3.0 moves to engine 0.2.0 and OKF Folder Criteria v1.0.0.
+version = "0.3.0"
 description = "Local check of a folder of markdown against OKF v0.2 frontmatter tiers — an MCP server for Claude, Cursor, GitHub Copilot, Codex, Gemini CLI, Zed and local models. The scan sends nothing (vendor claim, see README)."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -39,7 +39,7 @@ classifiers = [
 # nobody has run these tests on. A new engine version reaches users only through a new
 # jidoseal-mcp release that moves this pin, ENGINE-SHA256SUMS and sbom.cdx.json together
 # (tests/test_packaging.py fails if they disagree).
-dependencies = ["jidoseal==0.1.4"]
+dependencies = ["jidoseal==0.2.0"]
 
 [project.optional-dependencies]
 test = ["pytest>=7"]
@@ -61,7 +61,6 @@ py-modules = [
     "offer",
     "checkout_client",
     "engine_path",
-    "attestation",
     "okf_trust",
     "git_changes",
 ]

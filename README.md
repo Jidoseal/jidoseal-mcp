@@ -5,14 +5,14 @@
 
 **Check a folder of markdown notes against Open Knowledge Format (OKF) v0.2 — from inside Claude Code, Claude Desktop, Cursor, GitHub Copilot, OpenAI Codex, Gemini CLI, Zed, Cline, Continue, JetBrains AI Assistant or a local model, on your own machine.**
 
-Pick a folder, scan it. `jidoseal-mcp` is a local [Model Context Protocol](https://modelcontextprotocol.io) server that reads the YAML frontmatter of every `*.md` file under a folder, reports which **tier** the knowledge base reaches (Bronze / Silver / Gold), and lists — per file — the exact frontmatter fields missing for the next tier. The scan sends nothing over the network: no file, no file name, no file content. That is JidoSeal's own claim about its engine; [below](#what-leaves-your-machine) is how to check it.
+Pick a folder, scan it. `jidoseal-mcp` is a local [Model Context Protocol](https://modelcontextprotocol.io) server that reads the YAML frontmatter of every `*.md` file under a folder, reports which **tier** the knowledge base reaches (OKF Certified / Bronze / Silver / Gold), and lists — per file — the exact frontmatter fields missing for the next tier. The scan sends nothing over the network: no file, no file name, no file content. That is JidoSeal's own claim about its engine; [below](#what-leaves-your-machine) is how to check it.
 
 ```bash
 pip install jidoseal-mcp
 claude mcp add jidoseal -- jidoseal-mcp     # Claude Code; every other tool is below
 ```
 
-Then ask your assistant: *"Scan ~/notes with JidoSeal and tell me what's missing for Silver."*
+Then ask your assistant: *"Scan ~/notes with JidoSeal and tell me what's missing for Bronze."*
 
 > **New: [State of OKF, October 2026](https://github.com/Jidoseal/jidoseal-mcp/blob/main/reports/state-of-okf/2026-10/README.md).** All 900 bundles listed on BundleDex, checked against OKF v0.2 on 2026-10-22: conformance, which of the two v0.2 texts each bundle's timestamps follow, trust fields, and a [leaderboard](https://github.com/Jidoseal/jidoseal-mcp/blob/main/reports/state-of-okf/2026-10/leaderboard.md), with the method and a page per bundle.
 
@@ -29,39 +29,39 @@ claude mcp add jidoseal -- jidoseal-mcp     # Claude Code; Cursor, Copilot, Code
 claude
 ```
 
-(`claude mcp add` registers the server for the folder you run it in, so run it there, or add `-s user`.) Then ask: *"Scan this folder with JidoSeal. Which tier does it reach, and what does each file need for Silver?"*
+(`claude mcp add` registers the server for the folder you run it in, so run it there, or add `-s user`.) Then ask: *"Scan this folder with JidoSeal. Which tier does it reach, and what does each file need for Bronze?"*
 
-The `jidoseal_scan` result it gets back, from a real run of `jidoseal-mcp` 0.1.4 (engine 0.1.4) on that folder on 2026-10-22 (UTC), trimmed to the summary and the Silver gaps:
+The `jidoseal_scan` result it gets back, from a real run of `jidoseal-mcp` 0.3.0 (engine 0.2.0, OKF Folder Criteria v1.0.0) on that folder on 2026-11-21 (UTC), trimmed to the summary and the Bronze gaps:
 
 ```jsonc
 {
-  "corpus": { "file_count": 3, "tier": "none",
-              "coverage": { "bronze": 66.7, "silver": 33.3, "gold": 33.3 } },
+  "corpus": { "file_count": 3, "tier": "none", "criteria_version": "1.0.0",
+              "coverage": { "okf-certified": 66.7, "bronze": 33.3, "silver": 33.3, "gold": 0.0 } },
   "files": [
-    { "name": "expenses.md", "tier": "bronze", "present": [ "type", "title" ],
-      "missing": { "silver": [ { "field": "description", "fix": "AUTO" },
+    { "name": "expenses.md", "tier": "okf-certified", "present": [ "type", "title" ],
+      "missing": { "bronze": [ { "field": "description", "fix": "AUTO" },
                                { "field": "timestamp",   "fix": "AUTO" },
-                               { "field": "owner",       "fix": "NEEDS-CLIENT" } ] } },  // gold gaps trimmed
-    { "name": "leave-policy.md", "tier": "gold",
-      "missing": { "silver": [], "gold": [] } },
+                               { "field": "owner",       "fix": "NEEDS-CLIENT" } ] } },  // silver gaps trimmed
+    { "name": "leave-policy.md", "tier": "silver",
+      "missing": { "bronze": [], "silver": [] } },
     { "name": "notes.md", "tier": "none", "present": [],
-      "missing": { "silver": [ { "field": "title",       "fix": "AUTO" },
+      "missing": { "okf-certified": [ { "field": "type", "fix": "AUTO", "value": "note", "confidence": "MEDIUM", "inferred": true } ],
+                   "bronze": [ { "field": "title",       "fix": "AUTO" },
                                { "field": "description", "fix": "AUTO" },
                                { "field": "timestamp",   "fix": "AUTO" },
-                               { "field": "owner",       "fix": "NEEDS-CLIENT" } ],
-                   // gold gaps trimmed
-                   "bronze": [ { "field": "type", "fix": "AUTO", "value": "note", "confidence": "MEDIUM", "inferred": true } ] } }
+                               { "field": "owner",       "fix": "NEEDS-CLIENT" } ] } }  // silver gaps trimmed
   ],
   "skipped": [],
   "certified_eligible": false,
-  "score": 44
+  "okf11Result": "1/3",
+  "score": 33
   // … plus audit id, rubric, file hashes, Merkle root and the paths of the two files written under .jidoseal/
 }
 ```
 
-The folder reaches no tier yet because `notes.md` has no frontmatter: a corpus's tier is that of its weakest file. `AUTO` marks a value JidoSeal can propose; `NEEDS-CLIENT` marks one only you can answer (here, `owner`).
+The folder reaches no tier yet because `notes.md` has no frontmatter: a corpus's tier is that of its weakest file. Each list under `missing` names the gaps that block that tier, so `bronze` holds what a file still needs for Bronze. `AUTO` marks a value JidoSeal can propose; `NEEDS-CLIENT` marks one only you can answer (here, `owner`).
 
-> **Independent.** OKF is an open specification from Google Cloud. JidoSeal is not affiliated with, sponsored by, or endorsed by Google or ISO. ISO names no fields: the Bronze/Silver/Gold tiers and their fields are defined by JidoSeal, as one way of evidencing selected ISO clauses. A JidoSeal tier or certificate is not an ISO certification.
+> **Independent.** Open Knowledge Format (OKF) v0.2 is an open specification in Google's GoogleCloudPlatform/open-knowledge-format repository, under the Apache-2.0 licence. JidoSeal checks a folder against the three conformance rules in OKF §11 and reports the result. Bronze and Silver add document fields. Gold adds AI-provenance fields. A JidoSeal certificate is not an ISO certification. JidoSeal is independent of Google and of ISO, and is not affiliated with, sponsored by, or endorsed by either.
 
 ### Side effects and data, in brief
 
@@ -69,8 +69,9 @@ The folder reaches no tier yet because `notes.md` has no frontmatter: a corpus's
 - **Writes:** `<folder>/.jidoseal/manifest.json` (replaced on each scan) and `<folder>/.jidoseal/progress.ndjson` (appended to). Nothing else; your notes are not modified.
 - **Trust and changes tools:** `jidoseal_trust` and `jidoseal_changes` read only and write nothing. `jidoseal_changes` runs the local `git` program, with transports disabled, to read the folder's history.
 - **Network, scan and offer:** none, by JidoSeal's own claim about its proprietary engine, not independently audited. The tests below check it on every change.
-- **Network, checkout (optional, paid):** `jidoseal_start_checkout` runs only with `confirm: true`. It sends eight fields to jidoseal.com: company, name and email as typed, the tier, a 0–100 score, the corpus's Merkle root, the local scan's id, and one flag saying which Bronze price applies. jidoseal.com copies them into the Stripe Checkout session it creates (the email as the session's customer email, all eight as session metadata), when the session is created, before any payment. No file contents, file names, per-file hashes or paths. No card data passes through this server.
-- **Engine:** the scan engine is the separate `jidoseal` package, under a proprietary licence. It ships as plain Python source and is pinned here to one version (0.1.4), with its sha256 in [`ENGINE-SHA256SUMS`](ENGINE-SHA256SUMS) and an SBOM in [`sbom.cdx.json`](sbom.cdx.json). So "nothing leaves your machine" is JidoSeal's own claim: you can check it with the commands under [What leaves your machine](#what-leaves-your-machine) and the tests in [`tests/`](tests/), but it has not been independently audited.
+- **Network, checkout (optional, paid):** `jidoseal_start_checkout` runs only with `confirm: true`. It sends seven fields to jidoseal.com: company, name and email as typed, the tier (Bronze, Silver or Gold), a 0–100 score, the corpus's Merkle root and the local scan's id. jidoseal.com copies them into the Stripe Checkout session it creates (the email as the session's customer email, all seven as session metadata), when the session is created, before any payment. No file contents, file names, per-file hashes or paths. No card data passes through this server.
+- **Network, free OKF Certified certificate (optional):** `jidoseal_request_free_certificate` runs only with `confirm: true`, for a folder where every file passes the three OKF v0.2 §11 rules and with 25 or more files. It sends eight fields to jidoseal.com: company, name and email as typed, a 0–100 score, the corpus's Merkle root, the text `3/3`, the number of files, and one digest of the folder's own `.jidoseal/config.yaml` (or the text `absent:no-config-file`). jidoseal.com emails a confirmation link that expires in 72 hours. No file contents, file names, per-file hashes or paths. Nothing is charged.
+- **Engine:** the scan engine is the separate `jidoseal` package, under a proprietary licence. It ships as plain Python source and is pinned here to one version (0.2.0), with its sha256 in [`ENGINE-SHA256SUMS`](ENGINE-SHA256SUMS) and an SBOM in [`sbom.cdx.json`](sbom.cdx.json). So "nothing leaves your machine" is JidoSeal's own claim: you can check it with the commands under [What leaves your machine](#what-leaves-your-machine) and the tests in [`tests/`](tests/), but it has not been independently audited.
 
 ---
 
@@ -78,11 +79,16 @@ The folder reaches no tier yet because `notes.md` has no frontmatter: a corpus's
 
 The scan is deterministic — presence of populated frontmatter fields, no model calls, no scoring by opinion. A field counts only if it has real content (`title:` with nothing after it earns nothing).
 
-| Tier | A file must have (populated) | What it evidences |
-|---|---|---|
-| **Bronze** | `type` | OKF v0.2 as written — `type` is its one required field |
-| **Silver** | Bronze + `title`, `description`, `timestamp`, `owner` | ISO 9001 §7.5.2, which asks for appropriate identification and description of a document and gives examples ("a title, date, author, or reference number"). These four fields are one reasonable way to evidence it. |
-| **Gold** | Silver + `status`, `review_policy`, `reviewed_at`, `next_review_at` | ISO 30401's kept-current knowledge governance. The standard sets no review interval; a stated review policy with real review dates is how you evidence it, and the cadence is yours to choose. |
+| Tier | A file must have (populated) |
+|---|---|
+| **OKF Certified** (free) | A frontmatter block with `type`: every file passes the three OKF v0.2 §11 conformance rules |
+| **Bronze** | OKF Certified + `title`, `description`, `timestamp`, `owner` |
+| **Silver** | Bronze + `status`, `review_policy`, `reviewed_at`, `next_review_at` |
+| **Gold** | Silver + AI-provenance fields: `sources`, `ai_involvement` and `license` (a human `verified` entry is needed only when `ai_involvement` is `assisted` or `generated`) |
+
+Bronze checks fields that help evidence identification of documented information, of the kind ISO 9001 clause 7.5 describes. Silver adds review and change fields. Neither shows conformity with ISO 9001 or with ISO 30401. Gold checks that provenance and AI-involvement fields exist, are well-formed and agree with each other. It does not check that the fields are true. It is not ISO/IEC 42001 certification, an AI Act conformity assessment, or legal advice.
+
+These are OKF Folder Criteria v1.0.0, which engine 0.2.0 grades against by default. Criteria v0.9.2 named the tiers differently (its Silver is today's Bronze, and its Gold is today's Silver); certificates issued under v0.9.2 keep their name.
 
 A corpus's tier is the tier of its **weakest file**. Coverage is the share of files that reach each tier. The full field reference — accepted aliases, what counts as "populated", what is excluded — is in [docs/tiers.md](docs/tiers.md).
 
@@ -99,6 +105,9 @@ status: stable
 review_policy: yearly
 reviewed_at: 2026-09-01
 next_review_at: 2027-09-01
+ai_involvement: none
+sources: []
+license: proprietary
 ---
 ```
 
@@ -108,23 +117,25 @@ Worked examples for each tier, and a mixed folder, are in [`examples/tiers/`](ex
 
 | Tool | What it does | Network |
 |---|---|---|
-| `jidoseal_scan` | The free Self-Check over a folder on this machine: corpus tier, per-file missing fields for the next tier (each marked `AUTO` — a value JidoSeal can propose — or `NEEDS-CLIENT` — only the owner can answer), coverage per tier, a 0–100 score, and a Merkle root of the corpus. | none (JidoSeal's claim; see [below](#what-leaves-your-machine)) |
-| `jidoseal_certification_offer` | What optional certification would cost for this corpus, why, what it includes, and exactly which facts a purchase would send. Computes locally; starts nothing. | none (same claim) |
-| `jidoseal_start_checkout` | Only on your explicit go-ahead, passed as `confirm: true` (without it, nothing is sent): asks jidoseal.com to create a Stripe Checkout session and returns the link for you to open. Takes no payment. | jidoseal.com, which passes the fields to Stripe |
+| `jidoseal_scan` | The free Self-Check over a folder on this machine, graded against OKF Folder Criteria v1.0.0: corpus tier, per-file missing fields for the next tier (each marked `AUTO` — a value JidoSeal can propose — or `NEEDS-CLIENT` — only the owner can answer), coverage per tier, a 0–100 score, and a Merkle root of the corpus. | none (JidoSeal's claim; see [below](#what-leaves-your-machine)) |
+| `jidoseal_certification_offer` | What certification would cost for this corpus (OKF Certified is free; Bronze $349, Silver $599, Gold $999), why, what it includes, and exactly which facts a request or purchase would send. Computes locally; starts nothing. | none (same claim) |
+| `jidoseal_start_checkout` | For a Bronze, Silver or Gold folder, only on your explicit go-ahead, passed as `confirm: true` (without it, nothing is sent): asks jidoseal.com to create a Stripe Checkout session and returns the link for you to open. Takes no payment. | jidoseal.com, which passes the fields to Stripe |
+| `jidoseal_request_free_certificate` | For an OKF Certified folder with 25 or more files, only on your explicit go-ahead, passed as `confirm: true` (without it, nothing is sent): asks jidoseal.com for the free OKF Certified certificate. jidoseal.com emails you a confirmation link that expires in 72 hours. Nothing is charged. | jidoseal.com |
 | `jidoseal_trust` | Before an agent relies on a document: `stale`, `unverified` or `ok`, with the reasons, from its OKF v0.2 trust and lifecycle fields (`stale_after`, `status`, `verified`, `generated`). Also its trust tier (§5.3), whether it meets OKF v0.2 conformance, and which text of v0.2 its timestamps follow. One file, or every `*.md` in a folder. Reads only. Plain Python in this package; does not use the scan engine. | none |
 | `jidoseal_changes` | After an edit: every `*.md` that differs from a git commit (default `HEAD`, so the uncommitted edits and new files), what changed in its frontmatter and body, and what that did to its trust: a verified document whose text changed while `verified` did not, `verified` or `type` removed, `generated.at` not updated, `status` or `stale_after` changed. Reads only. Runs the local `git` with `protocol.allow=never` and no lazy fetch. | none |
 
-Example `jidoseal_scan` result for [`examples/tiers/mixed`](examples/tiers/mixed) (three files, one Gold, one Bronze, one with no frontmatter):
+Example `jidoseal_scan` result for [`examples/tiers/mixed`](examples/tiers/mixed) (three files, one Silver, one OKF Certified, one with no frontmatter):
 
 ```jsonc
 {
-  "corpus": { "file_count": 3, "tier": "none",
-              "coverage": { "bronze": 66.7, "silver": 33.3, "gold": 33.3 } },
-  "score": 44,
+  "corpus": { "file_count": 3, "tier": "none", "criteria_version": "1.0.0",
+              "coverage": { "okf-certified": 66.7, "bronze": 33.3, "silver": 33.3, "gold": 0.0 } },
+  "score": 33,
+  "okf11Result": "1/3",
   "certified_eligible": false,
   "files": [
-    { "name": "expenses.md", "tier": "bronze",
-      "missing": { "silver": [ { "field": "description", "fix": "AUTO" },
+    { "name": "expenses.md", "tier": "okf-certified",
+      "missing": { "bronze": [ { "field": "description", "fix": "AUTO" },
                                { "field": "timestamp",   "fix": "AUTO" },
                                { "field": "owner",       "fix": "NEEDS-CLIENT" } ] } }
     // …
@@ -283,17 +294,19 @@ printf '%s\n' \
  '{"jsonrpc":"2.0","id":2,"method":"tools/list"}' \
  | jidoseal-mcp
 ```
-You should see an `initialize` result naming `jidoseal`, then the three tools.
+You should see an `initialize` result naming `jidoseal`, then the six tools.
 
 ## Run it in CI
 
-The CLI writes `.jidoseal/manifest.json`; a few lines turn it into a gate. See [docs/ci.md](docs/ci.md) for a GitHub Actions workflow that fails the build when any file falls below Silver.
+The CLI writes `.jidoseal/manifest.json`; a few lines turn it into a gate. See [docs/ci.md](docs/ci.md) for a GitHub Actions workflow that fails the build when any file falls below Bronze.
 
 ## What leaves your machine
 
-**A scan:** JidoSeal's claim is that it sends nothing: not the files, not their names, not their contents. The engine that does the scan is proprietary, and nobody independent has audited this claim. It is built to be checkable: `jidoseal_mcp.py`, `scan_result.py` and `offer.py` import no socket, no `urllib`, no HTTP client, and neither does anything they pull in, including the ten engine modules the pinned `jidoseal` wheel contains. `checkout_client.py` is the one module that can reach the network, and it is imported only inside the checkout handler. `git_changes.py`, behind `jidoseal_changes`, is the one module that starts a program: the local `git`, with transports disabled (`protocol.allow=never`, `GIT_NO_LAZY_FETCH=1`), imported only inside its own handler.
+**A scan:** JidoSeal's claim is that it sends nothing: not the files, not their names, not their contents. The engine that does the scan is proprietary, and nobody independent has audited this claim. It is built to be checkable: `jidoseal_mcp.py`, `scan_result.py` and `offer.py` import no socket, no `urllib`, no HTTP client, and neither does anything they pull in, including the twelve engine modules the pinned `jidoseal` wheel contains. `checkout_client.py` is the one module that can reach the network, and it is imported only inside the two handlers that talk to jidoseal.com (checkout and the free certificate request). `git_changes.py`, behind `jidoseal_changes`, is the one module that starts a program: the local `git`, with transports disabled (`protocol.allow=never`, `GIT_NO_LAZY_FETCH=1`), imported only inside its own handler.
 
-**A purchase**, only if you choose one and the call carries `confirm: true`: the company, name and email you typed, the tier, a 0–100 score, the corpus's Merkle root, the local scan's id, and which Bronze price applies, sent to jidoseal.com. jidoseal.com copies them into the Stripe Checkout session it creates: the email as the session's customer email, and all eight as session metadata. That happens when the session is created, before any payment. No file contents, no file names, no per-file hashes, no paths, and no card data through this server (Stripe hosts the payment page). The Merkle root is a one-way digest.
+**A purchase**, only if you choose one and the call carries `confirm: true`: the company, name and email you typed, the tier, a 0–100 score, the corpus's Merkle root and the local scan's id, sent to jidoseal.com. jidoseal.com copies them into the Stripe Checkout session it creates: the email as the session's customer email, and all seven as session metadata. That happens when the session is created, before any payment. No file contents, no file names, no per-file hashes, no paths, and no card data through this server (Stripe hosts the payment page). The Merkle root is a one-way digest.
+
+**A free OKF Certified request**, only if you choose one and the call carries `confirm: true`: the company, name and email you typed, a 0–100 score, the corpus's Merkle root, the text `3/3`, the number of files, and one digest of the folder's own `.jidoseal/config.yaml` (or `absent:no-config-file`), sent to jidoseal.com. jidoseal.com emails a confirmation link that expires in 72 hours. No file contents, no file names, no per-file hashes, no paths. Nothing is charged.
 
 Verify it yourself:
 
@@ -308,19 +321,23 @@ The test suite checks the same things on every change, against the pinned engine
 
 | File | What it holds |
 |---|---|
-| [`tests/test_scan_isolation.py`](tests/test_scan_isolation.py) | The scan opens and lists nothing outside the folder; folders with symlinks that lead out of it, or to directories, or that redirect `.jidoseal/`, are refused before the engine runs; and the installed `jidoseal` CLI (engine 0.1.4) refuses links out on its own, writing nothing. |
+| [`tests/test_scan_isolation.py`](tests/test_scan_isolation.py) | The scan opens and lists nothing outside the folder; folders with symlinks that lead out of it, or to directories, or that redirect `.jidoseal/`, are refused before the engine runs; and the installed `jidoseal` CLI (engine 0.2.0) refuses links out on its own, writing nothing. |
 | [`tests/test_write_boundary.py`](tests/test_write_boundary.py) | The only files created or changed are the two under `<folder>/.jidoseal/`; notes are byte-for-byte unchanged. |
 | [`tests/test_network_boundary.py`](tests/test_network_boundary.py) | No socket, DNS lookup or child process during a scan — in-process with sockets blocked, and end to end over stdio in a process that exits on any socket event. |
-| [`tests/test_checkout_confirmation.py`](tests/test_checkout_confirmation.py) | Checkout makes no request without `confirm: true`, and with it sends exactly the eight fields above (HTTP mocked). |
+| [`tests/test_checkout_confirmation.py`](tests/test_checkout_confirmation.py) | Checkout makes no request without `confirm: true`, and with it sends exactly the seven fields above (HTTP mocked). [`tests/test_free_certificate.py`](tests/test_free_certificate.py) holds the same for the free request and its eight fields. |
 | [`tests/test_import_graph.py`](tests/test_import_graph.py) | Static check of every module on the scan path, the engine's included. |
 | [`tests/test_trust_and_changes.py`](tests/test_trust_and_changes.py) | `jidoseal_trust` and `jidoseal_changes`: verdicts, the two v0.2 timestamp texts, no writes, no socket, and `git` as the only program `jidoseal_changes` starts, always with transports disabled. |
 | [`tests/test_packaging.py`](tests/test_packaging.py) | The engine pin, `ENGINE-SHA256SUMS`, the SBOM and the installed engine files all agree. No tool text or result shows the engine's unqualified no-egress line, and the checkout text names the Stripe step. |
 
-The `jidoseal` command-line tool refuses such folders too, from engine 0.1.4 (the version pinned here): a symlink to a file or directory outside the folder, or a symlinked `.jidoseal/`, stops the run before anything is read or written, and the command exits with status 2. It does not follow a symlinked directory inside the folder either, so each file is read once. This server is a little stricter: it refuses a symlinked directory even when it stays inside. The CLI's own no-network line is worded as JidoSeal's claim, like this server's. Engine 0.1.3 and earlier followed symlinks and printed an unqualified line, so use 0.1.4 or later.
+The `jidoseal` command-line tool refuses such folders too, from engine 0.1.4 (0.2.0 is pinned here): a symlink to a file or directory outside the folder, or a symlinked `.jidoseal/`, stops the run before anything is read or written, and the command exits with status 2. It does not follow a symlinked directory inside the folder either, so each file is read once. This server is a little stricter: it refuses a symlinked directory even when it stays inside. The CLI's own no-network line is worded as JidoSeal's claim, like this server's. Engine 0.1.3 and earlier followed symlinks and printed an unqualified line, so use 0.1.4 or later.
 
 ## Optional certification
 
-Scanning is free and unlimited, and so are the fixes. If you want a dated certificate for the grade your folder reached, bound to the Merkle root of your corpus, with a public verification page and a listing in the public registry, that is a paid step on [jidoseal.com](https://jidoseal.com); current prices are published there, one flat price per grade however many files. A person at JidoSeal signs it off from the grade, the score and that fingerprint only, never from your file contents.
+Scanning is free and unlimited, and so are the fixes. A folder where every file passes the three OKF v0.2 §11 rules, with 25 or more files, can get the OKF Certified certificate free. A dated certificate for a higher grade, bound to the Merkle root of your corpus, with a public verification page and a listing in the public registry, is a paid step on [jidoseal.com](https://jidoseal.com): Bronze $349 (renewal $200), Silver $599 ($300), Gold $999 ($450), one flat price per grade however many files. A person at JidoSeal signs it off from the grade, the score and that fingerprint only, never from your file contents.
+
+- Agency 5-pack: five Bronze certificates, $1,299, use them within 12 months.
+- Certified OKF tool: includes one 50%-off Bronze code.
+- Refer a peer: they get 20% off a Bronze certificate.
 
 ## Links
 

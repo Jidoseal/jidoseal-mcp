@@ -8,6 +8,9 @@ status: stable
 review_policy: yearly
 reviewed_at: 2026-09-01
 next_review_at: 2027-09-01
+ai_involvement: none
+sources: []
+license: proprietary
 ---
 
 # Leave policy

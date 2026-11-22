@@ -6,6 +6,10 @@ from the public Self-Check at `/app/run` for the same corpus — same tier, same
 list, same coverage — or the tool is quietly a different product from the website. This module
 is that translation layer, and ONLY that: it runs the existing engine and re-labels its output.
 
+CRITERIA: the scan runs under OKF Folder Criteria v1.0.0 (engine 0.2.0), the live ladder: OKF
+Certified (free), Bronze, Silver, Gold. `run_scan` is called with criteria "1.0.0" explicitly,
+because the library default is still "0.9.2" (the pre-0.2.0 output).
+
 WHAT IT RUNS (nothing new)
 --------------------------
 `local_runner.run_scan()` — the packaged CLI's own entry point — which runs
@@ -23,7 +27,7 @@ of the three drifts, that test fails.
 
 Two envelope fields — `score` and `merkleRoot` — exist on the TypeScript side only (they feed
 the certification submission), so they are
-computed here too, from the engine's own primitives (`okf_manifest.pct`,
+taken from the engine's own v1.0.0 folder result (`score`) and primitives (
 `attestation.manifest_root`), never re-derived. A host that can see the tier must also be able
 to start the purchase, and the purchase body carries exactly those two fields.
 
@@ -53,7 +57,6 @@ Zero network, and that is a property of the import graph, not a claim: stdlib + 
 from __future__ import annotations
 
 import datetime
-import math
 import os
 import uuid
 from typing import Any, Dict, List
@@ -66,8 +69,10 @@ import attestation  # noqa: E402  — merkle root over the manifest's own per-fi
 import local_runner  # noqa: E402  — the packaged CLI's run_scan()
 import okf_manifest  # noqa: E402  — build_manifest/pct: THE certified scoring logic
 
-TIERS = ("bronze", "silver", "gold")
-TIER_ORDER = {"none": 0, "bronze": 1, "silver": 2, "gold": 3}
+# OKF Folder Criteria v1.0.0 (engine 0.2.0). Ordered lowest to highest; "none" is below OKF Certified.
+TIERS = ("okf-certified", "bronze", "silver", "gold")
+TIER_ORDER = {"none": 0, "okf-certified": 1, "bronze": 2, "silver": 3, "gold": 4}
+CRITERIA_VERSION = "1.0.0"
 
 OKF_SPEC_VERSION = "0.2"
 # What this server tells a user about a scan's network use: stated as JidoSeal's own claim,
@@ -80,34 +85,29 @@ SCAN_EGRESS_CLAIM = (
     "not an independent audit; the jidoseal-mcp README and tests show how to check it."
 )
 # This surface's identity label, in the same form as the other two implementations' own
-# (`okf-manifest/okf-iso-rubric-2026-08-26` and
-# `tier1-scoring-ts/okf-iso-rubric-2026-08-26`). The rubric date is
-# identical on purpose: the RUBRIC is the same one, only the surface differs.
-ENGINE_VERSION = "jidoseal-mcp/okf-iso-rubric-2026-08-26"
+# (`okf-manifest/okf-criteria-1.0.0` and `tier1-scoring-ts/okf-criteria-1.0.0`).
+ENGINE_VERSION = "jidoseal-mcp/okf-criteria-1.0.0"
 
-# The rubric text /app/run shows the visitor, verbatim from both existing implementations.
+# The tier text /app/run shows the visitor (approved site wording, 2026-11-21).
 RUBRIC = {
-    "bronze": "OKF v0.2 as written (populated `type`)",
-    "silver": "Bronze + fields that evidence ISO 9001 §7.5.2 (title, description, timestamp, owner)",
-    "gold": "Silver + fields that evidence ISO 30401 (status + review_policy + reviewed_at + next_review_at on every file)",
+    "okf-certified": "OKF Certified (free): every file passes the three OKF v0.2 §11 conformance rules.",
+    "bronze": "Bronze: adds a title, description, date and owner on every file.",
+    "silver": "Silver: adds a status, a review policy and the dates of its last and next review on every file.",
+    "gold": "Gold: adds AI-provenance fields: sources, AI involvement and licence.",
 }
 
-
-def corpus_tier(entries: Dict[str, Any]) -> str:
-    """Corpus tier = the LOWEST per-file tier. Same rule as the other two
-    implementations — a corpus is only as certified as its weakest file."""
-    if not entries:
-        return "none"
-    return min((e["tier"] for e in entries.values()), key=lambda t: TIER_ORDER[t])
+# The engine's per-file `missing` is keyed by the criteria v0.9.2 tiers (bronze = `type`,
+# silver = title/description/timestamp/owner, gold = the four review fields). Under v1.0.0 each
+# gap list blocks the tier one step up: v0.9.2 bronze -> okf-certified, silver -> bronze,
+# gold -> silver. The engine writes no gap list for v1.0.0 Gold (the AI-provenance checks).
+_MISSING_KEY_V092_TO_V1 = {"bronze": "okf-certified", "silver": "bronze", "gold": "silver"}
 
 
-def _js_round(x: float) -> int:
-    """Round half UP, the way JavaScript's `Math.round` does — NOT Python's `round()`, which
-    rounds half to even (`round(34.5) == 34`, `Math.round(34.5) === 35`). `score` is computed
-    by `Math.round` in the browser scorer and travels to /api/checkout as an integer; a
-    corpus whose three coverages average to exactly x.5 would otherwise be offered a different
-    score here than at /app/run for the very same files."""
-    return int(math.floor(x + 0.5))
+def _missing_v1(missing: Dict[str, Any]) -> Dict[str, Any]:
+    out: Dict[str, Any] = {t: [] for t in TIERS}
+    for old, new in _MISSING_KEY_V092_TO_V1.items():
+        out[new] = list(missing.get(old, []))
+    return out
 
 
 def build_scan_result(root: str, include_machine: bool = False) -> Dict[str, Any]:
@@ -121,19 +121,24 @@ def build_scan_result(root: str, include_machine: bool = False) -> Dict[str, Any
     FAIL LOUD: a missing root raises `FileNotFoundError` out of `run_scan` — never an empty
     manifest a caller could read as "my corpus scored zero files".
     """
-    scan = local_runner.run_scan(root, exclude_machine=not include_machine)
+    scan = local_runner.run_scan(root, exclude_machine=not include_machine,
+                                  criteria=okf_manifest.CRITERIA_V1)
     manifest = scan["manifest"]
     entries = manifest["files"]
 
-    tier = corpus_tier(entries)
-    coverage = {t: okf_manifest.pct(entries, t) for t in TIERS}
+    # The engine's own v1.0.0 folder result: grade (lowest file grade, `none` if the third OKF
+    # section 11 rule fails), coverage per tier, and the 0-100 score. Nothing is recomputed here.
+    corpus_v1 = manifest["corpus"]
+    tier = corpus_v1["grade"]
+    coverage = dict(corpus_v1["coverage"])
+    okf11 = manifest["corpus"]["okf11"]
     files: List[Dict[str, Any]] = [
         {
             "name": rel,
             "hash": e["hash"],
-            "tier": e["tier"],
+            "tier": e["grade"],
             "present": e["present"],
-            "missing": e["missing"],
+            "missing": _missing_v1(e["missing"]),
             "frontmatter_ok": e.get("frontmatter_ok", True),
             "language": e["language"],
         }
@@ -150,6 +155,7 @@ def build_scan_result(root: str, include_machine: bool = False) -> Dict[str, Any
         "engine_version": ENGINE_VERSION,
         "rubric": dict(RUBRIC),
         "corpus": {"file_count": len(entries), "tier": tier, "coverage": coverage,
+                   "criteria_version": corpus_v1["criteria_version"],
                    # In the shared envelope, unlike `config_hash` below: the browser scoring a
                    # browser-side bundle can and does compute both of these itself, so they are
                    # facts all three surfaces can state, and parity can hold them to it.
@@ -159,7 +165,10 @@ def build_scan_result(root: str, include_machine: bool = False) -> Dict[str, Any
         # Always empty for a filesystem scan — see this module's docstring.
         "skipped": [],
         "certified_eligible": tier != "none",
-        "score": _js_round((coverage["bronze"] + coverage["silver"] + coverage["gold"]) / 3),
+        "score": corpus_v1["score"],
+        # "3/3" when every file passes the three OKF v0.2 section 11 rules: the free OKF
+        # Certified request needs exactly that string.
+        "okf11Result": f"{okf11['rules_passed']}/3",
         "merkleRoot": attestation.manifest_root(manifest),
         # Not part of AuditResult — MCP-only provenance so a host can show the caller where the
         # scan's own records landed, and so `jidoseal_start_checkout` can prove the numbers it

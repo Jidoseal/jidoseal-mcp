@@ -3,13 +3,13 @@
   "specVersion": "1.5",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-30T00:00:00Z",
+    "timestamp": "2026-11-21T00:00:00Z",
     "component": {
       "type": "application",
-      "bom-ref": "pkg:pypi/jidoseal-mcp@0.2.0",
+      "bom-ref": "pkg:pypi/jidoseal-mcp@0.3.0",
       "name": "jidoseal-mcp",
-      "version": "0.2.0",
-      "purl": "pkg:pypi/jidoseal-mcp@0.2.0",
+      "version": "0.3.0",
+      "purl": "pkg:pypi/jidoseal-mcp@0.3.0",
       "licenses": [
         {
           "license": {
@@ -29,10 +29,10 @@
   "components": [
     {
       "type": "library",
-      "bom-ref": "pkg:pypi/jidoseal@0.1.4",
+      "bom-ref": "pkg:pypi/jidoseal@0.2.0",
       "name": "jidoseal",
-      "version": "0.1.4",
-      "purl": "pkg:pypi/jidoseal@0.1.4",
+      "version": "0.2.0",
+      "purl": "pkg:pypi/jidoseal@0.2.0",
       "licenses": [
         {
           "license": {
@@ -40,23 +40,34 @@
           }
         }
       ],
-      "description": "JidoSeal scan engine. Proprietary licence; shipped as plain Python source (the ten modules listed below).",
+      "description": "JidoSeal scan engine. Proprietary licence; shipped as plain Python source (the 12 modules listed below).",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "84f65137260c26837caec9efc1a0835fd18917d35b0468a6389b35aa7fe53bab"
+          "content": "6c605bf66bde311f6aeafd2b59c2237882f7479c3a7e9570fefe6f2e3d449a7a"
         }
       ],
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://pypi.org/project/jidoseal/0.1.4/"
+          "url": "https://pypi.org/project/jidoseal/0.2.0/"
         }
       ],
       "components": [
         {
           "type": "file",
-          "bom-ref": "file:jidoseal@0.1.4/consent.py",
+          "bom-ref": "file:jidoseal@0.2.0/attestation.py",
+          "name": "attestation.py",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "d0f2d49ad255357ffd6cc55b4b6a9c23ab2f92e5500fa45555c766fd2f825805"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "bom-ref": "file:jidoseal@0.2.0/consent.py",
           "name": "consent.py",
           "hashes": [
             {
@@ -67,7 +78,7 @@
         },
         {
           "type": "file",
-          "bom-ref": "file:jidoseal@0.1.4/frontmatter_i18n.py",
+          "bom-ref": "file:jidoseal@0.2.0/frontmatter_i18n.py",
           "name": "frontmatter_i18n.py",
           "hashes": [
             {
@@ -78,7 +89,7 @@
         },
         {
           "type": "file",
-          "bom-ref": "file:jidoseal@0.1.4/i18n.py",
+          "bom-ref": "file:jidoseal@0.2.0/i18n.py",
           "name": "i18n.py",
           "hashes": [
             {
@@ -89,7 +100,7 @@
         },
         {
           "type": "file",
-          "bom-ref": "file:jidoseal@0.1.4/jidoseal.py",
+          "bom-ref": "file:jidoseal@0.2.0/jidoseal.py",
           "name": "jidoseal.py",
           "hashes": [
             {
@@ -100,29 +111,29 @@
         },
         {
           "type": "file",
-          "bom-ref": "file:jidoseal@0.1.4/local_runner.py",
+          "bom-ref": "file:jidoseal@0.2.0/local_runner.py",
           "name": "local_runner.py",
           "hashes": [
             {
               "alg": "SHA-256",
-              "content": "f946811a8bfad7636e34afe4645c08887f5d0675e782d1d15669b9b16c207aeb"
+              "content": "0f8cd8090cf8f6aeb9f832fc19f8d97a42892e5872cfe1dc59ed2043b2b45dca"
             }
           ]
         },
         {
           "type": "file",
-          "bom-ref": "file:jidoseal@0.1.4/okf_manifest.py",
+          "bom-ref": "file:jidoseal@0.2.0/okf_manifest.py",
           "name": "okf_manifest.py",
           "hashes": [
             {
               "alg": "SHA-256",
-              "content": "bfdd990143844a1ea2d44827dc487cbb37d699d9a31a7dc22d21c4cb3ef5aade"
+              "content": "ba642750e3e77fc2a67a81c379f0af1ab720fbd315a043e74abba3504f080d78"
             }
           ]
         },
         {
           "type": "file",
-          "bom-ref": "file:jidoseal@0.1.4/okf_remediate.py",
+          "bom-ref": "file:jidoseal@0.2.0/okf_remediate.py",
           "name": "okf_remediate.py",
           "hashes": [
             {
@@ -133,7 +144,7 @@
         },
         {
           "type": "file",
-          "bom-ref": "file:jidoseal@0.1.4/scan_config.py",
+          "bom-ref": "file:jidoseal@0.2.0/scan_config.py",
           "name": "scan_config.py",
           "hashes": [
             {
@@ -144,7 +155,18 @@
         },
         {
           "type": "file",
-          "bom-ref": "file:jidoseal@0.1.4/syntax_gate.py",
+          "bom-ref": "file:jidoseal@0.2.0/spdx_licenses.py",
+          "name": "spdx_licenses.py",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "39263dc2f9a5f5ebed6b0260e80aad5911b41debbec668d61d6c0c4978507923"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "bom-ref": "file:jidoseal@0.2.0/syntax_gate.py",
           "name": "syntax_gate.py",
           "hashes": [
             {
@@ -155,7 +177,7 @@
         },
         {
           "type": "file",
-          "bom-ref": "file:jidoseal@0.1.4/tier1_gate.py",
+          "bom-ref": "file:jidoseal@0.2.0/tier1_gate.py",
           "name": "tier1_gate.py",
           "hashes": [
             {
@@ -196,13 +218,13 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:pypi/jidoseal-mcp@0.2.0",
+      "ref": "pkg:pypi/jidoseal-mcp@0.3.0",
       "dependsOn": [
-        "pkg:pypi/jidoseal@0.1.4"
+        "pkg:pypi/jidoseal@0.2.0"
       ]
     },
     {
-      "ref": "pkg:pypi/jidoseal@0.1.4",
+      "ref": "pkg:pypi/jidoseal@0.2.0",
       "dependsOn": [
         "pkg:pypi/pyyaml@6.0.3"
       ]

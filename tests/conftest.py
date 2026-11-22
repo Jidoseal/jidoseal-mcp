@@ -99,8 +99,21 @@ def gold_root(tmp_path):
     (root / "handbook.md").write_text(
         "---\ntype: guide\ntitle: Handbook\ndescription: How we work.\n"
         "timestamp: 2026-09-01\nowner: dept:people-ops\nstatus: stable\n"
-        "review_policy: yearly\nreviewed_at: 2026-09-01\nnext_review_at: 2027-09-01\n---\n"
+        "review_policy: yearly\nreviewed_at: 2026-09-01\nnext_review_at: 2027-09-01\n"
+        "ai_involvement: none\nsources: []\nlicense: proprietary\n---\n"
         "# Handbook\n", encoding="utf-8")
+    return root
+
+
+@pytest.fixture
+def okf_root(tmp_path):
+    """A folder at OKF Certified (every file passes the three section 11 rules, nothing more),
+    with 30 files, so it clears the free certificate's 25-file floor."""
+    root = tmp_path / "okf-notes-folder"
+    root.mkdir()
+    for i in range(30):
+        (root / f"note-{i:02d}.md").write_text(
+            f"---\ntype: note\n---\n# Note {i}\nSecret body {i}\n", encoding="utf-8")
     return root
 
 

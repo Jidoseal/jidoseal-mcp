@@ -31,9 +31,10 @@ FORBIDDEN_CALLS = {"__import__", "exec", "eval", "import_module", "system", "pop
 #  * PyYAML's constructor calls __import__ for its UNSAFE loaders. The engine uses safe_load only.
 ALLOWED = {("okf_manifest.py", "import", "subprocess"), ("constructor.py", "call", "__import__")}
 
-SCAN_PATH_SRC = ["jidoseal_mcp", "scan_result", "offer", "engine_path", "attestation", "okf_trust"]
+SCAN_PATH_SRC = ["jidoseal_mcp", "scan_result", "offer", "engine_path", "okf_trust"]
 ENGINE_MODULES = {"jidoseal", "local_runner", "okf_manifest", "okf_remediate", "scan_config",
-                  "tier1_gate", "syntax_gate", "consent", "i18n", "frontmatter_i18n"}
+                  "tier1_gate", "syntax_gate", "consent", "i18n", "frontmatter_i18n", "attestation",
+                  "spdx_licenses"}
 
 
 def _imports(tree: ast.AST) -> Iterator[Tuple[str, ast.AST]]:
@@ -71,7 +72,7 @@ def _yaml_files() -> List[str]:
     return sorted(os.path.join(d, n) for n in os.listdir(d) if n.endswith(".py"))
 
 
-def test_engine_wheel_contains_exactly_the_ten_scan_modules():
+def test_engine_wheel_contains_exactly_the_twelve_scan_modules():
     names = {os.path.splitext(os.path.basename(p))[0] for p in _engine_files()}
     assert names == ENGINE_MODULES
 
@@ -125,7 +126,7 @@ def test_engine_parses_yaml_with_safe_load_only():
     assert used <= {"safe_load", "YAMLError"}, sorted(used)
 
 
-def test_server_imports_checkout_client_only_inside_the_checkout_handler():
+def test_server_imports_checkout_client_only_inside_the_two_network_handlers():
     tree = _parse(os.path.join(SRC, "jidoseal_mcp.py"))
     where = []
     for fn in ast.walk(tree):
@@ -135,8 +136,9 @@ def test_server_imports_checkout_client_only_inside_the_checkout_handler():
                     where.append((fn.name, name))
     all_forbidden = [name for name, _ in _imports(tree) if name in FORBIDDEN]
     assert sorted(where) == [("tool_jidoseal_changes", "git_changes"),
+                             ("tool_jidoseal_request_free_certificate", "checkout_client"),
                              ("tool_jidoseal_start_checkout", "checkout_client")]
-    assert sorted(all_forbidden) == ["checkout_client", "git_changes"], \
+    assert sorted(all_forbidden) == ["checkout_client", "checkout_client", "git_changes"], \
         "no module-level network or process import"
     assert sorted(set(_calls(tree)) & FORBIDDEN_CALLS) == []
 
