@@ -472,6 +472,8 @@ def tool_jidoseal_start_checkout(args: Dict[str, Any]) -> Dict[str, Any]:
             merkle_root=result["merkleRoot"],
             audit_id=result["audit_id"],
             files_below=result["filesBelow"],
+            file_count=result["corpus"]["file_count"],
+            criteria_version=result["corpus"]["criteria_version"],
         )
         out = checkout_client.submit(offer_mod.site_url(), body)
     except checkout_client.CheckoutError as e:

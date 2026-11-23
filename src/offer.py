@@ -131,6 +131,8 @@ PURCHASE_EGRESS_FIELDS = [
     "filesBelowBronze — a count of files below Bronze",
     "filesBelowSilver — a count of files below Silver",
     "filesBelowGold — a count of files below Gold",
+    "fileCount — how many files the scan read",
+    "criteriaVersion — the rules the scan ran under, such as 1.0.0",
     "auditId — the local scan's own random id",
 ]
 

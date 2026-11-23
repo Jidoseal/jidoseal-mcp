@@ -23,8 +23,9 @@ WHAT LEAVES THE MACHINE, EXHAUSTIVELY
 -------------------------------------
 Paid: the JSON body built by `build_body()` and nothing else: company, submitterName,
 submitterEmail, requestedTier, score, merkleRoot, filesBelowBronze, filesBelowSilver,
-filesBelowGold (counts of files below each tier), auditId (the website's own checkout
-button sends the same set; `belowTier` is gone, as Bronze has one price).
+filesBelowGold (counts of files below each tier), fileCount (how many files the scan read),
+criteriaVersion (the rules the scan ran under), auditId (the website's own checkout button
+sends the same set; `belowTier` is gone, as Bronze has one price).
 Free: the JSON body built by `build_free_body()` and nothing else: company, submitterName,
 submitterEmail, score, merkleRoot, okf11Result, fileCount and configSha256. No file content, no file names, no
 per-file hashes, no paths. See offer.PURCHASE_EGRESS_FIELDS and offer.FREE_EGRESS_FIELDS,
@@ -78,7 +79,8 @@ def _count(files_below: Any, tier: str, key: str) -> int:
 
 def build_body(company: str, submitter_name: str, submitter_email: str,
                requested_tier: str, score: int, merkle_root: str,
-               audit_id: str, files_below: Dict[str, int]) -> Dict[str, Any]:
+               audit_id: str, files_below: Dict[str, int],
+               file_count: int, criteria_version: str) -> Dict[str, Any]:
     """The exact JSON body /api/checkout expects — same keys, same casing, same types as
     the website's own checkout button. Built as its own function so a test can assert what would
     leave the machine WITHOUT anything leaving it."""
@@ -92,8 +94,15 @@ def build_body(company: str, submitter_name: str, submitter_email: str,
         "filesBelowBronze": _count(files_below, "bronze", "filesBelowBronze"),
         "filesBelowSilver": _count(files_below, "silver", "filesBelowSilver"),
         "filesBelowGold": _count(files_below, "gold", "filesBelowGold"),
+        "fileCount": file_count,
+        "criteriaVersion": str(criteria_version).strip(),
         "auditId": str(audit_id),
     }
+    if not isinstance(file_count, int) or isinstance(file_count, bool) or file_count < 0:
+        raise CheckoutError("the scan result has no valid file count.")
+    # The 25-file floor (criteria v1.0.0 section 10) is the site's to enforce: /api/checkout
+    # refuses fewer with "A certificate needs at least 25 files in the folder.", which
+    # submit() hands back as a CheckoutError.
     if not _EMAIL_RE.match(body["submitterEmail"]):
         raise CheckoutError("submitter_email is not a valid email address.")
     if body["requestedTier"] not in ("bronze", "silver", "gold"):
